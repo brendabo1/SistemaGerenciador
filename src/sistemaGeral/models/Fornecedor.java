@@ -1,23 +1,27 @@
 package sistemaGeral.models;
 
+import java.util.ArrayList;
+
 public class Fornecedor extends EntidadesDoSistema {
 		private String CNPJ;
 		private String nome;
 		private String endereco;
+		private ArrayList<Produto> produtos_fornecidos;
 		private static final  String preFixo = "FOR";
 
 		
 		
-		public Fornecedor(String CNPJ, String nome, String endereco, String id) {
+		public Fornecedor(String CNPJ, String nome, String endereco, String id, ArrayList<Produto> produtos) {
 			this.CNPJ = CNPJ;
 			this.nome = nome;
 			this.endereco = endereco;
 			this.id = id;
+			this.produtos_fornecidos = produtos;
 		}
 
 		public  String toString() {
 			
-			return "CNPJ: " + CNPJ + "  -  " + "NOME: " + nome + "  -  " + "ENDEREÇO: " + endereco + "  -  " + "ID: " + id;
+			return "CNPJ: " + CNPJ + "  -  " + "NOME: " + nome + "  -  " + "ENDEREï¿½O: " + endereco + "  -  " + "ID: " + id;
 		}
 
 
@@ -51,6 +55,14 @@ public class Fornecedor extends EntidadesDoSistema {
 		}
 		
 		
+		public ArrayList<Produto> getProdutos_fornecidos() {
+			return produtos_fornecidos;
+		}
+
+		public void setProdutos_fornecidos(ArrayList<Produto> produtos_fornecidos) {
+			this.produtos_fornecidos = produtos_fornecidos;
+		}
+
 		public static String getPrefixo() {
 			return preFixo;
 		}
