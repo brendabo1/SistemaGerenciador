@@ -38,7 +38,8 @@ public class SistemaEstabelecimento {
 			
 			gerFornecedor.cadastrar("Carro do Ovo", "43442567854326", "Rua Santo Antonio");
 			gerFornecedor.cadastrar("Lanches Mania", "8922567854326", "Avenida Dutra");
-			gerFornecedor.cadastrar("Nestlé", "43442567424326", "Praça do Juazeiro");
+			gerFornecedor.cadastrar("Nestlï¿½", "43442567424326", "Praï¿½a do Juazeiro");
+			System.out.println("Teste nova branch");
 			
 			boolean sistema_on = true;
 			Scanner input = new Scanner(System.in);
@@ -51,7 +52,7 @@ public class SistemaEstabelecimento {
 					boolean menu = true;
 					while (menu) {
 						System.out.print("\n[1] - USUARIOS \n[2] - PRODUTOS \n[3] - FORNECEDORES \n[4] - VENDAS "
-								+ "\n[5] - ITENS DO CARDAPIO \n[6] - SAIR DO PROGRAMA  \nOPÇÃO: ");
+								+ "\n[5] - ITENS DO CARDAPIO \n[6] - SAIR DO PROGRAMA  \nOPï¿½ï¿½O: ");
 						String primeira_escolha = input.next().strip();
 						
 						switch(primeira_escolha) {
@@ -107,7 +108,7 @@ public class SistemaEstabelecimento {
 			boolean continuar_menu_switch = true;
 			
 			do {
-				System.out.print("\n[1] - CADASTRAR \n[2] - EXCLUIR \n[3] - LISTAR \n[4] - EDITAR \nOpção: ");
+				System.out.print("\n[1] - CADASTRAR \n[2] - EXCLUIR \n[3] - LISTAR \n[4] - EDITAR \nOpï¿½ï¿½o: ");
 				String opcao = input.next().strip();
 				
 				switch (opcao) {
