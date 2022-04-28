@@ -39,7 +39,8 @@ public class SistemaEstabelecimento {
 			gerFornecedor.cadastrar("Carro do Ovo", "43442567854326", "Rua Santo Antonio");
 			gerFornecedor.cadastrar("Lanches Mania", "8922567854326", "Avenida Dutra");
 			gerFornecedor.cadastrar("Nestl�", "43442567424326", "Pra�a do Juazeiro");
-			System.out.println("Teste nova branch");
+			System.out.println("Teste nova branch sincronizado");
+			System.out.println("Linha 2");
 			
 			boolean sistema_on = true;
 			Scanner input = new Scanner(System.in);
