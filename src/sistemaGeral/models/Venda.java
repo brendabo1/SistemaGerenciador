@@ -6,26 +6,23 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Venda extends EntidadesDoSistema{
-		private String hora;
 		private String data;
+		private String hora;
 		private ArrayList<ItemCardapio> itens_comprados = new ArrayList<>();
 		private Double preco_total = 0.0;
 		private String forma_de_pagamento;
 		private static final  String preFixo = "VEN";
 
 		
-		private static final DateTimeFormatter padrao_hora = DateTimeFormatter.ofPattern("HH:mm:ss");
-		private static final DateTimeFormatter padrao_data = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		//private static final DateTimeFormatter padrao_hora = DateTimeFormatter.ofPattern("HH:mm:ss");
+		//private static final DateTimeFormatter padrao_data = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		
 		
 		public Venda(ArrayList<ItemCardapio> itens_comprados, String forma_de_pagamento, String id) {
-			itens_comprados = new ArrayList<>();
-			
-			LocalTime hora_atual = LocalTime.now();
-			LocalDate data_atual = LocalDate.now();
+			itens_comprados = new ArrayList<>();			
 
-			this.hora = hora_atual.format(padrao_hora);
-			this.data = data_atual.format(padrao_data);
+			this.data = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+			this.hora = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 			
 			for (ItemCardapio item: itens_comprados) this.preco_total += item.getPreco();
 			
@@ -36,13 +33,13 @@ public class Venda extends EntidadesDoSistema{
 		
 	@Override
 	public String toString() {
-		String string_retorno = "HORA: " + this.hora + "   __   " + "DATA: " + this.data + "\nCOMPRAS:\n";
+		String string_retorno = "DATA: " + this.data + "HORA: " + this.hora + "   __   " +  "\nCOMPRAS:\n";
 		
 		for (ItemCardapio item: this.itens_comprados) {
 			string_retorno +=  item.getNome() + " -- " + "R$" + item.getPreco() + "\n";
 		}
 		
-		string_retorno += "PREÇO TOTAL R$: " + this.preco_total + "   __   " + "EFETUADO POR: " + this.forma_de_pagamento +
+		string_retorno += "PREï¿½O TOTAL R$: " + this.preco_total + "   __   " + "EFETUADO POR: " + this.forma_de_pagamento +
 				"   __   " + "ID: " + id;
 		
 		return string_retorno;
@@ -56,6 +53,16 @@ public class Venda extends EntidadesDoSistema{
 	public String getData() {
 		return this.data;
 	}
+
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
+
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
 
 	public ArrayList<ItemCardapio> getItens_comprados() {
 		return itens_comprados;
