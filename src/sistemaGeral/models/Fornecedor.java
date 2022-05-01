@@ -6,32 +6,30 @@ public class Fornecedor extends EntidadesDoSistema {
 		private String CNPJ;
 		private String nome;
 		private String endereco;
-		private ArrayList<Produto> produtos_fornecidos;
+		private ArrayList<Produto> produtos_fornecidos = new ArrayList<>();
+		
 		private static final  String preFixo = "FOR";
-
+	
 		
-		
-		public Fornecedor(String CNPJ, String nome, String endereco, String id, ArrayList<Produto> produtos) {
+		public Fornecedor(String id, String CNPJ, String nome, String endereco) {
+			this.id = id;
 			this.CNPJ = CNPJ;
 			this.nome = nome;
 			this.endereco = endereco;
-			this.id = id;
-			this.produtos_fornecidos = produtos;
 		}
 
 		public  String toString() {
-			
-			return "CNPJ: " + CNPJ + "  -  " + "NOME: " + nome + "  -  " + "ENDEREï¿½O: " + endereco + "  -  " + "ID: " + id;
+			String message = String.format("ID: %s  CNPJ: %s  NOME: %s  ENDEREÇO: %s", this.id, this.CNPJ, this.nome, this.endereco);
+			return message;
 		}
-
 
 		public String getCNPJ() {
 			return CNPJ;
 		}
 
 
-		public void setCNPJ(String cNPJ) {
-			CNPJ = cNPJ;
+		public void setCNPJ(String CNPJ) {
+			this.CNPJ = CNPJ;
 		}
 
 

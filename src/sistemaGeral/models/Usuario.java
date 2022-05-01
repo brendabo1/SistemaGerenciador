@@ -4,11 +4,11 @@ abstract public class Usuario extends EntidadesDoSistema {
 		protected String nome;
 		protected String senha;
 		
-	
-		
+			
 		@Override
 		public String toString() {
-			return "NOME: " + this.nome + "  -  " + "ID: " + this.id;
+			String message = String.format("ID: %s  NOME: %s", this.id, this.nome);
+			return message;
 		}
 		
 		

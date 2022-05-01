@@ -4,10 +4,10 @@ public class Funcionario extends Usuario{
 	private final boolean acesso_admin = true;
 	private static final String pre_fixo = "FUN";
 	
-		public Funcionario(String nome, String senha, String id){
-			this.nome = nome;
-			this.senha = senha;
+		public Funcionario(String id, String nome, String senha){
 			this.id = id;
+			this.nome = nome;
+			this.senha = senha;			
 		}
 
 		public boolean getAcesso_admin() {

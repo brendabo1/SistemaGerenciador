@@ -4,10 +4,10 @@ public class Gerente extends Usuario{
 	private final boolean acesso_admin = true;
 	private static final String pre_fixo = "GER";
 	
-		public Gerente(String nome, String senha, String id){
-			this.nome = nome;
-			this.senha = senha;
+		public Gerente(String id, String nome, String senha){
 			this.id = id;
+			this.nome = nome;
+			this.senha = senha;			
 		}
 
 		public boolean getAcesso_admin() {

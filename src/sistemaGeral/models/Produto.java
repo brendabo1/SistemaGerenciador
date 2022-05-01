@@ -3,30 +3,23 @@ package sistemaGeral.models;
 public class Produto extends EntidadesDoSistema {
 		private String nome;
 		private Double preco;
-		private String validade;
-		private double quantidade;
+		//private String validade;
+		//private double quantidade;
 		private UnidadeMedida und_medida;
 		private Fornecedor fornecedor;
 		private static final  String preFixo = "PRO";
 
 		
-		public Produto(String nome, Double preco, String validade, String id, double qnt, Fornecedor fornecedor, UnidadeMedida und_medida ) {
+		public Produto(String id, String nome, Double preco, Fornecedor fornecedor, UnidadeMedida und_medida ) {
+			this.id = id;
 			this.nome = nome;
 			this.preco = preco;
-			this.validade = validade;
-			this.id = id;
-			this.quantidade = qnt;
+			//this.validade = validade;
+			//this.quantidade = qnt;
 			this.und_medida = und_medida;
 			this.fornecedor = fornecedor;
 		}
 		
-		public double getQuantidade() {
-			return quantidade;
-		}
-
-		public void setQuantidade(double quantidade) {
-			this.quantidade = quantidade;
-		}
 
 		public UnidadeMedida getUnd_medida() {
 			return und_medida;
@@ -43,9 +36,11 @@ public class Produto extends EntidadesDoSistema {
 		public void setFornecedor(Fornecedor fornecedor) {
 			this.fornecedor = fornecedor;
 		}
-
+		
+		@Override
 		public String toString() {
-			return "NOME: " + nome + "  -  " + "PREï¿½O: " + preco + "  -  " + "VALIDADE: " + validade + "  -  " + "ID: " + id;
+			String message = String.format("ID: %s  NOME: %s  PREÇO: %.2f", id, nome, preco);
+			return message;
 		}
 
 		public String getNome() {
@@ -62,14 +57,6 @@ public class Produto extends EntidadesDoSistema {
 
 		public void setPreco(Double preco) {
 			this.preco = preco;
-		}
-
-		public String getValidade() {
-			return validade;
-		}
-
-		public void setValidade(String validade) {
-			this.validade = validade;
 		}
 		
 		public static String getPrefixo() {

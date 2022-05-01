@@ -12,7 +12,7 @@ public class GerenciamentoItemCardapio extends GerenciamentoGeral{
 	
 		public boolean cadastrar(String nome, ArrayList<Produto> ingredientes, Double preco, CategoriasDeItens categoria) {
 				String id = gerarID(this.lista_itensCardapio, ItemCardapio.getPrefixo());
-				ItemCardapio novo_itemCardapio = new ItemCardapio(nome, ingredientes, preco, categoria, id);
+				ItemCardapio novo_itemCardapio = new ItemCardapio(id, nome, ingredientes, preco, categoria);
 				return adicionar(this.lista_itensCardapio, novo_itemCardapio);
 			}
 			

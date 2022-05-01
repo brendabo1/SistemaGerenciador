@@ -2,16 +2,18 @@ package sistemaGeral.controllers;
 
 import java.util.ArrayList;
 
+import sistemaGeral.models.Fornecedor;
 import sistemaGeral.models.Produto;
+import sistemaGeral.models.UnidadeMedida;
 
 public class GerenciamentoProduto extends GerenciamentoGeral{
 		private ArrayList<Produto> lista_produtos = new ArrayList<>();
 	
 		
 		
-		public boolean cadastrar(String nome, Double preco, String validade) {
+		public boolean cadastrar(String nome, Double preco, Fornecedor fornecedor, UnidadeMedida unidade) {
 			String id = gerarID(this.lista_produtos, Produto.getPrefixo());
-			Produto novo_produto = new Produto(nome, preco, validade, id);
+			Produto novo_produto = new Produto(id, nome, preco, fornecedor, unidade);
 			return adicionar(this.lista_produtos, novo_produto);
 		}
 		
@@ -26,10 +28,10 @@ public class GerenciamentoProduto extends GerenciamentoGeral{
 			return produto.getPreco().equals(novo_preco);
 		}
 		
-		public boolean editarValidade(String nova_validade, Produto produto) {
+		/*public boolean editarValidade(String nova_validade, Produto produto) {
 			produto.setValidade(nova_validade);
 			return produto.getValidade().equals(nova_validade);
-		}
+		}*/
 		
 
 

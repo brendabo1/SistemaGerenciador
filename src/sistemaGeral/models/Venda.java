@@ -6,24 +6,19 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Venda extends EntidadesDoSistema{
-		private String data;
-		private String hora;
+		private String data = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		private String hora = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 		private ArrayList<ItemCardapio> itens_comprados = new ArrayList<>();
 		private Double preco_total = 0.0;
 		private String forma_de_pagamento;
 		private static final  String preFixo = "VEN";
 
-		
 		//private static final DateTimeFormatter padrao_hora = DateTimeFormatter.ofPattern("HH:mm:ss");
 		//private static final DateTimeFormatter padrao_data = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		
 		
-		public Venda(ArrayList<ItemCardapio> itens_comprados, String forma_de_pagamento, String id) {
+		public Venda(String id, ArrayList<ItemCardapio> itens_comprados, String forma_de_pagamento) {
 			itens_comprados = new ArrayList<>();			
-
-			this.data = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-			this.hora = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-			
 			for (ItemCardapio item: itens_comprados) this.preco_total += item.getPreco();
 			
 			this.forma_de_pagamento = forma_de_pagamento;
@@ -33,16 +28,16 @@ public class Venda extends EntidadesDoSistema{
 		
 	@Override
 	public String toString() {
-		String string_retorno = "DATA: " + this.data + "HORA: " + this.hora + "   __   " +  "\nCOMPRAS:\n";
+		String message = String.format("ID: %s  DATA: %s  HORA: %s  \nCOMPRAS:\n", this.id, this.data, this.hora);
 		
 		for (ItemCardapio item: this.itens_comprados) {
-			string_retorno +=  item.getNome() + " -- " + "R$" + item.getPreco() + "\n";
+			message +=  item.getNome() + "   R$" + item.getPreco() + "\n";
 		}
 		
-		string_retorno += "PREï¿½O TOTAL R$: " + this.preco_total + "   __   " + "EFETUADO POR: " + this.forma_de_pagamento +
-				"   __   " + "ID: " + id;
+		message += "PREÇO TOTAL  R$: " + this.preco_total + 
+				"\nFORMA DE PAGAMENTO: " + this.forma_de_pagamento;
 		
-		return string_retorno;
+		return message;
 	}
 	
 	

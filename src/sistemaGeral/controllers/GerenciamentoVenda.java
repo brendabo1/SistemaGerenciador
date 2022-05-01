@@ -11,7 +11,7 @@ public class GerenciamentoVenda extends GerenciamentoGeral {
 			
 			public boolean cadastrar(ArrayList<ItemCardapio> compras, String formaDePagamento) {
 				String id = gerarID(this.lista_vendas, Venda.getPrefixo());
-				Venda nova_venda = new Venda(compras, formaDePagamento, id);
+				Venda nova_venda = new Venda(id, compras, formaDePagamento);
 				return adicionar(this.lista_vendas, nova_venda);
 				
 			}

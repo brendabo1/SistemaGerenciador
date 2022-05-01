@@ -10,7 +10,7 @@ public class GerenciamentoFornecedor extends GerenciamentoGeral {
 		
 		public boolean cadastrar(String nome, String CNPJ, String endereco) {
 			String id = gerarID(this.lista_fornecedores, Fornecedor.getPrefixo());
-			Fornecedor novo_fornecedor = new Fornecedor(CNPJ, nome, endereco, id);
+			Fornecedor novo_fornecedor = new Fornecedor(id, CNPJ, nome, endereco);
 			return adicionar(this.lista_fornecedores, novo_fornecedor);
 		}
 		

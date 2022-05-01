@@ -17,7 +17,7 @@ public class GerenciamentoUsuario extends GerenciamentoGeral {
 			switch (tipo_usuario) {
 				case GERENTE:
 						id = gerarID(this.lista_usuarios, Gerente.getPreFixo());
-						Gerente novo_gerente = new Gerente(nome, senha, id);
+						Gerente novo_gerente = new Gerente(id, nome, senha);
 						if (adicionar(this.lista_usuarios, novo_gerente)) return true;
 				case FUNCIONARIO: 
 						id = gerarID(this.lista_usuarios, Funcionario.getPreFixo());
