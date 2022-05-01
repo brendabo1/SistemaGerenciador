@@ -31,11 +31,14 @@ public class SistemaEstabelecimento {
 
 		
 		public static void main(String[] args) {
+			/*
+			Antigo pre-cadastro de itens
+			
 			gerProduto.cadastrar("Banana", 1.5, "21/04/2022");
 			gerProduto.cadastrar("Molho de Tomate", 3.0, "17/09/2023");
 			gerProduto.cadastrar("Pimenta Malagueta", 7.85, "18/06/2022");
 			gerProduto.cadastrar("Creme de Leite", 4.50, "29/11/2023");
-			
+			*/
 			gerFornecedor.cadastrar("Carro do Ovo", "43442567854326", "Rua Santo Antonio");
 			gerFornecedor.cadastrar("Lanches Mania", "8922567854326", "Avenida Dutra");
 			gerFornecedor.cadastrar("Nestl�", "43442567424326", "Pra�a do Juazeiro");
