@@ -2,11 +2,11 @@ package sistemaGeral;
 
 import java.util.Scanner;
 
-import sistemaGeral.controllers.GerenciamentoFornecedor;
-import sistemaGeral.controllers.GerenciamentoItemCardapio;
-import sistemaGeral.controllers.GerenciamentoProduto;
-import sistemaGeral.controllers.GerenciamentoUsuario;
-import sistemaGeral.controllers.GerenciamentoVenda;
+import sistemaGeral.models.gerenciadores.GerenciamentoFornecedor;
+import sistemaGeral.models.gerenciadores.GerenciamentoItemCardapio;
+import sistemaGeral.models.gerenciadores.GerenciamentoProduto;
+import sistemaGeral.models.gerenciadores.GerenciamentoUsuario;
+import sistemaGeral.models.gerenciadores.GerenciamentoVenda;
 import sistemaGeral.views.ViewFornecedor;
 import sistemaGeral.views.ViewItemCardapio;
 import sistemaGeral.views.ViewProduto;
@@ -26,8 +26,7 @@ public class SistemaEstabelecimento {
 		public static ViewFornecedor view_Fornecedor = new ViewFornecedor(gerFornecedor);
 		public static ViewItemCardapio  view_ItemCardapio = new ViewItemCardapio(gerItemCardapio, gerProduto);
 		public static ViewVenda view_Venda = new ViewVenda(gerVenda, gerItemCardapio);
-		
-		
+				
 
 		
 		public static void main(String[] args) {

@@ -2,11 +2,11 @@ package sistemaGeral.views;
 
 import java.util.Scanner;
 
-import sistemaGeral.controllers.GerenciamentoFornecedor;
 import sistemaGeral.controllers.validacoes.ValidarFornecedor;
 import sistemaGeral.controllers.validacoes.ValidarProduto;
 import sistemaGeral.models.Fornecedor;
 import sistemaGeral.models.Produto;
+import sistemaGeral.models.gerenciadores.GerenciamentoFornecedor;
 
 public class ViewFornecedor {
 		private String CNPJ;

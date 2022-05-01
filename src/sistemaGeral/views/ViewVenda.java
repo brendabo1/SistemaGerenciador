@@ -3,12 +3,12 @@ package sistemaGeral.views;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import sistemaGeral.controllers.GerenciamentoItemCardapio;
-import sistemaGeral.controllers.GerenciamentoVenda;
 import sistemaGeral.controllers.validacoes.ValidarVenda;
 import sistemaGeral.models.ItemCardapio;
 import sistemaGeral.models.Produto;
 import sistemaGeral.models.Venda;
+import sistemaGeral.models.gerenciadores.GerenciamentoItemCardapio;
+import sistemaGeral.models.gerenciadores.GerenciamentoVenda;
 
 public class ViewVenda {
 		private ArrayList<ItemCardapio> compras;

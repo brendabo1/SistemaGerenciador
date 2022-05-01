@@ -3,13 +3,13 @@ package sistemaGeral.views;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import sistemaGeral.controllers.GerenciamentoItemCardapio;
-import sistemaGeral.controllers.GerenciamentoProduto;
 import sistemaGeral.controllers.validacoes.ValidarItemCardapio;
 import sistemaGeral.models.CategoriasDeItens;
 import sistemaGeral.models.Fornecedor;
 import sistemaGeral.models.ItemCardapio;
 import sistemaGeral.models.Produto;
+import sistemaGeral.models.gerenciadores.GerenciamentoItemCardapio;
+import sistemaGeral.models.gerenciadores.GerenciamentoProduto;
 
 public class ViewItemCardapio {
 			private String nome;

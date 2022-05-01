@@ -2,10 +2,10 @@ package sistemaGeral.views;
 
 import java.util.Scanner;
 
-import sistemaGeral.controllers.GerenciamentoUsuario;
-import sistemaGeral.controllers.TipoUsuario;
 import sistemaGeral.controllers.validacoes.ValidarUsuario;
 import sistemaGeral.models.Usuario;
+import sistemaGeral.models.gerenciadores.GerenciamentoUsuario;
+import sistemaGeral.models.gerenciadores.TipoUsuario;
 
 public class ViewUsuario {
 			private String nome;

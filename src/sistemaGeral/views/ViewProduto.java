@@ -2,9 +2,9 @@ package sistemaGeral.views;
 
 import java.util.Scanner;
 
-import sistemaGeral.controllers.GerenciamentoProduto;
 import sistemaGeral.controllers.validacoes.ValidarProduto;
 import sistemaGeral.models.Produto;
+import sistemaGeral.models.gerenciadores.GerenciamentoProduto;
 
 public class ViewProduto {
 			private String nome;

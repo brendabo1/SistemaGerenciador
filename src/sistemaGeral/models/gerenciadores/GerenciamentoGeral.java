@@ -1,4 +1,4 @@
-package sistemaGeral.controllers;
+package sistemaGeral.models.gerenciadores;
 
 import java.util.List;
 import java.util.Random;

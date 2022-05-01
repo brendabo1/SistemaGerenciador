@@ -1,4 +1,4 @@
-package sistemaGeral.controllers;
+package sistemaGeral.models.gerenciadores;
 
 public enum TipoUsuario {
 		GERENTE,
