@@ -27,23 +27,24 @@ public class Menus {
 		System.out.println("[1] Usuarios");
 		System.out.println("[2] Fornecedores");
 		System.out.println("[3] Cardapio");
-		System.out.println("[4] Produtos");
+		System.out.println("[4] Produtos"); //Apenas os produtos cadastrados no sistema
 		System.out.println("[5] Vendas");
+		System.out.println("[6] Estoque");  //Produtos e seus dados (validade, quantidade)
 		System.out.println("Opção: ");
 		
 	}
 	
 	
-	public static void menuUsuario() {
+	public static void menuUsuario(String titulo, int espacamento) {
 		//if(permissao) usuario.permissao
 		Menus.exibirLinha();
-		Menus.cabecalhoMenu("MENU USUARIO", 15);	
+		Menus.cabecalhoMenu(titulo, espacamento);	
 		Menus.exibirLinha(); 
-		System.out.println("[1] Usuarios");
-		System.out.println("[2] Fornecedor");
-		System.out.println("[3] Cardapio");
-		System.out.println("[4] Produtos");
-		System.out.println("[5] Vendas");
+		System.out.println("[1] Cadastrar");
+		System.out.println("[2] Editar");
+		System.out.println("[3] Listar");
+		System.out.println("[4] Excluir");
+		System.out.println("[5] Gerar PDF");
 		
 	}
 
