@@ -7,77 +7,77 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import sistemaGeral.controllers.validacoes.ValidarUsuario;
-import sistemaGeral.models.Funcionario;
-import sistemaGeral.models.Usuario;
+import sistemaGeral.models.entidades.Funcionario;
+import sistemaGeral.models.entidades.Usuario;
+import sistemaGeral.models.validacoes.ValidaUsuario;
 
 class TesteValidaUsuario {
 
 	@Test
 	void testNome_Vazio() {		
-		assertFalse(ValidarUsuario.validarNome(""));
+		assertFalse(ValidaUsuario.validarNome(""));
 	}
 	@Test
 	void testNome_EmBranco() {		
-		assertFalse(ValidarUsuario.validarNome("        "));
+		assertFalse(ValidaUsuario.validarNome("        "));
 	}
 	
 	@Test
 	void testNome_SomenteNumeros() {		
-		assertFalse(ValidarUsuario.validarNome("12344657"));
+		assertFalse(ValidaUsuario.validarNome("12344657"));
 	}
 	
 	@Test
 	void testNome_AlfaNumerico() {		
-		assertFalse(ValidarUsuario.validarNome("Nome467"));
+		assertFalse(ValidaUsuario.validarNome("Nome467"));
 	}
 	
 	@Test
 	void testNome_ComCaracteresEspeciais() {		
-		assertFalse(ValidarUsuario.validarNome("@m@nda"));
+		assertFalse(ValidaUsuario.validarNome("@m@nda"));
 	}
 	
 	@Test
 	void testNome_Tamanho_4() {		
-		assertFalse(ValidarUsuario.validarNome("Nome"));
+		assertFalse(ValidaUsuario.validarNome("Nome"));
 	}
 	
 	@Test
 	void testNome_AlfabeticoTamanho_5() {		
-		assertTrue(ValidarUsuario.validarNome("Jovem"));
+		assertTrue(ValidaUsuario.validarNome("Jovem"));
 	}
 	
 	@Test
 	void testSenha_Vazia() {		
-		assertFalse(ValidarUsuario.validarSenha(""));
+		assertFalse(ValidaUsuario.validarSenha(""));
 	}
 	@Test
 	void testSenha_EmBranco() {		
-		assertFalse(ValidarUsuario.validarSenha("        "));
+		assertFalse(ValidaUsuario.validarSenha("        "));
 	}
 	@Test
 	void testSenha_AlfaNumerica_Tamanho_5() {		
-		assertFalse(ValidarUsuario.validarSenha("sen12"));
+		assertFalse(ValidaUsuario.validarSenha("sen12"));
 	}
 	@Test
 	void testSenha_AlfaNumerica_Tamanho_6() {		
-		assertTrue(ValidarUsuario.validarSenha("lembrar321"));
+		assertTrue(ValidaUsuario.validarSenha("lembrar321"));
 	}
 	@Test
 	void testSenha_Numerica_Tamanho_6() {		
-		assertTrue(ValidarUsuario.validarSenha("123456"));
+		assertTrue(ValidaUsuario.validarSenha("123456"));
 	}
 	@Test
 	void testSenha_Numerica_Tamanho_5() {		
-		assertFalse(ValidarUsuario.validarSenha("12345"));
+		assertFalse(ValidaUsuario.validarSenha("12345"));
 	}
 	@Test
 	void testSenha_AlfaNumerica_ComCaracteresEspeciais() {		
-		assertTrue(ValidarUsuario.validarSenha("Senh@_25"));
+		assertTrue(ValidaUsuario.validarSenha("Senh@_25"));
 	}
 	@Test
 	void testSenha_AlfaNumerica_ComEspacos() {		
-		assertTrue(ValidarUsuario.validarSenha("S 3 N H A135"));
+		assertTrue(ValidaUsuario.validarSenha("S 3 N H A135"));
 	}
 	
 	@Test
@@ -85,20 +85,20 @@ class TesteValidaUsuario {
 		List<Usuario> lista_usuarios = new ArrayList<>();
 		Usuario user1 = new Funcionario("ID123", "Carlos", "123456");
 		lista_usuarios.add(user1);
-		assertTrue(ValidarUsuario.nomeJaCadastrado("Carlos", lista_usuarios));
+		assertTrue(ValidaUsuario.nomeJaCadastrado("Carlos", lista_usuarios));
 	}
 	@Test
 	void testNome_AddNaoCadatrado() {	
 		List<Usuario> lista_usuarios = new ArrayList<>();
 		Usuario user1 = new Funcionario("ID123", "Carlos", "123456");
 		lista_usuarios.add(user1);
-		assertFalse(ValidarUsuario.nomeJaCadastrado("Paulo", lista_usuarios));
+		assertFalse(ValidaUsuario.nomeJaCadastrado("Paulo", lista_usuarios));
 	}
 	
 	@Test
 	void testNome_BuscaNomeListaVazia() {	
 		List<Usuario> lista_usuarios = new ArrayList<>();
-		assertFalse(ValidarUsuario.nomeJaCadastrado("Thiago", lista_usuarios));
+		assertFalse(ValidaUsuario.nomeJaCadastrado("Thiago", lista_usuarios));
 	}
 	
 	@Test
@@ -106,7 +106,7 @@ class TesteValidaUsuario {
 		List<Usuario> lista_usuarios = new ArrayList<>();
 		Usuario user1 = new Funcionario("ID123", "Ana Beatriz", "123456");
 		lista_usuarios.add(user1);
-		assertFalse(ValidarUsuario.nomeJaCadastrado("", lista_usuarios));
+		assertFalse(ValidaUsuario.nomeJaCadastrado("", lista_usuarios));
 	}
 
 }

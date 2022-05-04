@@ -2,10 +2,10 @@ package sistemaGeral.views;
 
 import java.util.Scanner;
 
-import sistemaGeral.controllers.validacoes.ValidarUsuario;
-import sistemaGeral.models.Usuario;
+import sistemaGeral.models.entidades.Usuario;
 import sistemaGeral.models.gerenciadores.GerenciamentoUsuario;
 import sistemaGeral.models.gerenciadores.TipoUsuario;
+import sistemaGeral.models.validacoes.ValidaUsuario;
 
 public class ViewUsuario {
 			private String nome;
@@ -223,7 +223,7 @@ public class ViewUsuario {
 
 			
 			private boolean nomeCorreto(String nome) {
-				if (!ValidarUsuario.validarNome(nome)) {
+				if (!ValidaUsuario.validarNome(nome)) {
 					System.out.println("--> O nome deve ser composto somente por letras e ter pelo menos 5 caracteres <--");	
 					return false;
 				}
@@ -231,7 +231,7 @@ public class ViewUsuario {
 			}
 			
 			private boolean senhaCorreta(String senha) {
-				if (!ValidarUsuario.validarSenha(senha)) {
+				if (!ValidaUsuario.validarSenha(senha)) {
 					System.out.println("--> A senha deve conter pelo menos 6 caracteres <--");
 					return false;
 				}
@@ -239,7 +239,7 @@ public class ViewUsuario {
 			}
 			
 			private boolean nomeJaUsado(String nome) {
-				if (ValidarUsuario.nomeJaCadastrado(nome, gerenciamento_usuario.getLista_usuarios())) {
+				if (ValidaUsuario.nomeJaCadastrado(nome, gerenciamento_usuario.getLista_usuarios())) {
 					System.out.println("--> O nome já se encontra cadastrado, tente outro <--");
 					return true;
 				}
@@ -248,7 +248,7 @@ public class ViewUsuario {
 
 			
 			private boolean validarNovoNomeUsuario(String novo_nome) {
-				if (ValidarUsuario.validarNome(novo_nome) && !ValidarUsuario.nomeJaCadastrado(novo_nome, gerenciamento_usuario.getLista_usuarios()))
+				if (ValidaUsuario.validarNome(novo_nome) && !ValidaUsuario.nomeJaCadastrado(novo_nome, gerenciamento_usuario.getLista_usuarios()))
 					return true;
 				else {
 					System.out.println("--> Nome inválido ou Já se encontra cadastrado <--");
@@ -257,7 +257,7 @@ public class ViewUsuario {
 			}
 			
 			private boolean validarNovaSenhaUsuario(String nova_senha) {
-				if (ValidarUsuario.validarSenha(nova_senha))
+				if (ValidaUsuario.validarSenha(nova_senha))
 					return true;
 				else {
 					System.out.println("--> Senha inválida, precisa ter pelo menos 6 caracteres <--");

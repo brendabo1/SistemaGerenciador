@@ -1,10 +1,10 @@
-package sistemaGeral.controllers.validacoes;
+package sistemaGeral.models.validacoes;
 
 import java.util.List;
 
-import sistemaGeral.models.Fornecedor;
+import sistemaGeral.models.entidades.Fornecedor;
 
-public class ValidarFornecedor {
+public class ValidaFornecedor {
 		
 		public static boolean validarCNPJ(String CNPJ) {
 			return (CNPJ.length() == 14 && CNPJ.matches("[0-9]*") );

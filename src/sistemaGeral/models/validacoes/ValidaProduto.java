@@ -1,10 +1,10 @@
-package sistemaGeral.controllers.validacoes;
+package sistemaGeral.models.validacoes;
 
 import java.util.List;
 
-import sistemaGeral.models.Produto;
+import sistemaGeral.models.entidades.Produto;
 
-public class ValidarProduto {
+public class ValidaProduto {
 
 	public static boolean validarNome(String nome) {
 		return (!nome.isBlank() && !nome.matches("[0-9]*"));

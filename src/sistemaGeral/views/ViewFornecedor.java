@@ -2,11 +2,11 @@ package sistemaGeral.views;
 
 import java.util.Scanner;
 
-import sistemaGeral.controllers.validacoes.ValidarFornecedor;
-import sistemaGeral.controllers.validacoes.ValidarProduto;
-import sistemaGeral.models.Fornecedor;
-import sistemaGeral.models.Produto;
+import sistemaGeral.models.entidades.Fornecedor;
+import sistemaGeral.models.entidades.Produto;
 import sistemaGeral.models.gerenciadores.GerenciamentoFornecedor;
+import sistemaGeral.models.validacoes.ValidaFornecedor;
+import sistemaGeral.models.validacoes.ValidaProduto;
 
 public class ViewFornecedor {
 		private String CNPJ;
@@ -164,7 +164,7 @@ public class ViewFornecedor {
 
 		
 		private boolean nomeCorreto(String novo_nome) {
-			if (ValidarFornecedor.validarNome(novo_nome))
+			if (ValidaFornecedor.validarNome(novo_nome))
 				return true;
 			else {
 				System.out.println("--> O nome não pode estar em branco ou ser composto somente por números <--");
@@ -173,7 +173,7 @@ public class ViewFornecedor {
 		}
 		
 		private boolean cnpjCorreto(String novo_cnpj) {
-			if (ValidarFornecedor.validarCNPJ(novo_cnpj))
+			if (ValidaFornecedor.validarCNPJ(novo_cnpj))
 				return true;
 			else {
 				System.out.println("--> O CNPJ deve ter exatamente 14 caracteres, todos númericos <--");
@@ -182,7 +182,7 @@ public class ViewFornecedor {
 		}
 		
 		private boolean enderecoCorreto(String novo_endereco) {
-			if (ValidarFornecedor.validarEndereco(novo_endereco))
+			if (ValidaFornecedor.validarEndereco(novo_endereco))
 				return true;
 			else {
 				System.out.println("--> O endereço precisa ter mais de 4 caracteres e não ser composto somente por números <--");
@@ -191,7 +191,7 @@ public class ViewFornecedor {
 		}
 		
 		private boolean nomeJaUsado(String nome) {
-			if (ValidarFornecedor.nomeJaCadastrado(nome, gerenciamento_fornecedor.getLista_fornecedores())) {
+			if (ValidaFornecedor.nomeJaCadastrado(nome, gerenciamento_fornecedor.getLista_fornecedores())) {
 				System.out.println("--> O nome já se encontra cadastrado, tente outro <--");
 				return true;
 			}
@@ -199,7 +199,7 @@ public class ViewFornecedor {
 		}
 		
 		private boolean cnpjJaUsado(String CNPJ) {
-			if (ValidarFornecedor.cnpjJaCadastrado(CNPJ, gerenciamento_fornecedor.getLista_fornecedores())) {
+			if (ValidaFornecedor.cnpjJaCadastrado(CNPJ, gerenciamento_fornecedor.getLista_fornecedores())) {
 				System.out.println("--> O CNPJ já se encontra cadastrado, tente outro <--");
 				return true;
 			}

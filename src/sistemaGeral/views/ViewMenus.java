@@ -1,8 +1,9 @@
 package sistemaGeral.views;
 
-public class Menus {
+//home
+public class ViewMenus {
 	public static void mensagemBemVindo() {
-		Menus.cabecalhoMenu("BEM VINDO", 20);
+		ViewMenus.cabecalhoMenu("BEM VINDO", 20);
 		System.out.print("\nOlá¡, Gerente!\nBem Vindo ao SG, o Sistema de Gerenciamento \n"
 				+ "pensado para atender microeempreendedores com soluções de automação comercial.\n\n"
 				+ "Realize o cadastro para logar no sistema.\n");
@@ -15,15 +16,15 @@ public class Menus {
 	
 	
 	public static void cabecalhoMenu(String titulo, int espacamento) {		
-		Menus.exibirLinha();
+		ViewMenus.exibirLinha();
 		for(int i=0; i < espacamento; i++) System.out.print(" ");	
 		System.out.print(titulo);	
-		Menus.exibirLinha(); 
+		ViewMenus.exibirLinha(); 
 
 	}
 	
 	public static void menuInicial() {
-		Menus.cabecalhoMenu("MENU", 20);
+		ViewMenus.cabecalhoMenu("MENU", 20);
 		System.out.println("[1] Usuarios");
 		System.out.println("[2] Fornecedores");
 		System.out.println("[3] Cardapio");
@@ -37,9 +38,9 @@ public class Menus {
 	
 	public static void menuUsuario(String titulo, int espacamento) {
 		//if(permissao) usuario.permissao
-		Menus.exibirLinha();
-		Menus.cabecalhoMenu(titulo, espacamento);	
-		Menus.exibirLinha(); 
+		ViewMenus.exibirLinha();
+		ViewMenus.cabecalhoMenu(titulo, espacamento);	
+		ViewMenus.exibirLinha(); 
 		System.out.println("[1] Cadastrar");
 		System.out.println("[2] Editar");
 		System.out.println("[3] Listar");

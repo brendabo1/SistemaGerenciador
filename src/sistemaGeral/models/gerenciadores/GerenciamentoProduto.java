@@ -2,15 +2,14 @@ package sistemaGeral.models.gerenciadores;
 
 import java.util.ArrayList;
 
-import sistemaGeral.models.Fornecedor;
-import sistemaGeral.models.Produto;
-import sistemaGeral.models.UnidadeMedida;
+import sistemaGeral.models.entidades.Fornecedor;
+import sistemaGeral.models.entidades.Produto;
+import sistemaGeral.models.entidades.UnidadeMedida;
 
 public class GerenciamentoProduto extends GerenciamentoGeral{
-		private ArrayList<Produto> lista_produtos = new ArrayList<>();
+		private ArrayList<Produto> lista_produtos = getLista_produtos();
 	
-		
-		
+				
 		public boolean cadastrar(String nome, Double preco, Fornecedor fornecedor, UnidadeMedida unidade) {
 			String id = gerarID(this.lista_produtos, Produto.getPrefixo());
 			Produto novo_produto = new Produto(id, nome, preco, fornecedor, unidade);

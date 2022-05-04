@@ -1,10 +1,10 @@
-package sistemaGeral.controllers.validacoes;
+package sistemaGeral.models.validacoes;
 
 import java.util.List;
 
-import sistemaGeral.models.Usuario;
+import sistemaGeral.models.entidades.Usuario;
 
-public class ValidarUsuario {
+public class ValidaUsuario {
 		
 	public static boolean validarNome(String nome) {
 		nome = nome.replace("\n", "");

@@ -2,9 +2,9 @@ package sistemaGeral.views;
 
 import java.util.Scanner;
 
-import sistemaGeral.controllers.validacoes.ValidarProduto;
-import sistemaGeral.models.Produto;
+import sistemaGeral.models.entidades.Produto;
 import sistemaGeral.models.gerenciadores.GerenciamentoProduto;
+import sistemaGeral.models.validacoes.ValidaProduto;
 
 public class ViewProduto {
 			private String nome;
@@ -166,7 +166,7 @@ public class ViewProduto {
 
 			
 			private boolean nomeCorreto(String novo_nome) {
-				if (ValidarProduto.validarNome(novo_nome))
+				if (ValidaProduto.validarNome(novo_nome))
 					return true;
 				else {
 					System.out.println("--> O nome não pode estar vazio ou ser somente números <--");
@@ -175,7 +175,7 @@ public class ViewProduto {
 			}
 			
 			private boolean precoCorreto(Double novo_preco) {
-				if (ValidarProduto.validarPreco(novo_preco))
+				if (ValidaProduto.validarPreco(novo_preco))
 					return true;
 				else {
 					System.out.println("--> O preço não pode ser menor ou igual a zero <--");
@@ -184,7 +184,7 @@ public class ViewProduto {
 			}
 			
 			private boolean validadeCorreta(String nova_validade) {
-				if (ValidarProduto.validarValidade(nova_validade))
+				if (ValidaProduto.validarValidade(nova_validade))
 					return true;
 				else {
 					System.out.println("--> A validade precisa estar no formato dd/mm/aaaa <--");
@@ -193,7 +193,7 @@ public class ViewProduto {
 			}
 		
 			private boolean nomeJaUsado(String nome) {
-				if (ValidarProduto.nomeJaCadastrado(nome, gerenciamento_produto.getLista_produtos())) {
+				if (ValidaProduto.nomeJaCadastrado(nome, gerenciamento_produto.getLista_produtos())) {
 					System.out.println("--> O nome já se encontra cadastrado, tente outro <--");
 					return true;
 				}

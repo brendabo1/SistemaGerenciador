@@ -1,4 +1,4 @@
-package sistemaGeral.models;
+package sistemaGeral.models.entidades;
 
 public class Produto extends EntidadesDoSistema {
 		private String nome;

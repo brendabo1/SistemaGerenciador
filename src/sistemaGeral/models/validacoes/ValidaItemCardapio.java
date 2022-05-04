@@ -1,12 +1,12 @@
-package sistemaGeral.controllers.validacoes;
+package sistemaGeral.models.validacoes;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import sistemaGeral.models.ItemCardapio;
-import sistemaGeral.models.Produto;
+import sistemaGeral.models.entidades.ItemCardapio;
+import sistemaGeral.models.entidades.Produto;
 
-public class ValidarItemCardapio {
+public class ValidaItemCardapio {
 		
 		public static boolean validarNome(String nome) {
 			return (!nome.isBlank() && !nome.replace(" ", "").matches("[0-9]*"));

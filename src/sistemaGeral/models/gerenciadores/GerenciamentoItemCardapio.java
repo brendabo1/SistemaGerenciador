@@ -2,21 +2,21 @@ package sistemaGeral.models.gerenciadores;
 
 import java.util.ArrayList;
 
-import sistemaGeral.models.CategoriasDeItens;
-import sistemaGeral.models.ItemCardapio;
-import sistemaGeral.models.Produto;
+import sistemaGeral.models.entidades.CategoriasDeItens;
+import sistemaGeral.models.entidades.ItemCardapio;
+import sistemaGeral.models.entidades.Produto;
 
 public class GerenciamentoItemCardapio extends GerenciamentoGeral{
-		private ArrayList<ItemCardapio> lista_itensCardapio = new ArrayList<>();
 	
+	 	private ArrayList<ItemCardapio> lista_itensCardapio = getLista_itensCardapio();
 	
+	 	
 		public boolean cadastrar(String nome, ArrayList<Produto> ingredientes, Double preco, CategoriasDeItens categoria) {
 				String id = gerarID(this.lista_itensCardapio, ItemCardapio.getPrefixo());
 				ItemCardapio novo_itemCardapio = new ItemCardapio(id, nome, ingredientes, preco, categoria);
 				return adicionar(this.lista_itensCardapio, novo_itemCardapio);
-			}
-			
-		
+		}
+					
 			
 		public boolean editarNome(String novo_nome, ItemCardapio item) {
 				item.setNome(novo_nome);

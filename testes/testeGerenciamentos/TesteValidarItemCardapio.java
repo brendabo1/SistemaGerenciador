@@ -4,58 +4,58 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import sistemaGeral.controllers.validacoes.ValidarItemCardapio;
+import sistemaGeral.models.validacoes.ValidaItemCardapio;
 
 class TesteValidarItemCardapio {
 
 	@Test
 	void testNome_Vazio() {		
-		assertFalse(ValidarItemCardapio.validarNome(""));
+		assertFalse(ValidaItemCardapio.validarNome(""));
 	}
 	
 	@Test
 	void testNome_EmBranco() {		
-		assertFalse(ValidarItemCardapio.validarNome("   "));
+		assertFalse(ValidaItemCardapio.validarNome("   "));
 	}
 	
 	@Test
 	void testNome_Numerico() {		
-		assertFalse(ValidarItemCardapio.validarNome("321456"));
+		assertFalse(ValidaItemCardapio.validarNome("321456"));
 	}
 	
 	@Test
 	void testNome_Alfabetico() {		
-		assertTrue(ValidarItemCardapio.validarNome("Aipim Frito"));
+		assertTrue(ValidaItemCardapio.validarNome("Aipim Frito"));
 	}
 	
 	@Test
 	void testNome_AlfaNumerico() {		
-		assertTrue(ValidarItemCardapio.validarNome("Cachaça 51"));
+		assertTrue(ValidaItemCardapio.validarNome("Cachaça 51"));
 	}
 	
 	@Test
 	void testNome_NumericoComEspacos() {		
-		assertFalse(ValidarItemCardapio.validarNome("1 1 1 1"));
+		assertFalse(ValidaItemCardapio.validarNome("1 1 1 1"));
 	}
 	
 	@Test
 	void testNome_ComCaracteresEspeciais() {		
-		assertTrue(ValidarItemCardapio.validarNome("Drink #Poderosa"));
+		assertTrue(ValidaItemCardapio.validarNome("Drink #Poderosa"));
 	}
 	
 	@Test
 	void testPreco_Zero() {		
-		assertFalse(ValidarItemCardapio.validarPreco(0.0));
+		assertFalse(ValidaItemCardapio.validarPreco(0.0));
 	}
 	
 	@Test
 	void testPreco_Negativo() {		
-		assertFalse(ValidarItemCardapio.validarPreco(-17.30));
+		assertFalse(ValidaItemCardapio.validarPreco(-17.30));
 	}
 	
 	@Test
 	void testPreco_Positivo() {		
-		assertTrue(ValidarItemCardapio.validarPreco(20.90));
+		assertTrue(ValidaItemCardapio.validarPreco(20.90));
 	}
 
 }

@@ -2,10 +2,10 @@ package sistemaGeral.models.gerenciadores;
 
 import java.util.ArrayList;
 
-import sistemaGeral.models.Fornecedor;
+import sistemaGeral.models.entidades.Fornecedor;
 
 public class GerenciamentoFornecedor extends GerenciamentoGeral {
-		ArrayList<Fornecedor> lista_fornecedores = new ArrayList<>();
+		private ArrayList<Fornecedor> lista_fornecedores = getLista_fornecedores();
 		
 		
 		public boolean cadastrar(String nome, String CNPJ, String endereco) {
@@ -13,9 +13,7 @@ public class GerenciamentoFornecedor extends GerenciamentoGeral {
 			Fornecedor novo_fornecedor = new Fornecedor(id, CNPJ, nome, endereco);
 			return adicionar(this.lista_fornecedores, novo_fornecedor);
 		}
-		
-		
-		
+						
 		
 		public boolean editarNome(String novo_nome, Fornecedor fornecedor) {
 			fornecedor.setNome(novo_nome);

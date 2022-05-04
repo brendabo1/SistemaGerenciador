@@ -1,4 +1,4 @@
-package sistemaGeral.controllers.validacoes;
+package sistemaGeral.models.validacoes;
 
 public class ValidarVenda {
 		public static boolean validarFormaDePagamento(String formaDePagamento) {

@@ -1,4 +1,4 @@
-package sistemaGeral.models;
+package sistemaGeral.models.entidades;
 
 
 abstract public class EntidadesDoSistema {

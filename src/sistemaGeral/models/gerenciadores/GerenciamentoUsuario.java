@@ -2,12 +2,12 @@ package sistemaGeral.models.gerenciadores;
 
 import java.util.ArrayList;
 
-import sistemaGeral.models.Funcionario;
-import sistemaGeral.models.Gerente;
-import sistemaGeral.models.Usuario;
+import sistemaGeral.models.entidades.Funcionario;
+import sistemaGeral.models.entidades.Gerente;
+import sistemaGeral.models.entidades.Usuario;
 
 public class GerenciamentoUsuario extends GerenciamentoGeral {
-		private ArrayList<Usuario> lista_usuarios = new ArrayList<>();
+		private ArrayList<Usuario> lista_usuarios = getLista_usuarios();
 
 		
 		private static Usuario usuario_logado = null;

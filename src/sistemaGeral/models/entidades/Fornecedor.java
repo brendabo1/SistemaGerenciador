@@ -1,4 +1,4 @@
-package sistemaGeral.models;
+package sistemaGeral.models.entidades;
 
 import java.util.ArrayList;
 
