@@ -1,4 +1,4 @@
-package sistemaGeral.models;
+package sistemaGeral.models.entidades;
 
 public class Funcionario extends Usuario{
 	private final boolean acesso_admin = true;

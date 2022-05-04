@@ -2,8 +2,8 @@ package sistemaGeral.models.gerenciadores;
 
 import java.util.ArrayList;
 
-import sistemaGeral.models.ItemCardapio;
-import sistemaGeral.models.Venda;
+import sistemaGeral.models.entidades.ItemCardapio;
+import sistemaGeral.models.entidades.Venda;
 
 public class GerenciamentoVenda extends GerenciamentoGeral {
 			ArrayList<Venda> lista_vendas = new ArrayList<>();

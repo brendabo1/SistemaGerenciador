@@ -3,7 +3,7 @@ package sistemaGeral.views;
 import java.util.Scanner;
 
 import sistemaGeral.controllers.validacoes.ValidarUsuario;
-import sistemaGeral.models.Usuario;
+import sistemaGeral.models.entidades.Usuario;
 import sistemaGeral.models.gerenciadores.GerenciamentoUsuario;
 import sistemaGeral.models.gerenciadores.TipoUsuario;
 

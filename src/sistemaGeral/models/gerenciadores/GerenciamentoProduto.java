@@ -2,9 +2,9 @@ package sistemaGeral.models.gerenciadores;
 
 import java.util.ArrayList;
 
-import sistemaGeral.models.Fornecedor;
-import sistemaGeral.models.Produto;
-import sistemaGeral.models.UnidadeMedida;
+import sistemaGeral.models.entidades.Fornecedor;
+import sistemaGeral.models.entidades.Produto;
+import sistemaGeral.models.entidades.enums.UnidadeMedida;
 
 public class GerenciamentoProduto extends GerenciamentoGeral{
 		private ArrayList<Produto> lista_produtos = new ArrayList<>();

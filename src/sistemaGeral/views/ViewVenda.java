@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import sistemaGeral.controllers.validacoes.ValidarVenda;
-import sistemaGeral.models.ItemCardapio;
-import sistemaGeral.models.Produto;
-import sistemaGeral.models.Venda;
+import sistemaGeral.models.entidades.ItemCardapio;
+import sistemaGeral.models.entidades.Produto;
+import sistemaGeral.models.entidades.Venda;
 import sistemaGeral.models.gerenciadores.GerenciamentoItemCardapio;
 import sistemaGeral.models.gerenciadores.GerenciamentoVenda;
 

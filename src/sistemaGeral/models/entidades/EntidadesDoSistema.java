@@ -1,4 +1,4 @@
-package sistemaGeral.models;
+package sistemaGeral.models.entidades;
 
 
 abstract public class EntidadesDoSistema {
@@ -12,8 +12,6 @@ abstract public class EntidadesDoSistema {
 		public String getId() {
 			return id;
 		}
-
-
 		public void setId(String id) {
 			this.id = id;
 		}

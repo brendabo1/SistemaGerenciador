@@ -2,7 +2,7 @@ package sistemaGeral.models.gerenciadores;
 
 import java.util.ArrayList;
 
-import sistemaGeral.models.Fornecedor;
+import sistemaGeral.models.entidades.Fornecedor;
 
 public class GerenciamentoFornecedor extends GerenciamentoGeral {
 		ArrayList<Fornecedor> lista_fornecedores = new ArrayList<>();
@@ -47,7 +47,5 @@ public class GerenciamentoFornecedor extends GerenciamentoGeral {
 
 		public void setLista_fornecedores(ArrayList<Fornecedor> lista_fornecedores) {
 			this.lista_fornecedores = lista_fornecedores;
-		}
-		
-		
+		}	
 }

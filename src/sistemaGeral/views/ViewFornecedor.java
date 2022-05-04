@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 import sistemaGeral.controllers.validacoes.ValidarFornecedor;
 import sistemaGeral.controllers.validacoes.ValidarProduto;
-import sistemaGeral.models.Fornecedor;
-import sistemaGeral.models.Produto;
+import sistemaGeral.models.entidades.Fornecedor;
+import sistemaGeral.models.entidades.Produto;
 import sistemaGeral.models.gerenciadores.GerenciamentoFornecedor;
 
 public class ViewFornecedor {

@@ -2,7 +2,7 @@ package sistemaGeral.controllers.validacoes;
 
 import java.util.List;
 
-import sistemaGeral.models.Produto;
+import sistemaGeral.models.entidades.Produto;
 
 public class ValidarProduto {
 

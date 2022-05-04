@@ -3,8 +3,8 @@ package sistemaGeral.controllers.validacoes;
 import java.util.ArrayList;
 import java.util.List;
 
-import sistemaGeral.models.ItemCardapio;
-import sistemaGeral.models.Produto;
+import sistemaGeral.models.entidades.ItemCardapio;
+import sistemaGeral.models.entidades.Produto;
 
 public class ValidarItemCardapio {
 		

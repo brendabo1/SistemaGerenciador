@@ -2,7 +2,7 @@ package sistemaGeral.controllers.validacoes;
 
 import java.util.List;
 
-import sistemaGeral.models.Usuario;
+import sistemaGeral.models.entidades.Usuario;
 
 public class ValidarUsuario {
 		

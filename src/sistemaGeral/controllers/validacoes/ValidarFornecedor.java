@@ -2,7 +2,7 @@ package sistemaGeral.controllers.validacoes;
 
 import java.util.List;
 
-import sistemaGeral.models.Fornecedor;
+import sistemaGeral.models.entidades.Fornecedor;
 
 public class ValidarFornecedor {
 		
