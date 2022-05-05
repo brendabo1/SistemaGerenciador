@@ -1,5 +1,6 @@
 package sistemaGeral.models.entidades;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -21,12 +22,12 @@ public class Estoque {
 			private Produto produto;
 			private Double unidades_compradas;
 			private Double preco;
-			private String validade;
+			private LocalDate validade;
 			private Double quantidade_em_armazenamento;
 	
 			
 			
-			Lote (Produto produto, Double quantidade, Double preco, String validade, String id) {
+			Lote (Produto produto, Double quantidade, Double preco, LocalDate validade, String id) {
 					this.produto = produto;
 					this.unidades_compradas = quantidade;
 					this.preco = preco;
@@ -61,10 +62,10 @@ public class Estoque {
 			}
 			
 			
-			public String getValidade() {
+			public LocalDate getValidade() {
 				return validade;
 			}
-			public void setValidade(String validade) {
+			public void setValidade(LocalDate validade) {
 				this.validade = validade;
 			}
 

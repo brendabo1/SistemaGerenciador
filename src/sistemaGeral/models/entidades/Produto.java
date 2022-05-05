@@ -16,7 +16,7 @@ public class Produto extends EntidadesDoSistema {
 			this.nome = nome;
 			this.fornecedor = fornecedor;
 			this.unidade_medida = unidade;
-			this.quantidade_conteudo = quantidade_conteudo;
+			this.quantidade_conteudo = quantidade_conteudo;   //quantidade por item ou por unidade
 		}
 
 		
