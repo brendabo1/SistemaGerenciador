@@ -2,6 +2,10 @@ package sistemaGeral.views;
 
 import java.util.Scanner;
 
+<<<<<<< HEAD
+=======
+import sistemaGeral.controllers.validacoes.ValidarProduto;
+>>>>>>> develop_brenda
 import sistemaGeral.models.entidades.Produto;
 import sistemaGeral.models.gerenciadores.GerenciamentoProduto;
 import sistemaGeral.models.validacoes.ValidaProduto;

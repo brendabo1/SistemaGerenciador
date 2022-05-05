@@ -58,7 +58,5 @@ public class GerenciamentoFornecedor extends GerenciamentoGeral {
 
 		public void setLista_fornecedores(ArrayList<Fornecedor> lista_fornecedores) {
 			this.lista_fornecedores = lista_fornecedores;
-		}
-		
-		
+		}	
 }

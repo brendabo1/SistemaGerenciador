@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 import sistemaGeral.models.entidades.Fornecedor;
 import sistemaGeral.models.entidades.Produto;
-import sistemaGeral.models.entidades.UnidadeMedida;
+import sistemaGeral.models.entidades.enums.UnidadeMedida;
 
 public class GerenciamentoProduto extends GerenciamentoGeral{
 		private ArrayList<Produto> lista_produtos = getLista_produtos();
 	
 				
-		public boolean cadastrar(String nome, Double preco, Fornecedor fornecedor, UnidadeMedida unidade) {
+		public boolean cadastrar(String nome,  Fornecedor fornecedor, UnidadeMedida unidade, Double quantidade_conteudo) {
 			String id = gerarID(this.lista_produtos, Produto.getPrefixo());
-			Produto novo_produto = new Produto(id, nome, preco, fornecedor, unidade);
+			Produto novo_produto = new Produto(id, nome,  fornecedor, unidade, quantidade_conteudo);
 			return adicionar(this.lista_produtos, novo_produto);
 		}
 		
@@ -21,11 +21,7 @@ public class GerenciamentoProduto extends GerenciamentoGeral{
 			produto.setNome(novo_nome);
 			return produto.getNome().equals(novo_nome);
 		}
-		
-		public boolean editarPreco(Double novo_preco, Produto produto) {
-			produto.setPreco(novo_preco);
-			return produto.getPreco().equals(novo_preco);
-		}
+	
 		
 		/*public boolean editarValidade(String nova_validade, Produto produto) {
 			produto.setValidade(nova_validade);

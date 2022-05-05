@@ -3,7 +3,11 @@ package sistemaGeral.views;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+<<<<<<< HEAD
 import sistemaGeral.controllers.ControllerVenda;
+=======
+import sistemaGeral.controllers.validacoes.ValidarVenda;
+>>>>>>> develop_brenda
 import sistemaGeral.models.entidades.ItemCardapio;
 import sistemaGeral.models.entidades.Produto;
 import sistemaGeral.models.entidades.Venda;
