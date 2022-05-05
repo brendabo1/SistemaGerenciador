@@ -18,7 +18,7 @@ abstract public class GerenciamentoGeral {
 	 * @return Novo codigo de identificação único;
 	 */
 	public static <T extends EntidadesDoSistema> String gerarID(List<T> lista, String prefixo) {
-		String novo_id = "", ultimoID, ultimoNum;
+		String novo_id = "", ultimoID, ultimoNum, numString;
 		int num, indexUltimo;
 		
 		if(lista.isEmpty()) {
@@ -32,7 +32,9 @@ abstract public class GerenciamentoGeral {
 		}
 		
 		num++;
-		novo_id = prefixo + Integer.toString(num);
+		numString = String.format("%05d", num);
+		novo_id = prefixo + numString;
+		//novo_id = String.format("%s", prefixo) + Integer.toString(num);
 		
 		return novo_id;
 	}
