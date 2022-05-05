@@ -2,6 +2,11 @@ package sistemaGeral.models.gerenciadores;
 
 import java.util.ArrayList;
 
+<<<<<<< HEAD
+=======
+import sistemaGeral.models.entidades.CategoriasDeItens;
+import sistemaGeral.models.entidades.Fornecedor;
+>>>>>>> 9fbcb3b59f3acee910cd13c2f756dfc65d4fe178
 import sistemaGeral.models.entidades.ItemCardapio;
 import sistemaGeral.models.entidades.Produto;
 import sistemaGeral.models.entidades.enums.CategoriasDeItens;
@@ -39,15 +44,20 @@ public class GerenciamentoItemCardapio extends GerenciamentoGeral{
 		}
 
 
-
+		public ArrayList<ItemCardapio> listarNomesBuscadosCorrespondentes(String nome_buscado) {
+			ArrayList<ItemCardapio> itensCorrespondentes = new ArrayList<>();
+			for(ItemCardapio item: this.lista_itensCardapio) {
+				if(item.getNome().contains(nome_buscado)) itensCorrespondentes.add(item);
+			}
+			return itensCorrespondentes;
+			
+		}
 		
 		
 		public ArrayList<ItemCardapio> getLista_itensCardapio() {
 			return lista_itensCardapio;
 		}
 		
-
-
 
 		public void setLista_itensCardapio(ArrayList<ItemCardapio> lista_itensCardapio) {
 			this.lista_itensCardapio = lista_itensCardapio;
