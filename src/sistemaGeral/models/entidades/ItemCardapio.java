@@ -2,12 +2,23 @@ package sistemaGeral.models.entidades;
 
 import java.util.ArrayList;
 
+import sistemaGeral.models.entidades.enums.CategoriasDeItens;
+
 public class ItemCardapio extends EntidadesDoSistema {
 		private String nome;
-		private ArrayList<Produto> ingredientes;
 		private Double preco;
+
+		private ArrayList<Produto> ingredientes;
+		
 		private CategoriasDeItens categoria;
 		private static final  String preFixo = "ITM";
+		
+		
+		
+		private class Ingrediente {
+			Produto produto;
+			Double quantidade_usada;
+		}
 
 		
 		public ItemCardapio(String id, String nome, ArrayList<Produto> ingredientes, Double preco, CategoriasDeItens categoria) {

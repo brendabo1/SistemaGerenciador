@@ -3,10 +3,11 @@ package sistemaGeral.views;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import sistemaGeral.models.entidades.CategoriasDeItens;
-import sistemaGeral.models.entidades.Fornecedor;
+
 import sistemaGeral.models.entidades.ItemCardapio;
 import sistemaGeral.models.entidades.Produto;
+
+import sistemaGeral.models.entidades.enums.CategoriasDeItens;
 import sistemaGeral.models.gerenciadores.GerenciamentoItemCardapio;
 import sistemaGeral.models.gerenciadores.GerenciamentoProduto;
 import sistemaGeral.models.validacoes.ValidaItemCardapio;

@@ -2,6 +2,10 @@ package sistemaGeral.views;
 
 import java.util.Scanner;
 
+<<<<<<< HEAD
+=======
+import sistemaGeral.controllers.validacoes.ValidarUsuario;
+>>>>>>> develop_brenda
 import sistemaGeral.models.entidades.Usuario;
 import sistemaGeral.models.gerenciadores.GerenciamentoUsuario;
 import sistemaGeral.models.gerenciadores.TipoUsuario;

@@ -2,9 +2,9 @@ package sistemaGeral.models.gerenciadores;
 
 import java.util.ArrayList;
 
-import sistemaGeral.models.entidades.CategoriasDeItens;
 import sistemaGeral.models.entidades.ItemCardapio;
 import sistemaGeral.models.entidades.Produto;
+import sistemaGeral.models.entidades.enums.CategoriasDeItens;
 
 public class GerenciamentoItemCardapio extends GerenciamentoGeral{
 	
