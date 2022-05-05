@@ -8,8 +8,8 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import sistemaGeral.controllers.validacoes.ValidarUsuario;
-import sistemaGeral.models.Funcionario;
-import sistemaGeral.models.Usuario;
+import sistemaGeral.models.entidades.Funcionario;
+import sistemaGeral.models.entidades.Usuario;
 
 class TesteValidaUsuario {
 

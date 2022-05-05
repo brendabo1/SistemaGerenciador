@@ -3,7 +3,7 @@ package sistemaGeral.models.gerenciadores;
 import java.util.List;
 import java.util.Random;
 
-import sistemaGeral.models.EntidadesDoSistema;
+import sistemaGeral.models.entidades.EntidadesDoSistema;
 
 abstract public class GerenciamentoGeral {
 	  

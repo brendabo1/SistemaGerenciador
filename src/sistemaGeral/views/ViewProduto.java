@@ -3,7 +3,7 @@ package sistemaGeral.views;
 import java.util.Scanner;
 
 import sistemaGeral.controllers.validacoes.ValidarProduto;
-import sistemaGeral.models.Produto;
+import sistemaGeral.models.entidades.Produto;
 import sistemaGeral.models.gerenciadores.GerenciamentoProduto;
 
 public class ViewProduto {
