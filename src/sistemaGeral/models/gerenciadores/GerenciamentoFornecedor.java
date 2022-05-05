@@ -5,8 +5,11 @@ import java.util.ArrayList;
 import sistemaGeral.models.entidades.Fornecedor;
 
 public class GerenciamentoFornecedor extends GerenciamentoGeral {
-		private ArrayList<Fornecedor> lista_fornecedores = getLista_fornecedores();
-		
+		private ArrayList<Fornecedor> lista_fornecedores;
+	
+		public GerenciamentoFornecedor() {
+			this.lista_fornecedores = getLista_fornecedores();
+		}
 		
 		public boolean cadastrar(String nome, String CNPJ, String endereco) {
 			String id = gerarID(this.lista_fornecedores, Fornecedor.getPrefixo());
@@ -29,19 +32,29 @@ public class GerenciamentoFornecedor extends GerenciamentoGeral {
 			fornecedor.setEndereco(novo_endereco);
 			return fornecedor.getEndereco().equals(novo_endereco);
 		}
-
-
-
-
+		
+		public Fornecedor buscarFornecedor_Nome(String nomeBuscado) {
+			for(Fornecedor fornecedor: this.lista_fornecedores) {
+				if(fornecedor.getNome().equals(nomeBuscado)) return fornecedor;
+			}
+			return null;
+			
+		}
+		
+		public ArrayList<Fornecedor> listarNomesBuscadosCorrespondentes(String nome_buscado) {
+			ArrayList<Fornecedor> fornecedoresCorrespondentes = new ArrayList<>();
+			for(Fornecedor fornecedor: this.lista_fornecedores) {
+				if(fornecedor.getNome().contains(nome_buscado)) fornecedoresCorrespondentes.add(fornecedor);
+			}
+			return fornecedoresCorrespondentes;
+			
+		}
 		
 		
 		public ArrayList<Fornecedor> getLista_fornecedores() {
 			return lista_fornecedores;
 		}
 		
-
-
-
 
 		public void setLista_fornecedores(ArrayList<Fornecedor> lista_fornecedores) {
 			this.lista_fornecedores = lista_fornecedores;
