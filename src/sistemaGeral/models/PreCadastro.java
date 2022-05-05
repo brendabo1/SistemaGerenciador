@@ -24,7 +24,7 @@ public class PreCadastro {
 	
 	//Pre Cadastro Fornecedores
 	public void preCadastrarProdutos() {
-		this.gerProduto.cadastrar("Sacola", 0,50, null, null);
+		//this.gerProduto.cadastrar("Sacola", 0,50, null, null);
 		
 	}
 	
