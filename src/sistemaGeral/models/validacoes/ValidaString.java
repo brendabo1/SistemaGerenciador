@@ -13,4 +13,5 @@ public class ValidaString {
 	public static boolean isNumeric(String entrada, int tam_min) {
 		return (entrada.matches("[0-9]+") && entrada.length() >= tam_min);
 	}
+	
 }

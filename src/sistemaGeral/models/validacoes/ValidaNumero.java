@@ -1,8 +1,8 @@
 package sistemaGeral.models.validacoes;
 
-public interface ValidaNumero {
+public class ValidaNumero {
 	
-	default public boolean isDoublePositivo(double num) {
+	public boolean isDoublePositivo(double num) {
 		return num > 0;
 	}
 	
