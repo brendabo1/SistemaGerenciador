@@ -2,7 +2,6 @@ package sistemaGeral.models.gerenciadores;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import com.itextpdf.text.Document;

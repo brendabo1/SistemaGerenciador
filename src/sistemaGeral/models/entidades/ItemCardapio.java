@@ -8,25 +8,44 @@ public class ItemCardapio extends EntidadesDoSistema {
 		private String nome;
 		private Double preco;
 
-		private ArrayList<Produto> ingredientes;
+		private ArrayList<Ingrediente> ingredientes = new ArrayList<>();
 		
 		private CategoriasDeItens categoria;
-		private static final  String preFixo = "ITM";
 		
 		
 		
 		private class Ingrediente {
-			Produto produto;
-			Double quantidade_usada;
+			private Produto produto;
+			private Double quantidade_usada;
+			
+			Ingrediente (Produto produto, Double quantidade_usada) {
+				this.produto = produto;
+				this.quantidade_usada = quantidade_usada;
+			}
+
+			public Produto getProduto() {
+				return produto;
+			}
+			public void setProduto(Produto produto) {
+				this.produto = produto;
+			}
+
+			public Double getQuantidade_usada() {
+				return quantidade_usada;
+			}
+			public void setQuantidade_usada(Double quantidade_usada) {
+				this.quantidade_usada = quantidade_usada;
+			}
 		}
 
 		
-		public ItemCardapio(String id, String nome, ArrayList<Produto> ingredientes, Double preco, CategoriasDeItens categoria) {
+		public ItemCardapio(String id, String nome, ArrayList<Ingrediente> ingredientes, Double preco, CategoriasDeItens categoria) {
 			this.id = id;
 			this.nome = nome;
 			this.ingredientes = ingredientes;
 			this.preco = preco;
 			this.categoria = categoria;
+			ItemCardapio.preFixo = "ITM";
 		}
 
 		
@@ -34,9 +53,8 @@ public class ItemCardapio extends EntidadesDoSistema {
 		public String toString() {
 			String message = String.format("ID: %s  NOME: %s  PREÇO: %.2f  CATEGORIA: %s  \nINGREDIENTES: ", this.id, this.nome, this.preco, this.categoria.toString());
 					
-			for (Produto p: this.ingredientes) {
-				message +=  p.getNome() + ", "; 
-			
+			for (Ingrediente i: this.ingredientes) {
+				message +=  i.getProduto().getNome() +" - " +  i.getQuantidade_usada() + i.getProduto().getUnidade_medida()+  " | "; 		
 			}
 			return message;
 		}
@@ -45,19 +63,15 @@ public class ItemCardapio extends EntidadesDoSistema {
 		public String getNome() {
 			return nome;
 		}
-
-
 		public void setNome(String nome) {
 			this.nome = nome;
 		}
 
 
-		public ArrayList<Produto> getIngredientes() {
-			return ingredientes;
+		public ArrayList<Ingrediente> getIngredientes() {
+			return this.ingredientes;
 		}
-
-
-		public void setIngredientes(ArrayList<Produto> ingredientes) {
+		public void setIngredientes(ArrayList<Ingrediente> ingredientes) {
 			this.ingredientes = ingredientes;
 		}
 
@@ -65,8 +79,6 @@ public class ItemCardapio extends EntidadesDoSistema {
 		public Double getPreco() {
 			return preco;
 		}
-
-
 		public void setPreco(Double preco) {
 			this.preco = preco;
 		}
@@ -75,14 +87,7 @@ public class ItemCardapio extends EntidadesDoSistema {
 		public CategoriasDeItens getCategoria() {
 			return categoria;
 		}
-
-
 		public void setCategoria(CategoriasDeItens categoria) {
 			this.categoria = categoria;
 		}
-		
-		public static String getPrefixo() {
-			return preFixo;
-		}
-		
 }

@@ -6,17 +6,17 @@ public class Produto extends EntidadesDoSistema {
 		private String nome;
 		private Fornecedor fornecedor;
 		private UnidadeMedida unidade_medida;
-		private Double quantidade_conteudo;
+		private Double conteudo_produto;
 		
-		private static final  String preFixo = "PRO";
 
 		
-		public Produto(String id, String nome, Fornecedor fornecedor, UnidadeMedida unidade, Double quantidade_conteudo) {
+		public Produto(String id, String nome, Fornecedor fornecedor, UnidadeMedida unidade, Double conteudo_produto) {
 			this.id = id;
 			this.nome = nome;
 			this.fornecedor = fornecedor;
 			this.unidade_medida = unidade;
-			this.quantidade_conteudo = quantidade_conteudo;
+			this.conteudo_produto = conteudo_produto;
+			Produto.preFixo = "PRO";
 		}
 
 		
@@ -55,10 +55,10 @@ public class Produto extends EntidadesDoSistema {
 		}
 
 
-		public Double getQuantidade_conteudo() {
-			return quantidade_conteudo;
+		public Double getConteudo_produto() {
+			return conteudo_produto;
 		}
-		public void setQuantidade_conteudo(Double quantidade_conteudo) {
-			this.quantidade_conteudo = quantidade_conteudo;
+		public void setConteudo_produto(Double conteudo_produto) {
+			this.conteudo_produto = conteudo_produto;
 		}
 }

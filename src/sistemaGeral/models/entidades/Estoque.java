@@ -3,7 +3,7 @@ package sistemaGeral.models.entidades;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Estoque {
+public class Estoque extends EntidadesDoSistema{
 		
 		private HashMap<String, ArrayList<Lote>> estoque = new HashMap<>();
 		
@@ -15,7 +15,14 @@ public class Estoque {
 			this.estoque = estoque;
 		}
 
-
+		
+		@Override
+		public String toString() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		
 		//Subclass
 		public class Lote extends EntidadesDoSistema {
 			private Produto produto;
@@ -32,7 +39,7 @@ public class Estoque {
 					this.preco = preco;
 					this.validade = validade;
 					this.id = id;
-					this.quantidade_em_armazenamento = this.unidades_compradas + produto.getQuantidade_conteudo();
+					this.quantidade_em_armazenamento = this.unidades_compradas + produto.getConteudo_produto();
 			}
 		
 			
@@ -83,7 +90,5 @@ public class Estoque {
 			public void setQuantidade_em_armazenamento(Double quantidade_em_armazenamento) {
 				this.quantidade_em_armazenamento = quantidade_em_armazenamento;
 			}
-
 	}
-
 }

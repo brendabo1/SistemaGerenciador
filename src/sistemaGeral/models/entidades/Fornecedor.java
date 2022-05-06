@@ -8,7 +8,7 @@ public class Fornecedor extends EntidadesDoSistema {
 		private String endereco;
 		private ArrayList<Produto> produtos_fornecidos;
 		
-		private static final  String preFixo = "FOR";
+		
 	
 		
 		public Fornecedor(String id, String CNPJ, String nome, String endereco) {
@@ -17,6 +17,7 @@ public class Fornecedor extends EntidadesDoSistema {
 			this.nome = nome;
 			this.endereco = endereco;
 			this.produtos_fornecidos = new ArrayList<>();
+			Fornecedor.preFixo = "FOR";
 		}
 		
 		

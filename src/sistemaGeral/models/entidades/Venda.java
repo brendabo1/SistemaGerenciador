@@ -11,18 +11,15 @@ public class Venda extends EntidadesDoSistema{
 		private ArrayList<ItemCardapio> itens_comprados = new ArrayList<>();
 		private Double preco_total = 0.0;
 		private String forma_de_pagamento;
-		private static final  String preFixo = "VEN";
 
-		//private static final DateTimeFormatter padrao_hora = DateTimeFormatter.ofPattern("HH:mm:ss");
-		//private static final DateTimeFormatter padrao_data = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		
-		
+
 		public Venda(String id, ArrayList<ItemCardapio> itens_comprados, String forma_de_pagamento) {
 			itens_comprados = new ArrayList<>();			
 			for (ItemCardapio item: itens_comprados) this.preco_total += item.getPreco();
 			
 			this.forma_de_pagamento = forma_de_pagamento;
 			this.id = id;
+			Venda.preFixo = "VEN";
 		}
 		
 		
