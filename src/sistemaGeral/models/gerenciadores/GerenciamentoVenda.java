@@ -9,12 +9,17 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import sistemaGeral.models.BancodeDados;
 import sistemaGeral.models.entidades.ItemCardapio;
 import sistemaGeral.models.entidades.Venda;
 
 public class GerenciamentoVenda extends GerenciamentoGeral {
 	
 		private ArrayList<Venda> lista_vendas = getLista_vendas();
+		
+		public GerenciamentoVenda(BancodeDados bancoDados) {
+			this.lista_vendas = bancoDados.getLista_vendas();
+		}
 		
 		
 		public boolean cadastrar(ArrayList<ItemCardapio> compras, String formaDePagamento) {
@@ -42,7 +47,7 @@ public class GerenciamentoVenda extends GerenciamentoGeral {
 		}
 		
 		/**
-		 * Gera um relatório PDF na raíz do projeto contendo a mensagem recebida.
+		 * Gera um relatï¿½rio PDF na raï¿½z do projeto contendo a mensagem recebida.
 		 * @param message
 		 * @throws FileNotFoundException
 		 * @throws DocumentException

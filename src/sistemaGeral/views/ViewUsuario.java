@@ -7,8 +7,8 @@ import java.util.Scanner;
 import sistemaGeral.controllers.validacoes.ValidarUsuario;
 >>>>>>> develop_brenda
 import sistemaGeral.models.entidades.Usuario;
+import sistemaGeral.models.entidades.enums.TipoUsuario;
 import sistemaGeral.models.gerenciadores.GerenciamentoUsuario;
-import sistemaGeral.models.gerenciadores.TipoUsuario;
 import sistemaGeral.models.validacoes.ValidaUsuario;
 
 public class ViewUsuario {
@@ -43,7 +43,7 @@ public class ViewUsuario {
 						continuar_login = false;
 					}	
 					else {
-						System.out.println("--> Usuário não cadastrado <--");
+						System.out.println("--> Usuï¿½rio nï¿½o cadastrado <--");
 						do {
 							System.out.print("Deseja tentar novamente? [S/N] ");
 							String opcao = input.next().strip().toUpperCase();
@@ -87,7 +87,7 @@ public class ViewUsuario {
 						System.out.print("[1] - Cadastrar como Gerente "
 								+ "\n[2] - Cadastrar como Funcionario  "
 								+ "\n[3] - Sair do Cadastro"
-								+ "\nQual opção: ");
+								+ "\nQual opï¿½ï¿½o: ");
 						String opcao = input.next().strip();
 						
 						switch (opcao) {
@@ -124,10 +124,10 @@ public class ViewUsuario {
 				boolean continuar_editar = true;
 				
 				while (continuar_editar) {
-					System.out.println("------ EDITAR USUÁRIO ------");
+					System.out.println("------ EDITAR USUï¿½RIO ------");
 					
 					do {
-						System.out.print("[1] - Visualizar Usuários \n[2] - Selecionar ID \n[3] - Fechar Edição \nQual opção: ");
+						System.out.print("[1] - Visualizar Usuï¿½rios \n[2] - Selecionar ID \n[3] - Fechar Ediï¿½ï¿½o \nQual opï¿½ï¿½o: ");
 						String opcao = input.next().strip();
 						Usuario usuario_selecionado;
 						switch(opcao) {
@@ -140,10 +140,10 @@ public class ViewUsuario {
 								String id_selecionado = input.next().strip();
 							    usuario_selecionado = gerenciamento_usuario.buscarEntidade(gerenciamento_usuario.getLista_usuarios(), id_selecionado);
 								if (usuario_selecionado == null) 
-									System.out.println("--> Usuário não encontrado <--");
+									System.out.println("--> Usuï¿½rio nï¿½o encontrado <--");
 								else {
-									System.out.println("--- EDITAR USUÁRIO " + usuario_selecionado.getNome().toUpperCase() + " ---");
-									System.out.print("[1] - Editar Nome \n[2] - Editar Senha \n[3] - Sair Edição \nQual opção: ");
+									System.out.println("--- EDITAR USUï¿½RIO " + usuario_selecionado.getNome().toUpperCase() + " ---");
+									System.out.print("[1] - Editar Nome \n[2] - Editar Senha \n[3] - Sair Ediï¿½ï¿½o \nQual opï¿½ï¿½o: ");
 									opcao = input.next().strip();
 									switch (opcao) {
 										case "1": {
@@ -197,7 +197,7 @@ public class ViewUsuario {
 				boolean continuar_excluir = true;
 				
 				do {
-					System.out.print("[1] - Visualizar Usuarios\n[2] - Selecionar ID \n[3] - Sair da Exclusão \nQual opção: ");
+					System.out.print("[1] - Visualizar Usuarios\n[2] - Selecionar ID \n[3] - Sair da Exclusï¿½o \nQual opï¿½ï¿½o: ");
 					String opcao = input.next().strip();
 					switch(opcao) {
 						case "1": {
@@ -208,9 +208,9 @@ public class ViewUsuario {
 							System.out.print("Digite o ID: ");
 							String id_buscado = input.next().strip();
 							if (gerenciamento_usuario.excluir(gerenciamento_usuario.getLista_usuarios(), id_buscado))
-								System.out.println("-- Usuário Excluído --");
+								System.out.println("-- Usuï¿½rio Excluï¿½do --");
 							else 
-								System.out.println("--> Usuário não encontrado <--");
+								System.out.println("--> Usuï¿½rio nï¿½o encontrado <--");
 							break;
 						}
 						case "3": {
@@ -244,7 +244,7 @@ public class ViewUsuario {
 			
 			private boolean nomeJaUsado(String nome) {
 				if (ValidaUsuario.nomeJaCadastrado(nome, gerenciamento_usuario.getLista_usuarios())) {
-					System.out.println("--> O nome já se encontra cadastrado, tente outro <--");
+					System.out.println("--> O nome jï¿½ se encontra cadastrado, tente outro <--");
 					return true;
 				}
 				return false;	
@@ -255,7 +255,7 @@ public class ViewUsuario {
 				if (ValidaUsuario.validarNome(novo_nome) && !ValidaUsuario.nomeJaCadastrado(novo_nome, gerenciamento_usuario.getLista_usuarios()))
 					return true;
 				else {
-					System.out.println("--> Nome inválido ou Já se encontra cadastrado <--");
+					System.out.println("--> Nome invï¿½lido ou Jï¿½ se encontra cadastrado <--");
 					return false;
 				}
 			}
@@ -264,7 +264,7 @@ public class ViewUsuario {
 				if (ValidaUsuario.validarSenha(nova_senha))
 					return true;
 				else {
-					System.out.println("--> Senha inválida, precisa ter pelo menos 6 caracteres <--");
+					System.out.println("--> Senha invï¿½lida, precisa ter pelo menos 6 caracteres <--");
 					return false;
 				}
 			}

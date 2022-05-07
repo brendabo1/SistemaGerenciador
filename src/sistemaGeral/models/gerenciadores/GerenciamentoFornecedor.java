@@ -2,13 +2,14 @@ package sistemaGeral.models.gerenciadores;
 
 import java.util.ArrayList;
 
+import sistemaGeral.models.BancodeDados;
 import sistemaGeral.models.entidades.Fornecedor;
 
 public class GerenciamentoFornecedor extends GerenciamentoGeral {
 		private ArrayList<Fornecedor> lista_fornecedores;
 	
-		public GerenciamentoFornecedor() {
-			this.lista_fornecedores = getLista_fornecedores();
+		public GerenciamentoFornecedor(BancodeDados bancoDados) {
+			this.lista_fornecedores = bancoDados.getLista_fornecedores();
 		}
 		
 		public boolean cadastrar(String nome, String CNPJ, String endereco) {
@@ -49,14 +50,5 @@ public class GerenciamentoFornecedor extends GerenciamentoGeral {
 			return fornecedoresCorrespondentes;
 			
 		}
-		
-		
-		public ArrayList<Fornecedor> getLista_fornecedores() {
-			return lista_fornecedores;
-		}
-		
-
-		public void setLista_fornecedores(ArrayList<Fornecedor> lista_fornecedores) {
-			this.lista_fornecedores = lista_fornecedores;
-		}	
+			
 }

@@ -2,15 +2,21 @@ package sistemaGeral.models.gerenciadores;
 
 import java.util.ArrayList;
 
+import sistemaGeral.models.BancodeDados;
 import sistemaGeral.models.entidades.Funcionario;
 import sistemaGeral.models.entidades.Gerente;
 import sistemaGeral.models.entidades.Usuario;
+import sistemaGeral.models.entidades.enums.TipoUsuario;
 
 public class GerenciamentoUsuario extends GerenciamentoGeral {
-		private ArrayList<Usuario> lista_usuarios = getLista_usuarios();
+		private ArrayList<Usuario> lista_usuarios;
 
 		
 		private static Usuario usuario_logado = null;
+		
+		public GerenciamentoUsuario(BancodeDados bancoDados) {
+			this.lista_usuarios = bancoDados.getLista_usuarios();
+		}
 
 		public boolean cadastrar(String nome, String senha, TipoUsuario tipo_usuario) {	
 			String id;
@@ -50,14 +56,4 @@ public class GerenciamentoUsuario extends GerenciamentoGeral {
 			return usuario.getSenha().equals(nova_senha);
 		}
 		
-			
-		public ArrayList<Usuario> getLista_usuarios() {
-			return lista_usuarios;
-		}
-
-
-		public void setLista_usuarios(ArrayList<Usuario> lista_usuarios) {
-			this.lista_usuarios = lista_usuarios;
-		}
-
 }

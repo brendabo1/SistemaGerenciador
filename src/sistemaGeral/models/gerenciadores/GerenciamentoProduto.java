@@ -2,14 +2,18 @@ package sistemaGeral.models.gerenciadores;
 
 import java.util.ArrayList;
 
+import sistemaGeral.models.BancodeDados;
 import sistemaGeral.models.entidades.Fornecedor;
 import sistemaGeral.models.entidades.Produto;
 import sistemaGeral.models.entidades.enums.UnidadeMedida;
 
 public class GerenciamentoProduto extends GerenciamentoGeral{
-		private ArrayList<Produto> lista_produtos = getLista_produtos();
-	
-				
+		private ArrayList<Produto> lista_produtos;
+		
+		public GerenciamentoProduto(BancodeDados bancoDados) {
+			this.lista_produtos = bancoDados.getLista_produtos();
+		}
+					
 		public boolean cadastrar(String nome,  Fornecedor fornecedor, UnidadeMedida unidade, Double quantidade_conteudo) {
 			String id = gerarID(this.lista_produtos, Produto.getPrefixo());
 			Produto novo_produto = new Produto(id, nome,  fornecedor, unidade, quantidade_conteudo);
@@ -28,15 +32,5 @@ public class GerenciamentoProduto extends GerenciamentoGeral{
 			return produto.getValidade().equals(nova_validade);
 		}*/
 		
-
-
-		public ArrayList<Produto> getLista_produtos() {
-			return lista_produtos;
-		}
-
-
-		public void setLista_produtos(ArrayList<Produto> lista_produtos) {
-			this.lista_produtos = lista_produtos;
-		}
 		
 }
