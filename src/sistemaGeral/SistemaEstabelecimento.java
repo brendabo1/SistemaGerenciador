@@ -26,6 +26,9 @@ public class SistemaEstabelecimento {
 		public static ViewFornecedor view_Fornecedor = new ViewFornecedor(gerFornecedor);
 		public static ViewItemCardapio  view_ItemCardapio = new ViewItemCardapio(gerItemCardapio, gerProduto);
 		public static ViewVenda view_Venda = new ViewVenda(gerVenda, gerItemCardapio);
+		
+		
+		//private Usuario usuarioLogado = null;
 				
 
 		

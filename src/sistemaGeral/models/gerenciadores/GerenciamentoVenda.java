@@ -37,14 +37,6 @@ public class GerenciamentoVenda extends GerenciamentoGeral {
 		
 		//TO DO editar carrinho de compras, preco 
 
-		public ArrayList<Venda> getLista_vendas() {
-			return lista_vendas;
-		}
-
-
-		public void setLista_vendas(ArrayList<Venda> lista_vendas) {
-			this.lista_vendas = lista_vendas;
-		}
 		
 		/**
 		 * Gera um relat�rio PDF na ra�z do projeto contendo a mensagem recebida.
@@ -52,12 +44,12 @@ public class GerenciamentoVenda extends GerenciamentoGeral {
 		 * @throws FileNotFoundException
 		 * @throws DocumentException
 		 */
-		
+		                             
 		public boolean gerarPDF(String message) throws FileNotFoundException, DocumentException {
 			Document docpdf = new Document();
 			PdfWriter.getInstance(docpdf, new FileOutputStream("src\\PDF_Teste.pdf")); //caminho relativo
 			docpdf.open();
-			boolean t= docpdf.add(new Paragraph("Hello World Java\n" + message));
+			boolean t= docpdf.add(new Paragraph(message));
 			docpdf.close();
 			return t;
 			
