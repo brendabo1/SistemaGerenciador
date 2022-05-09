@@ -3,6 +3,7 @@ package sistemaGeral.models.validacoes;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import sistemaGeral.models.entidades.Estoque;
 import sistemaGeral.models.entidades.Fornecedor;
 import sistemaGeral.models.entidades.ItemCardapio;
 import sistemaGeral.models.entidades.Produto;
@@ -34,6 +35,12 @@ public class ValidaEntidade {
 	
 	public static boolean nomeProdutoJaCadastrado(String nome, ArrayList<Produto> lista_cadastrados) {
 		for (Produto produto: lista_cadastrados) if (produto.getNome().equals(nome)) return true;
+		
+		return false;
+	}
+	
+	public static boolean loteJaCadastrado(Produto produto, LocalDate data, ArrayList<Estoque> estoque) {
+		//for (ItemCardapio item: lista_cadastrados) if (item.getNome().equals(nome)) return true;
 		
 		return false;
 	}

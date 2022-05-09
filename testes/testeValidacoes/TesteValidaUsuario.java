@@ -1,4 +1,4 @@
-package testeGerenciamentos;
+package testeValidacoes;
 
 import static org.junit.jupiter.api.Assertions.*;
 

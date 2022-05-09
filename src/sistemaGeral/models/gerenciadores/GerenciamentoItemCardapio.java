@@ -3,6 +3,7 @@ package sistemaGeral.models.gerenciadores;
 import java.util.ArrayList;
 
 
+import sistemaGeral.models.BancoDeDados;
 import sistemaGeral.models.entidades.Fornecedor;
 import sistemaGeral.models.entidades.ItemCardapio;
 import sistemaGeral.models.entidades.Produto;
@@ -10,8 +11,11 @@ import sistemaGeral.models.entidades.enums.CategoriasDeItens;
 
 public class GerenciamentoItemCardapio extends GerenciamentoGeral{
 	
-	 	private ArrayList<ItemCardapio> lista_itensCardapio = getLista_itensCardapio();
-	
+	 	private ArrayList<ItemCardapio> lista_itensCardapio;
+	 	
+	 	public GerenciamentoItemCardapio(BancoDeDados bancoDados) {
+	 		this.lista_itensCardapio = bancoDados.getLista_itensCardapio();
+	 	}
 	 	
 		public boolean cadastrar(String nome, ArrayList<Produto> ingredientes, Double preco, CategoriasDeItens categoria) {
 				String id = gerarID(this.lista_itensCardapio, ItemCardapio.getPrefixo());
@@ -50,15 +54,5 @@ public class GerenciamentoItemCardapio extends GerenciamentoGeral{
 			
 		}
 		
-		
-		public ArrayList<ItemCardapio> getLista_itensCardapio() {
-			return lista_itensCardapio;
-		}
-		
-
-		public void setLista_itensCardapio(ArrayList<ItemCardapio> lista_itensCardapio) {
-			this.lista_itensCardapio = lista_itensCardapio;
-		}
-			
 		
 }

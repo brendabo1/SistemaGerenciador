@@ -10,7 +10,7 @@ import sistemaGeral.models.entidades.Produto;
 import sistemaGeral.models.entidades.Usuario;
 import sistemaGeral.models.entidades.Venda;
 
-public class BancodeDados {
+public class BancoDeDados {
 		private HashMap<String, Produto> map_produtos = new HashMap<>();
 		private HashMap<String, ItemCardapio> map_itensCardapio = new HashMap<>();
 		private HashMap<String, Fornecedor> map_fornecedores = new HashMap<>();
@@ -18,6 +18,7 @@ public class BancodeDados {
 		private HashMap<String, Usuario> map_usuarios = new HashMap<>();
 		private HashMap<String, Lote> map_estoque = new HashMap<>();
 		private HashMap<String, ArrayList<String>> agrupamentoDeLotes = new HashMap<>();
+
 	
 	
 	

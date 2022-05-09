@@ -1,4 +1,4 @@
-package testeGerenciamentos;
+package testeValidacoes;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -26,7 +26,7 @@ class TesteValidaProduto {
 	
 	@Test
 	void testNome_AlfaNumerico() {		
-		assertTrue(ValidaProduto.validarNome("Cachaça51"));
+		assertTrue(ValidaProduto.validarNome("Cachaï¿½a51"));
 	}
 	@Test
 	void testNome_ComCaracteresEspeciais() {		

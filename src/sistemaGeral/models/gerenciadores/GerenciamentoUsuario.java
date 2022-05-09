@@ -2,15 +2,26 @@ package sistemaGeral.models.gerenciadores;
 
 import java.util.ArrayList;
 
+import sistemaGeral.models.BancoDeDados;
 import sistemaGeral.models.entidades.Funcionario;
 import sistemaGeral.models.entidades.Gerente;
 import sistemaGeral.models.entidades.Usuario;
+import sistemaGeral.models.entidades.enums.TipoUsuario;
 
 public class GerenciamentoUsuario extends GerenciamentoGeral {
-		private ArrayList<Usuario> lista_usuarios = getLista_usuarios();
+		private ArrayList<Usuario> lista_usuarios;
 
 		
-		private static Usuario usuario_logado = null;
+		private Usuario usuario_logado = null;
+		
+		public GerenciamentoUsuario(BancoDeDados bancoDados) {
+			this.lista_usuarios = bancoDados.getLista_usuarios();
+		}
+		
+		public boolean primeiroAcesso() {
+			if(lista_usuarios.isEmpty()) return true;
+			return false;
+		}
 
 		public boolean cadastrar(String nome, String senha, TipoUsuario tipo_usuario) {	
 			String id;
@@ -28,10 +39,9 @@ public class GerenciamentoUsuario extends GerenciamentoGeral {
 			return false;
 		}
 		
-		public boolean login(String nome, String senha) {
-			for (Usuario entidade: this.lista_usuarios) 
-				if (entidade.getNome().equals(nome) && entidade.getSenha().equals(senha)) {
-					usuario_logado = entidade;
+		public boolean login_ID(String ID, String senha) {
+			for (Usuario user: this.lista_usuarios) 
+				if (user.getId().equals(ID) && user.getSenha().equals(senha)) {
 					return true;
 				}
 			
@@ -50,14 +60,4 @@ public class GerenciamentoUsuario extends GerenciamentoGeral {
 			return usuario.getSenha().equals(nova_senha);
 		}
 		
-			
-		public ArrayList<Usuario> getLista_usuarios() {
-			return lista_usuarios;
-		}
-
-
-		public void setLista_usuarios(ArrayList<Usuario> lista_usuarios) {
-			this.lista_usuarios = lista_usuarios;
-		}
-
 }
