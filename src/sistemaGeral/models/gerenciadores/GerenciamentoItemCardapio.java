@@ -2,11 +2,8 @@ package sistemaGeral.models.gerenciadores;
 
 import java.util.ArrayList;
 
-<<<<<<< HEAD
 
-=======
 import sistemaGeral.models.entidades.Fornecedor;
->>>>>>> b0c7d0209031f555f9909027e15dc49a77f430ac
 import sistemaGeral.models.entidades.ItemCardapio;
 import sistemaGeral.models.entidades.Produto;
 import sistemaGeral.models.entidades.enums.CategoriasDeItens;

@@ -8,6 +8,7 @@ import sistemaGeral.models.entidades.enums.UnidadeMedida;
 
 public class GerenciamentoProduto extends GerenciamentoGeral{
 		private ArrayList<Produto> lista_produtos = getLista_produtos();
+		
 	
 				
 		public boolean cadastrar(String nome,  Fornecedor fornecedor, UnidadeMedida unidade, Double quantidade_conteudo) {
