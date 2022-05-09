@@ -2,13 +2,13 @@ package sistemaGeral.models.gerenciadores;
 
 import java.util.ArrayList;
 
-import sistemaGeral.models.BancodeDados;
+import sistemaGeral.models.BancoDeDados;
 import sistemaGeral.models.entidades.Fornecedor;
 
 public class GerenciamentoFornecedor extends GerenciamentoGeral {
 		private ArrayList<Fornecedor> lista_fornecedores;
 	
-		public GerenciamentoFornecedor(BancodeDados bancoDados) {
+		public GerenciamentoFornecedor(BancoDeDados bancoDados) {
 			this.lista_fornecedores = bancoDados.getLista_fornecedores();
 		}
 		

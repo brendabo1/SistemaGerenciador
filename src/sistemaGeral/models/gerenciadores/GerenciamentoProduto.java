@@ -2,7 +2,7 @@ package sistemaGeral.models.gerenciadores;
 
 import java.util.ArrayList;
 
-import sistemaGeral.models.BancodeDados;
+import sistemaGeral.models.BancoDeDados;
 import sistemaGeral.models.entidades.Fornecedor;
 import sistemaGeral.models.entidades.Produto;
 import sistemaGeral.models.entidades.enums.UnidadeMedida;
@@ -10,7 +10,7 @@ import sistemaGeral.models.entidades.enums.UnidadeMedida;
 public class GerenciamentoProduto extends GerenciamentoGeral{
 		private ArrayList<Produto> lista_produtos;
 		
-		public GerenciamentoProduto(BancodeDados bancoDados) {
+		public GerenciamentoProduto(BancoDeDados bancoDados) {
 			this.lista_produtos = bancoDados.getLista_produtos();
 		}
 					

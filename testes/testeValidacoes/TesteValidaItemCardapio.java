@@ -1,4 +1,4 @@
-package testeGerenciamentos;
+package testeValidacoes;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import sistemaGeral.models.validacoes.ValidaItemCardapio;
 
-class TesteValidarItemCardapio {
+class TesteValidaItemCardapio {
 
 	@Test
 	void testNome_Vazio() {		
@@ -30,7 +30,7 @@ class TesteValidarItemCardapio {
 	
 	@Test
 	void testNome_AlfaNumerico() {		
-		assertTrue(ValidaItemCardapio.validarNome("Cachaça 51"));
+		assertTrue(ValidaItemCardapio.validarNome("Cachaï¿½a 51"));
 	}
 	
 	@Test

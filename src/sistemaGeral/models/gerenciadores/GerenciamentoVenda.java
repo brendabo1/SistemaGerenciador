@@ -9,7 +9,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import sistemaGeral.models.BancodeDados;
+import sistemaGeral.models.BancoDeDados;
 import sistemaGeral.models.entidades.ItemCardapio;
 import sistemaGeral.models.entidades.Venda;
 
@@ -17,7 +17,7 @@ public class GerenciamentoVenda extends GerenciamentoGeral {
 	
 		private ArrayList<Venda> lista_vendas = getLista_vendas();
 		
-		public GerenciamentoVenda(BancodeDados bancoDados) {
+		public GerenciamentoVenda(BancoDeDados bancoDados) {
 			this.lista_vendas = bancoDados.getLista_vendas();
 		}
 		

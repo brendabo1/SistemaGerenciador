@@ -41,5 +41,7 @@ public class ViewMenus {
 		System.out.println("[5] Gerar PDF");
 		
 	}
+	
+	//public void printMensagem
 
 }

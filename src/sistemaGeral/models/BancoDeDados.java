@@ -8,7 +8,7 @@ import sistemaGeral.models.entidades.Produto;
 import sistemaGeral.models.entidades.Usuario;
 import sistemaGeral.models.entidades.Venda;
 
-public class BancodeDados {
+public class BancoDeDados {
 	private ArrayList<Produto> lista_produtos = new ArrayList<>();
 	private ArrayList<ItemCardapio> lista_itensCardapio = new ArrayList<>();
 	private ArrayList<Fornecedor> lista_fornecedores = new ArrayList<>();

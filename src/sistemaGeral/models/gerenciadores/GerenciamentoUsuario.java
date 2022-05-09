@@ -2,7 +2,7 @@ package sistemaGeral.models.gerenciadores;
 
 import java.util.ArrayList;
 
-import sistemaGeral.models.BancodeDados;
+import sistemaGeral.models.BancoDeDados;
 import sistemaGeral.models.entidades.Funcionario;
 import sistemaGeral.models.entidades.Gerente;
 import sistemaGeral.models.entidades.Usuario;
@@ -14,7 +14,7 @@ public class GerenciamentoUsuario extends GerenciamentoGeral {
 		
 		private Usuario usuario_logado = null;
 		
-		public GerenciamentoUsuario(BancodeDados bancoDados) {
+		public GerenciamentoUsuario(BancoDeDados bancoDados) {
 			this.lista_usuarios = bancoDados.getLista_usuarios();
 		}
 		
