@@ -2,9 +2,9 @@ package sistemaGeral.models.gerenciadores;
 
 import java.util.ArrayList;
 
-import sistemaGeral.models.BancodeDados;
+
+import sistemaGeral.models.BancoDeDados;
 import sistemaGeral.models.entidades.Fornecedor;
->>>>>>> b0c7d0209031f555f9909027e15dc49a77f430ac
 import sistemaGeral.models.entidades.ItemCardapio;
 import sistemaGeral.models.entidades.Produto;
 import sistemaGeral.models.entidades.enums.CategoriasDeItens;
@@ -13,7 +13,7 @@ public class GerenciamentoItemCardapio extends GerenciamentoGeral{
 	
 	 	private ArrayList<ItemCardapio> lista_itensCardapio;
 	 	
-	 	public GerenciamentoItemCardapio(BancodeDados bancoDados) {
+	 	public GerenciamentoItemCardapio(BancoDeDados bancoDados) {
 	 		this.lista_itensCardapio = bancoDados.getLista_itensCardapio();
 	 	}
 	 	

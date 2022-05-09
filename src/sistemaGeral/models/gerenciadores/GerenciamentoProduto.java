@@ -8,12 +8,19 @@ import sistemaGeral.models.entidades.Produto;
 import sistemaGeral.models.entidades.enums.UnidadeMedida;
 
 public class GerenciamentoProduto extends GerenciamentoGeral{
+<<<<<<< HEAD
+		private ArrayList<Produto> lista_produtos = getLista_produtos();
+		
+	
+				
+=======
 		private ArrayList<Produto> lista_produtos;
 		
 		public GerenciamentoProduto(BancoDeDados bancoDados) {
 			this.lista_produtos = bancoDados.getLista_produtos();
 		}
 					
+>>>>>>> 3b27b9444b2f723fc8f8b1497494f6e6f1d37516
 		public boolean cadastrar(String nome,  Fornecedor fornecedor, UnidadeMedida unidade, Double quantidade_conteudo) {
 			String id = gerarID(this.lista_produtos, Produto.getPrefixo());
 			Produto novo_produto = new Produto(id, nome,  fornecedor, unidade, quantidade_conteudo);

@@ -1,89 +1,65 @@
 package sistemaGeral.models.gerenciadores;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Random;
 
 import sistemaGeral.models.entidades.EntidadesDoSistema;
-import sistemaGeral.models.entidades.Fornecedor;
-import sistemaGeral.models.entidades.ItemCardapio;
+
 
 abstract public class GerenciamentoGeral {
+		private HashSet<String> id_cadastrados = new HashSet<>();
 	
-	/**
-	 * Gera um código de identificação único e ordenado para cada novo elemento do tipo Entidade do Sistema
-	 * @param <T> Entidade do Sistema
-	 * @param lista Lista de objetos do tipo Entidade Do Sistema
-	 * @param prefixo Sigla predefinida e imutável de cada classe do tipo Entidade
-	 * @return Novo codigo de identificação único;
-	 */
-	public static <T extends EntidadesDoSistema> String gerarID(List<T> lista, String prefixo) {
-		String novo_id = "", ultimoID, ultimoNum, numString;
-		int num, indexUltimo;
-		
-		if(lista.isEmpty()) {
-			num = 0;			
+	public  String gerarID(String preFixo) {
+			Random random = new Random();
+			String novo_id;
+			
+			do {
+				novo_id = preFixo;
+				for (int i = 0; i < 5; i++) 
+						novo_id += random.nextInt(0, 9);
+			} while (id_cadastrados.contains(novo_id));
+			
+			return novo_id;
+	}
+	
+	
+	public <T extends EntidadesDoSistema> boolean adicionar(HashMap<String, T> map_entidade, T obj) {
+		T obj_anterior = map_entidade.put(obj.getId(), obj);
+		if (obj_anterior == null) {
+				id_cadastrados.add(obj.getId());
+				return true;
 		}
 		else {
-			indexUltimo = lista.size()-1;
-			ultimoID = lista.get(indexUltimo).getId();
-			ultimoNum = ultimoID.substring(3, ultimoID.length());
-			num = Integer.parseInt(ultimoNum);
+			map_entidade.put(obj.getId(), obj_anterior);
+			return false;
 		}
-		
-		num++;
-		numString = String.format("%05d", num);
-		novo_id = prefixo + numString;
-		//novo_id = String.format("%s", prefixo) + Integer.toString(num);
-		
-		return novo_id;
-	}
-	
-
-	
-	public <T extends EntidadesDoSistema> boolean adicionar(List<T> lista, T obj) {
-		return lista.add(obj);
 	}
 	
 	
-	public <T extends EntidadesDoSistema> boolean excluir(List<T> lista, String ID_buscado) {
-		for (EntidadesDoSistema i: lista) if (i.getId().equals(ID_buscado)) return lista.remove(i);
-		
+	public <T extends EntidadesDoSistema> boolean excluir(HashMap<String, T> map_entidade, String ID_buscado) {
+		T obj_anterior = map_entidade.remove(ID_buscado);
+		if (obj_anterior != null) {
+			id_cadastrados.remove(ID_buscado);
+			return true;
+		}
 		return false;
 	}
 	
-	//Isso deveria estar no controler pra exibir na view
-	public <T extends EntidadesDoSistema> void listar(List<T> lista) {
-			if (lista.isEmpty()) {
-				System.out.println("--> Atualmente não há cadastro <--");
-			}
-			else 
-				for (EntidadesDoSistema i: lista) System.out.println(i.toString());
-	}
 	
-	
-	public <T extends EntidadesDoSistema> T buscarEntidade_ID(List<T> lista, String id_buscada) {
-			for (T entidade: lista) if (entidade.getId().equals(id_buscada)) return entidade;
+	public <T extends EntidadesDoSistema> String listar(HashMap<String, T> map_entidade) {
+			if (map_entidade.isEmpty())
+					return null;
+		
+			String message = new String();
+			for (T obj : map_entidade.values())
+					message += obj.toString();
 			
-			return null;
-	}
-	
-	public <T extends EntidadesDoSistema> T buscarEntidade_Nome(List<T> lista, String nome_buscado) {
-		for (T entidade: lista) if (entidade.getId().equals(nome_buscado)) return entidade;
-		
-		return null;
+			return message;
 	}
 	
 	
-	/*
-	public ArrayList<ItemCardapio> listarNomesBuscadosCorrespondentes(String nome_buscado) {
-		ArrayList<ItemCardapio> itensCorrespondentes = new ArrayList<>();
-		for(ItemCardapio item: this.lista_itensCardapio) {
-			if(item.getNome().contains(nome_buscado)) itensCorrespondentes.add(item);
-		}
-		return itensCorrespondentes;
-		
-	}*/
-	
-   
+	public <T extends EntidadesDoSistema> T buscarEntidade_ID(HashMap<String, T> map_entidade, String id_buscada) {
+			return map_entidade.get(id_buscada);
+	}
 }

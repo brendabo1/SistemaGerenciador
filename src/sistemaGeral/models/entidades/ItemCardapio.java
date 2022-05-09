@@ -9,11 +9,11 @@ public class ItemCardapio extends EntidadesDoSistema {
 		private Double preco;
 
 		private ArrayList<Ingrediente> ingredientes = new ArrayList<>();
-		
+
 		private CategoriasDeItens categoria;
-		
-		
-		
+
+
+
 		private class Ingrediente {
 			private Produto produto;
 			private Double quantidade_usada;
@@ -38,7 +38,7 @@ public class ItemCardapio extends EntidadesDoSistema {
 			}
 		}
 
-		
+
 		public ItemCardapio(String id, String nome, ArrayList<Ingrediente> ingredientes, Double preco, CategoriasDeItens categoria) {
 			this.id = id;
 			this.nome = nome;
