@@ -1,5 +1,6 @@
 package sistemaGeral.models.validacoes;
 
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -10,12 +11,12 @@ import sistemaGeral.models.entidades.Produto;
 import sistemaGeral.models.entidades.Usuario;
 
 public class ValidaEntidade {
-	public boolean validarData(LocalDate data) {	
+	public static boolean validarData(LocalDate data) {	
 		if(data.compareTo(LocalDate.now())>0) return true;
 		return false;
 	}
 
-	public boolean nomeUsuarioJaCadastrado(String nome, ArrayList<Usuario> lista_cadastrados) {
+	public static boolean nomeUsuarioJaCadastrado(String nome, ArrayList<Usuario> lista_cadastrados) {
 		for (Usuario user: lista_cadastrados) if (user.getNome().equals(nome)) return true;
 		
 		return false;
