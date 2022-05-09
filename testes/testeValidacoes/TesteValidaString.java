@@ -17,7 +17,7 @@ class TesteValidaString {
 	
 	@Test
 	void testeAlfabetica_TamMinimoZero() {
-		assertTrue(ValidaString.isAlfabetica("teste", 0));
+		assertTrue(ValidaString.isAlfabetica("nome", 0));
 	}
 
 	@Test
@@ -32,7 +32,7 @@ class TesteValidaString {
 	
 	@Test
 	void testeIsAlfabetica_ApenasLetras_TamMenor_TamMinimo() {
-		assertFalse(ValidaString.isAlfabetica("teste", 6));
+		assertFalse(ValidaString.isAlfabetica("nome", 6));
 	}
 	
 	@Test
@@ -42,10 +42,9 @@ class TesteValidaString {
 	
 	@Test
 	void testeIsAlfabetica_LetrasComEspaco() {
-		assertFalse(ValidaString.isAlfabetica("Algoritmo de teste", 5));
+		assertFalse(ValidaString.isAlfabetica("Item do cardapio", 5));
 	}
 		
-	
 	@Test
 	void testeIsAlfabetica_ComNumero() {
 		assertFalse(ValidaString.isAlfabetica("t3ste", 5));
@@ -67,9 +66,14 @@ class TesteValidaString {
 	}
 	
 	@Test
-	void testeIsAlfabeticaComposta_PalavraComposta() {
-		assertFalse(ValidaString.isAlfabeticaComposta("Alfanum3rica Comp0sta", 1));
+	void testeIsAlfabeticaComposta_PalavraCompostaComNumeros() {
+		assertFalse(ValidaString.isAlfabeticaComposta("Batatinha Frita 123", 1));
 	}
+	
+	@Test
+	void testeIsAlfabeticaComposta_PalavraComposta() {
+		assertTrue(ValidaString.isAlfabeticaComposta("Batata Frita", 3));
+	} 
 	
 	@Test
 	void testeIsAlfaNumerica_Vazia_TamMinimoZero() {
@@ -97,7 +101,7 @@ class TesteValidaString {
 	}
 	
 	@Test
-	void testeIsAlfaNumerica_ApenasLetrasComEspaco() {
+	void testeIsAlfaNumerica_NomeComposto() {
 		assertFalse(ValidaString.isAlfaNumerica("Algoritmo teste", 1));
 	}
 	
@@ -112,8 +116,8 @@ class TesteValidaString {
 	}
 	
 	@Test
-	void testeIsAlfaNumericaComposta_LetrasComEspaco() {
-		assertTrue(ValidaString.isAlfaNumericaComposta("Algoritmo de t3ste", 5));
+	void testeIsAlfaNumericaComposta_LetrasNumeroComEspaco() {
+		assertTrue(ValidaString.isAlfaNumericaComposta("Batatinha 123", 1));
 	}
 	
 	@Test
@@ -150,6 +154,5 @@ class TesteValidaString {
 	void testeIsNumerica_ApenasNumeros() {
 		assertTrue(ValidaString.isNumeric("123", 1));
 	}
-
 
 }
