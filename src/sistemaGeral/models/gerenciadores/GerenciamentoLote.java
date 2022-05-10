@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import sistemaGeral.models.BancoDeDados;
 import sistemaGeral.models.DatasUtils;
+import sistemaGeral.models.entidades.EntidadesDoSistema;
 import sistemaGeral.models.entidades.Lote;
 import sistemaGeral.models.entidades.Produto;
 
@@ -25,6 +26,32 @@ public class GerenciamentoLote extends GerenciamentoGeral implements DatasUtils 
 		Lote novo_lote = new Lote(produto, quantidade_comprada, preco_unitario, validade, novo_id);
 		return (adicionar(map_estoque, novo_lote) && inserirLoteOrdenado(novo_lote));
 	}
+	
+	
+	public boolean consumirLote (Double quantidade_consumida, String nome_produto) {
+		ArrayList<String> id_lotes = agrupamentoDeLotes.get(nome_produto);
+		if (id_lotes == null)
+			return false;
+		
+		for (String id : id_lotes) {
+			Lote lote = map_estoque.get(id);
+			
+			if (lote == null)
+				id_lotes.remove(id);
+			
+			if (lote.getQuantidade_em_armazenamento() <= quantidade_consumida) {
+				quantidade_consumida -= lote.getQuantidade_em_armazenamento();
+				excluirLote(id);
+				if (quantidade_consumida == 0.0) 
+					break;
+			} else {
+				lote.setQuantidade_em_armazenamento(lote.getQuantidade_em_armazenamento() - quantidade_consumida);
+				break;
+			}
+		}
+		return true;
+	}
+	
 		
 	public boolean editarProduto (Produto novo_produto, Lote lote) {
 		lote.setProduto(novo_produto);
@@ -47,7 +74,15 @@ public class GerenciamentoLote extends GerenciamentoGeral implements DatasUtils 
 	}
 	
 	
-	private boolean inserirLoteOrdenado(Lote novo_lote) {
+	public boolean excluirLote (String id_selecionado) {
+		Lote lote = map_estoque.get(id_selecionado);
+		ArrayList<String> id_lotes = agrupamentoDeLotes.get(lote.getProduto().getNome().toLowerCase());
+
+		return (super.excluir(map_estoque, id_selecionado) && id_lotes.remove(id_selecionado));
+	}
+	
+	
+ 	private boolean inserirLoteOrdenado(Lote novo_lote) {
 		String nome_produto = novo_lote.getProduto().getNome().toLowerCase();
 		ArrayList<String> listaLote = agrupamentoDeLotes.get(nome_produto);
 		
@@ -72,5 +107,18 @@ public class GerenciamentoLote extends GerenciamentoGeral implements DatasUtils 
 		return false;
 	}
 		
+ 	
+ 	public HashMap<String, Lote> getMap_estoque() {
+		return map_estoque;
+	}
+	public HashMap<String, ArrayList<String>> getAgrupamentoDeLotes() {
+		return agrupamentoDeLotes;
+	}
 
+
+	// Não deve ser utilizado, por isso sobrescrevi. Utilize o outro método de exclusão.
+ 	@Override
+	public <T extends EntidadesDoSistema> boolean excluir(HashMap<String, T> map_entidade, String ID_buscado) {
+ 		return false;
+ 	}
 }
