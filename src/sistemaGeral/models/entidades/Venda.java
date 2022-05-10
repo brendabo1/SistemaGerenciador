@@ -6,8 +6,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Venda extends EntidadesDoSistema{
-		private String data = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-		private String hora = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+		private LocalDate data = LocalDate.now();
+		private LocalTime hora = LocalTime.now();
 		private ArrayList<ItemCardapio> itens_comprados = new ArrayList<>();
 		private Double preco_total = 0.0;
 		private String forma_de_pagamento;
@@ -37,24 +37,6 @@ public class Venda extends EntidadesDoSistema{
 		return message;
 	}
 	
-	
-	public String getHora() {
-		return this.hora;
-	}
-	
-	public String getData() {
-		return this.data;
-	}
-
-	public void setHora(String hora) {
-		this.hora = hora;
-	}
-
-
-	public void setData(String data) {
-		this.data = data;
-	}
-
 
 	public ArrayList<ItemCardapio> getItens_comprados() {
 		return itens_comprados;
@@ -94,5 +76,34 @@ public class Venda extends EntidadesDoSistema{
 		Venda.preFixo = preFixo;
 	}
 		
+	public String formatarData(LocalDate data) {
+		String dataFormatada = data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		return dataFormatada;
+	}
+	
+	public String formatarHora(LocalTime hora) {
+		String horaFormatada = data.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+		return horaFormatada;
+	}
+
+
+	public LocalDate getData() {
+		return data;
+	}
+
+
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+
+
+	public LocalTime getHora() {
+		return hora;
+	}
+
+
+	public void setHora(LocalTime hora) {
+		this.hora = hora;
+	}
 	
 }

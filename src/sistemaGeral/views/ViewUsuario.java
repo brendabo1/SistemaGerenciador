@@ -1,5 +1,7 @@
 package sistemaGeral.views;
 
+import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ViewUsuario {
@@ -32,6 +34,14 @@ public class ViewUsuario {
 		return senha;
 	}
 	
+	public int menuInicial() throws InputMismatchException, NoSuchElementException {
+		int opcao;
+		Scanner input = new Scanner(System.in);
+		this.menus.menuInicial();
+		opcao = input.nextInt();
+		input.close();
+		return opcao;
+	}
 	
 
 }
