@@ -11,6 +11,7 @@ public class Venda extends EntidadesDoSistema{
 		private ArrayList<ItemCardapio> itens_comprados = new ArrayList<>();
 		private Double preco_total = 0.0;
 		private String forma_de_pagamento;
+		private static String preFixo = "VEN";
 
 
 		public Venda(String id, ArrayList<ItemCardapio> itens_comprados, String forma_de_pagamento) {
@@ -19,7 +20,6 @@ public class Venda extends EntidadesDoSistema{
 			
 			this.forma_de_pagamento = forma_de_pagamento;
 			this.id = id;
-			Venda.preFixo = "VEN";
 		}
 		
 		
@@ -82,6 +82,16 @@ public class Venda extends EntidadesDoSistema{
 	
 	public static String getPrefixo() {
 		return preFixo;
+	}
+
+
+	public static String getPreFixo() {
+		return preFixo;
+	}
+
+
+	public static void setPreFixo(String preFixo) {
+		Venda.preFixo = preFixo;
 	}
 		
 	

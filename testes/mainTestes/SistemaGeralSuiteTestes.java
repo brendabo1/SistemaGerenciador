@@ -4,7 +4,7 @@ import org.junit.platform.suite.api.SelectPackages;
 import org.junit.platform.suite.api.Suite;
 
 @Suite
-@SelectPackages("testeGerenciamentos")
+@SelectPackages({"testeGerenciamentos", "testeValidacoes"})
 public class SistemaGeralSuiteTestes {
 	
 }

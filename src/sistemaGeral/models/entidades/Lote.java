@@ -8,7 +8,7 @@ public class Lote extends EntidadesDoSistema {
 		private Double preco;
 		private LocalDate validade;
 		private Double quantidade_em_armazenamento;
-	
+		private static String preFixo = "LOT";
 		
 		
 		public Lote (Produto produto, Double quantidade_comprada, Double preco_unitario, LocalDate validade, String id) {
@@ -68,4 +68,17 @@ public class Lote extends EntidadesDoSistema {
 		public void setQuantidade_em_armazenamento(Double quantidade_em_armazenamento) {
 			this.quantidade_em_armazenamento = quantidade_em_armazenamento;
 		}
+
+
+
+		public static String getPreFixo() {
+			return preFixo;
+		}
+
+
+
+		public static void setPreFixo(String preFixo) {
+			Lote.preFixo = preFixo;
+		}
+		
 }

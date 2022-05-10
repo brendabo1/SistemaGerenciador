@@ -6,16 +6,21 @@ import sistemaGeral.views.ViewUsuario;
 
 public class ControllerUsuario {
 	
-	private GerenciamentoUsuario modelUsuario;
+	private GerenciamentoUsuario gerenUsuario;
 	private ViewUsuario tela;	
 
 	public ControllerUsuario(BancoDeDados bancoDados) {
-		this.modelUsuario = new GerenciamentoUsuario(bancoDados);
+		this.gerenUsuario = new GerenciamentoUsuario(bancoDados);
 		this.tela = new ViewUsuario();
 	}
 
 	public void autenticarUser() {
+		String id, senha;
 		try {
+			id = tela.login_ID();
+			senha = tela.login_senha();
+			
+			
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -24,6 +29,7 @@ public class ControllerUsuario {
 		
 		//TODO	
 	}
+	
 	
 	
 }

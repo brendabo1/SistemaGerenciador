@@ -7,26 +7,29 @@ public class Fornecedor extends EntidadesDoSistema {
 		private String nome;
 		private String endereco;
 		private HashMap<String, Produto> map_produtosFornecidos = new HashMap<>();
+		private static String preFixo = "FOR";	
 		
-		
-		
+				
+
 		public Fornecedor(String id, String CNPJ, String nome, String endereco) {
 			this.id = id;
 			this.CNPJ = CNPJ;
 			this.nome = nome;
 			this.endereco = endereco;
-			Fornecedor.preFixo = "FOR";
 		}
 	
 		
 		
 		@Override
-		public  String toString() {
-			String message = String.format("ID: %s  CNPJ: %s  NOME: %s  ENDEREÇO: %s", this.id, this.CNPJ, this.nome, this.endereco);
+		public String toString() {
+			String message = String.format("%10s %10s %10s %10s", this.id, this.CNPJ, this.nome, this.endereco);
 			return message;
 		}
 
-		
+		public String linhaTituloToString() {
+			String message = String.format("%10s %10s %10s %10s", "ID", "CNPJ", "NOME", "ENDERECO");
+			return message;
+		}
 		
 		public String getCNPJ() {
 			return CNPJ;
@@ -55,4 +58,20 @@ public class Fornecedor extends EntidadesDoSistema {
 		public HashMap<String, Produto> getMap_produtosFornecidos() {
 			return map_produtosFornecidos;
 		}
+		
+		public void setMap_produtosFornecidos(HashMap<String, Produto> map_produtosFornecidos) {
+			this.map_produtosFornecidos = map_produtosFornecidos;
+		}
+
+
+		public static void setPreFixo(String preFixo) {
+			Fornecedor.preFixo = preFixo;
+		}
+
+
+		public static String getPreFixo() {
+			return preFixo;
+		}
+
+
 }

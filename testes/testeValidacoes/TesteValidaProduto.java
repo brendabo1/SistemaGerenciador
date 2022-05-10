@@ -1,90 +1,34 @@
 package testeValidacoes;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.ValueSource;
 
+import sistemaGeral.models.BancoDeDados;
+import sistemaGeral.models.entidades.enums.UnidadeMedida;
+import sistemaGeral.models.gerenciadores.GerenciamentoFornecedor;
+import sistemaGeral.models.gerenciadores.GerenciamentoProduto;
 import sistemaGeral.models.validacoes.ValidaProduto;
 
 class TesteValidaProduto {
+	
+	@BeforeEach
+	public BancoDeDados inicializandoProdutoBancoDeDados() {
+		BancoDeDados banco_teste = new BancoDeDados();
+		GerenciamentoFornecedor gerenFornecedor = new GerenciamentoFornecedor(banco_teste);
+		//gerenFornecedor.cadastrar("Central das Massas", "11112312330001", "Rua da Paz, n201, Algoinhas");
+		GerenciamentoProduto gerenProduto = new GerenciamentoProduto(banco_teste, gerenFornecedor);
+		gerenProduto.cadastrar("Molho de tomate", gerenFornecedor.cadastrar("Central das Massas", "11112312330001", "Rua da Paz, n201, Algoinhas"), UnidadeMedida.L, 1.0);
+		return banco_teste;
+	}
 
 	@Test
-	void testNome_Vazio() {		
-		assertFalse(ValidaProduto.validarNome(""));
+	@ValueSource(listas = {inicializandoProdutoBancoDeDados()})
+	void testProdutoExistente(BancoDeDados listas) {
+		ValidaProduto validacao = new ValidaProduto();
+		validacao.produtoExistente(null, null, banco_teste);
 	}
-	
-	@Test
-	void testNome_EmBranco() {		
-		assertFalse(ValidaProduto.validarNome("  "));
-	}
-	
-	@Test
-	void testNome_SomenteNumeros() {		
-		assertFalse(ValidaProduto.validarNome("1668437"));
-	}
-	
-	@Test
-	void testNome_AlfaNumerico() {		
-		assertTrue(ValidaProduto.validarNome("Cacha�a51"));
-	}
-	@Test
-	void testNome_ComCaracteresEspeciais() {		
-		assertTrue(ValidaProduto.validarNome("#Batata da Casa"));
-	}
-	
-	@Test
-	void testNome_AlfanNumerico_e_CaracteresEspeciais() {		
-		assertTrue(ValidaProduto.validarNome("#Batata 4Queijos!"));
-	}
-	
-	@Test
-	void testPreco_Zero() {		
-		assertFalse(ValidaProduto.validarPreco(0.0));
-	}
-	
-	@Test
-	void testPreco_Negativo() {		
-		assertFalse(ValidaProduto.validarPreco(-25.5));
-	}
-	
-	@Test
-	void testPreco_Positivo() {		
-		assertTrue(ValidaProduto.validarPreco(15.50));
-	}
-	
-	@Test
-	void testValidade_Vazia() {		
-		assertFalse(ValidaProduto.validarValidade(""));
-	}
-	
-	@Test
-	void testValidade_EmBranco() {		
-		assertFalse(ValidaProduto.validarValidade("  "));
-	}
-	
-	@Test
-	void testValidade_Letras() {		
-		assertFalse(ValidaProduto.validarValidade("ddmmaaaa"));
-	}
-	
-	@Test
-	void testValidade_LetrasFormatadas() {		
-		assertFalse(ValidaProduto.validarValidade("dd/mm/aaaa"));
-	}
-	
-	@Test
-	void testValidade_AlfaNumerico() {		
-		assertFalse(ValidaProduto.validarValidade("dd/02/2022"));
-	}
-	
-	@Test
-	void testValidade_NaoFormatada() {		
-		assertFalse(ValidaProduto.validarValidade("01012022"));
-	}
-	
-	@Test
-	void testValidade_Formatada() {		
-		assertTrue(ValidaProduto.validarValidade("01/01/2022"));
-	}
+
 }
