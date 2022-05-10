@@ -8,7 +8,8 @@ import sistemaGeral.models.entidades.EntidadesDoSistema;
 
 
 abstract public class GerenciamentoGeral {
-		private HashSet<String> id_cadastrados = new HashSet<>();
+	
+	private HashSet<String> id_cadastrados = new HashSet<>();
 	
 	public  String gerarID(String preFixo) {
 			Random random = new Random();

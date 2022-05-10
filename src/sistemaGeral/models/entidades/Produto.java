@@ -7,7 +7,7 @@ public class Produto extends EntidadesDoSistema {
 		private Fornecedor fornecedor;
 		private UnidadeMedida unidade_medida;
 		private Double conteudo_produto;
-		
+		final private static String preFixo = "PRO";		
 
 		
 		public Produto(String id, String nome, Fornecedor fornecedor, UnidadeMedida unidade, Double conteudo_produto) {
@@ -17,7 +17,6 @@ public class Produto extends EntidadesDoSistema {
 			this.unidade_medida = unidade;
 			this.conteudo_produto = conteudo_produto;
 			
-			Produto.preFixo = "PRO";
 		}
 
 		
@@ -57,5 +56,10 @@ public class Produto extends EntidadesDoSistema {
 		}
 		public void setConteudo_produto(Double conteudo_produto) {
 			this.conteudo_produto = conteudo_produto;
+		}
+
+
+		public static String getPreFixo() {
+			return preFixo;
 		}
 }

@@ -11,20 +11,17 @@ import sistemaGeral.models.entidades.enums.FormasDePagamento;
 public class Venda extends EntidadesDoSistema{
 		private String data = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 		private String hora = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-		private HashMap<String, HashMap<ItemCardapio, Integer>> itens_comprados;
-		private Double preco_total = 0.0;
+		private HashMap<String, CarrinhoDeCompra> itens_comprados;
+		private Double preco_total;
 		private FormasDePagamento forma_de_pagamento;
+		final private static String preFixo = "VEN";
 
 
-		public Venda(String id, HashMap<String, HashMap<ItemCardapio, Integer>> itens_comprados, FormasDePagamento forma_de_pagamento) {
+		public Venda(String id,  HashMap<String, CarrinhoDeCompra> itens_comprados, FormasDePagamento forma_de_pagamento) {
 			this.id = id;
 			this.itens_comprados = itens_comprados;
 			this.forma_de_pagamento = forma_de_pagamento;
-			
-			for (ItemCardapio item : itens_comprados.values())
-				this.preco_total += item.getPreco();
-			
-			Venda.preFixo = "VEN";
+			this.preco_total = calcularPrecoTotal();
 		}
 		
 		
@@ -44,9 +41,11 @@ public class Venda extends EntidadesDoSistema{
 	
 	
 	private Double calcularPrecoTotal  () {
-		for (HashMap<ItemCardapio, Integer> map : this.itens_comprados.values()) {
-			this.preco_total += map.
+		Double preco_total = 0.0;
+		for (CarrinhoDeCompra compra : itens_comprados.values()) {
+			this.preco_total += compra.getPreco_compras();
 		}
+		return preco_total;
 	}	
 	
 	
@@ -64,10 +63,10 @@ public class Venda extends EntidadesDoSistema{
 		this.data = data;
 	}
 
-	public HashMap<String, HashMap<ItemCardapio, Integer>> getItens_comprados() {
+	public  HashMap<String, CarrinhoDeCompra> getItens_comprados() {
 		return itens_comprados;
 	}
-	public void setItens_comprados(HashMap<String, HashMap<ItemCardapio, Integer>> itens_comprados) {
+	public void setItens_comprados( HashMap<String, CarrinhoDeCompra> itens_comprados) {
 		this.itens_comprados = itens_comprados;
 	}
 
@@ -83,5 +82,10 @@ public class Venda extends EntidadesDoSistema{
 	}
 	public void setForma_de_pagamento(FormasDePagamento forma_de_pagamento) {
 		this.forma_de_pagamento = forma_de_pagamento;
+	}
+
+	
+	public static String getPreFixo() {
+		return preFixo;
 	}
 }

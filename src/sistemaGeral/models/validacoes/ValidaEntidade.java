@@ -10,7 +10,7 @@ import sistemaGeral.models.entidades.ItemCardapio;
 import sistemaGeral.models.entidades.Produto;
 import sistemaGeral.models.entidades.Usuario;
 
-public class ValidaEntidade {
+public interface ValidaEntidade {
 	public static boolean validarData(LocalDate data) {	
 		if(data.compareTo(LocalDate.now())>0) return true;
 		return false;

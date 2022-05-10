@@ -1,6 +1,11 @@
 package sistemaGeral.models.gerenciadores;
 
 import sistemaGeral.models.BancoDeDados;
+import java.io.FileNotFoundException;
+
+import com.itextpdf.text.DocumentException;
+
+import sistemaGeral.models.entidades.Fornecedor;
 
 public class TESTE_GERENCIAMENTO {
 	
@@ -14,5 +19,5 @@ public class TESTE_GERENCIAMENTO {
 				gerFornecedor.cadastrar("Joana", "4333", "Cidade Nova");
 				
 				System.out.println(gerFornecedor.listar(gerFornecedor.getMap_fornecedores()));
-		}
+
 }

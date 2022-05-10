@@ -10,6 +10,7 @@ public class ItemCardapio extends EntidadesDoSistema {
 		private Double preco;
 		private HashMap<String, IngredienteDoItem> ingredientes = new HashMap<>();
 		private CategoriasDeItens categoria;
+		final private static String preFixo = "ITM";
 
 
 		public ItemCardapio(String id, String nome, HashMap<String, IngredienteDoItem> ingredientes, Double preco, CategoriasDeItens categoria) {
@@ -18,7 +19,6 @@ public class ItemCardapio extends EntidadesDoSistema {
 			this.ingredientes = ingredientes;
 			this.preco = preco;
 			this.categoria = categoria;
-			ItemCardapio.preFixo = "ITM";
 		} 
 
 		
@@ -62,5 +62,10 @@ public class ItemCardapio extends EntidadesDoSistema {
 		}
 		public void setCategoria(CategoriasDeItens categoria) {
 			this.categoria = categoria;
+		}
+
+
+		public static String getPreFixo() {
+			return preFixo;
 		}
 }

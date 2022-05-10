@@ -27,7 +27,7 @@ public class GerenciamentoItemCardapio extends GerenciamentoGeral{
 				return null;
 		}
 					
-		public boolean verificarSePodeSerVendido (ItemCardapio item) {
+		public boolean verificarSePodeSerVendido (ItemCardapio item, Integer quantidade_item) {
 			for (IngredienteDoItem ingrediente : item.getIngredientes().values()) {
 				String nome_produto = ingrediente.getProduto().getNome().toLowerCase();
 				ArrayList<String> id_lotes = gerLote.getAgrupamentoDeLotes().get(nome_produto);
@@ -39,7 +39,7 @@ public class GerenciamentoItemCardapio extends GerenciamentoGeral{
 				for (String id : id_lotes) 
 						quantidadeNoEstoque += gerLote.getMap_estoque().get(id).getQuantidade_em_armazenamento();
 				
-				if (quantidadeNoEstoque < ingrediente.getQuantidade_usada())
+				if (quantidadeNoEstoque < (ingrediente.getQuantidade_usada() * quantidade_item))
 						return false;
 			}
 			return true;

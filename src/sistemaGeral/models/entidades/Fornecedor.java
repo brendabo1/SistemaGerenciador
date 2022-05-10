@@ -7,7 +7,7 @@ public class Fornecedor extends EntidadesDoSistema {
 		private String nome;
 		private String endereco;
 		private HashMap<String, Produto> map_produtosFornecidos = new HashMap<>();
-		
+		final private static String preFixo = "FOR";
 		
 		
 		public Fornecedor(String id, String CNPJ, String nome, String endereco) {
@@ -15,7 +15,6 @@ public class Fornecedor extends EntidadesDoSistema {
 			this.CNPJ = CNPJ;
 			this.nome = nome;
 			this.endereco = endereco;
-			Fornecedor.preFixo = "FOR";
 		}
 	
 		
@@ -54,5 +53,10 @@ public class Fornecedor extends EntidadesDoSistema {
 
 		public HashMap<String, Produto> getMap_produtosFornecidos() {
 			return map_produtosFornecidos;
+		}
+
+
+		public static String getPreFixo() {
+			return preFixo;
 		}
 }

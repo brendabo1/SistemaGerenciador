@@ -56,6 +56,11 @@ class TesteValidaString {
 	}
 	
 	@Test
+	void testeIsAlfabetica_Letras_CaracteresEspeciais() {
+		assertFalse(ValidaString.isAlfabetica("#Bebida", 5));
+	}
+	
+	@Test
 	void testeIsAlfabetica_ApenasEspacos() {
 		assertFalse(ValidaString.isAlfabetica("   ", 1));
 	}
@@ -102,17 +107,17 @@ class TesteValidaString {
 	
 	@Test
 	void testeIsAlfaNumerica_NomeComposto() {
-		assertFalse(ValidaString.isAlfaNumerica("Algoritmo teste", 1));
+		assertFalse(ValidaString.isAlfaNumerica("Marco Polo", 1));
 	}
 	
 	@Test
 	void testeIsAlfaNumerica_LetrasNumeros() {
-		assertTrue(ValidaString.isAlfaNumerica("t3st", 1));
+		assertTrue(ValidaString.isAlfaNumerica("senha123", 1));
 	}
 	
 	@Test
 	void testeIsAlfaNumerica_LetrasNumerosComCaracteresEspeciais() {
-		assertFalse(ValidaString.isAlfaNumerica("@lun.0", 1));
+		assertFalse(ValidaString.isAlfaNumerica("senh@_1", 1));
 	}
 	
 	@Test
@@ -122,7 +127,7 @@ class TesteValidaString {
 	
 	@Test
 	void testeIsNumerica_Vazia() {
-		assertFalse(ValidaString.isNumeric("", 1));
+		assertFalse(ValidaString.isNumeric("", 0));
 	}
 	
 	@Test
@@ -137,7 +142,7 @@ class TesteValidaString {
 	
 	@Test
 	void testeIsNumerica_ApenasLetras() {
-		assertFalse(ValidaString.isNumeric("abc def", 1));
+		assertFalse(ValidaString.isNumeric("preco", 1));
 	}
 	
 	@Test
@@ -154,5 +159,31 @@ class TesteValidaString {
 	void testeIsNumerica_ApenasNumeros() {
 		assertTrue(ValidaString.isNumeric("123", 1));
 	}
+	
+	@Test
+	void testeIsNumericaTamExato_Vazio_TamZero() {
+		assertFalse(ValidaString.isNumericTamExato("", 0));
+	}
+	
+	@Test
+	void testeIsNumericaTamExato_Tam5() {
+		assertTrue(ValidaString.isNumericTamExato("12345", 5));
+	}
+	
+	@Test
+	void testeIsNumericaTamExato_LetrasTam5() {
+		assertFalse(ValidaString.isNumericTamExato("cinco", 5));
+	}
+	
+	@Test
+	void testeIsNumericaTamExato_StringMenor() {
+		assertFalse(ValidaString.isNumericTamExato("1234", 5));
+	}
+	
+	@Test
+	void testeIsNumericaTamExato_StringMaior() {
+		assertFalse(ValidaString.isNumericTamExato("1234560051", 5));
+	}
+
 
 }

@@ -3,6 +3,7 @@ package sistemaGeral.models.entidades;
 public class IngredienteDoItem extends EntidadesDoSistema{
 	private Produto produto;
 	private Double quantidade_usada;
+	final private static String preFixo = "ING";
 
 	
 	 IngredienteDoItem (Produto produto, Double quantidade_usada, String id) {
@@ -10,7 +11,6 @@ public class IngredienteDoItem extends EntidadesDoSistema{
 		this.produto = produto;
 		this.quantidade_usada = quantidade_usada;
 		
-		IngredienteDoItem.preFixo = "ING";
 	}
 	 
 	 
@@ -33,5 +33,10 @@ public class IngredienteDoItem extends EntidadesDoSistema{
 	}
 	public void setQuantidade_usada(Double quantidade_usada) {
 		this.quantidade_usada = quantidade_usada;
+	}
+
+
+	public static String getPreFixo() {
+		return preFixo;
 	}
 }

@@ -1,11 +1,13 @@
 package sistemaGeral.models.entidades;
 
-public class CarrinhoDeCompra {
+public class CarrinhoDeCompra extends EntidadesDoSistema{
 		private ItemCardapio item_comprado;
 		private Integer quantidade_comprada;
 		private Double preco_compras = 0.0;
+		final static private String preFixo = "CAR";
 		
-		public CarrinhoDeCompra (ItemCardapio item_comprado, Integer quantidade_comprada) {
+		public CarrinhoDeCompra (ItemCardapio item_comprado, Integer quantidade_comprada, String id) {
+				this.id = id;
 				this.item_comprado = item_comprado;
 				this.quantidade_comprada = quantidade_comprada;
 				this.preco_compras += this.item_comprado.getPreco() * quantidade_comprada;
@@ -31,5 +33,15 @@ public class CarrinhoDeCompra {
 		}
 		public void setPreco_compras(Double preco_compras) {
 			this.preco_compras = preco_compras;
+		}
+
+		public static String getPreFixo() {
+			return preFixo;
+		}
+
+		
+		@Override
+		public String toString() {
+			return null;
 		}
 }
