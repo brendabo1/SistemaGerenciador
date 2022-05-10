@@ -16,7 +16,7 @@ public class GerenciamentoFornecedor extends GerenciamentoGeral {
 		public Fornecedor cadastrar(String nome, String CNPJ, String endereco) {
 			String novo_id = gerarID(Fornecedor.getPreFixo());
 			Fornecedor novo_fornecedor = new Fornecedor(novo_id, CNPJ, nome, endereco);
-			if(adicionar(map_fornecedores, novo_fornecedor))
+			if (adicionar(map_fornecedores, novo_fornecedor))
 				return novo_fornecedor;
 			return null;
 		}
@@ -46,5 +46,9 @@ public class GerenciamentoFornecedor extends GerenciamentoGeral {
 		public boolean removerProdutoEmFornecedor (String id_selecionado, Fornecedor fornecedor) {
 			Produto produto_removido = fornecedor.getMap_produtosFornecidos().remove(id_selecionado);
 			return (produto_removido != null);
+		}
+
+		public HashMap<String, Fornecedor> getMap_fornecedores() {
+			return map_fornecedores;
 		}
 }

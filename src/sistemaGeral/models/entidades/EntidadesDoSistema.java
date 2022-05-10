@@ -14,6 +14,4 @@ abstract public class EntidadesDoSistema {
 		public void setId(String id) {
 			this.id = id;
 		}
-
-
 }

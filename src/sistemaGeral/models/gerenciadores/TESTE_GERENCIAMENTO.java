@@ -1,10 +1,10 @@
 package sistemaGeral.models.gerenciadores;
 
+import sistemaGeral.models.BancoDeDados;
 import java.io.FileNotFoundException;
 
 import com.itextpdf.text.DocumentException;
 
-import sistemaGeral.models.BancoDeDados;
 import sistemaGeral.models.entidades.Fornecedor;
 import sistemaGeral.models.entidades.Produto;
 import sistemaGeral.models.entidades.enums.UnidadeMedida;
@@ -12,6 +12,7 @@ import sistemaGeral.models.entidades.enums.UnidadeMedida;
 public class TESTE_GERENCIAMENTO {
 	
 	
+<<<<<<< HEAD
 		public static void main(String[] args) throws FileNotFoundException, DocumentException {
 			//GerenciamentoFornecedor GE = new GerenciamentoFornecedor();
 			
@@ -29,4 +30,16 @@ public class TESTE_GERENCIAMENTO {
 			System.out.printf("%6d", 15);
 			
 		}
+=======
+		public static void main(String[] args) {
+				BancoDeDados banco = new BancoDeDados();
+				GerenciamentoFornecedor gerFornecedor = new GerenciamentoFornecedor(banco);
+				
+				gerFornecedor.cadastrar("Mario", "9821", "Rua Antonio");
+				gerFornecedor.cadastrar("Rogerio", "4312", "Praça da Margarida");
+				gerFornecedor.cadastrar("Joana", "4333", "Cidade Nova");
+				
+				System.out.println(gerFornecedor.listar(gerFornecedor.getMap_fornecedores()));
+
+>>>>>>> branch 'Gerenciamentos' of git@github.com:brendabo1/Gerenciador_MI.git
 }
