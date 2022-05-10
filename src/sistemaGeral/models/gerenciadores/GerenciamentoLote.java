@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import sistemaGeral.models.BancodeDados;
+import sistemaGeral.models.BancoDeDados;
 import sistemaGeral.models.DatasUtils;
 import sistemaGeral.models.entidades.Lote;
 import sistemaGeral.models.entidades.Produto;
@@ -14,7 +14,7 @@ public class GerenciamentoLote extends GerenciamentoGeral implements DatasUtils 
 		private HashMap<String, Lote> map_estoque;
 		private HashMap<String, ArrayList<String>> agrupamentoDeLotes;
 		
-		GerenciamentoLote (BancodeDados banco) {
+		GerenciamentoLote (BancoDeDados banco) {
 			this.map_estoque = banco.getMap_estoque();
 			this.agrupamentoDeLotes = banco.getAgrupamentoDeLotes();
 		}
@@ -27,8 +27,24 @@ public class GerenciamentoLote extends GerenciamentoGeral implements DatasUtils 
 	}
 		
 	public boolean editarProduto (Produto novo_produto, Lote lote) {
-		
+		lote.setProduto(novo_produto);
+		return lote.getProduto().equals(novo_produto);
 	}	
+	
+	public boolean editarQuantidadeComprada (Double nova_quantidadeComprada, Lote lote) {
+		lote.setUnidades_compradas(nova_quantidadeComprada);
+		return lote.getUnidades_compradas().equals(nova_quantidadeComprada);
+	}
+	
+	public boolean editarPrecoUnitario (Double novo_precoUnitario, Lote lote) {
+		lote.setPreco(novo_precoUnitario);
+		return lote.getPreco().equals(novo_precoUnitario);
+	}
+	
+	public boolean editarValidade (LocalDate nova_validade, Lote lote) {
+		lote.setValidade(nova_validade);
+		return lote.getValidade().equals(nova_validade);
+	}
 	
 	
 	private boolean inserirLoteOrdenado(Lote novo_lote) {
@@ -56,6 +72,5 @@ public class GerenciamentoLote extends GerenciamentoGeral implements DatasUtils 
 		return false;
 	}
 		
-	
-		
+
 }

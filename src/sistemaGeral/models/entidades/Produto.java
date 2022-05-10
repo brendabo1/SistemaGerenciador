@@ -16,6 +16,7 @@ public class Produto extends EntidadesDoSistema {
 			this.fornecedor = fornecedor;
 			this.unidade_medida = unidade;
 			this.conteudo_produto = conteudo_produto;
+			
 			Produto.preFixo = "PRO";
 		}
 
@@ -25,6 +26,7 @@ public class Produto extends EntidadesDoSistema {
 			String message = String.format("ID: %s  NOME: %s  FORNECEDOR: %s", id, nome, fornecedor.getNome());
 			return message;
 		}
+		
 		
 		public Fornecedor getFornecedor() {
 			return fornecedor;
@@ -39,11 +41,6 @@ public class Produto extends EntidadesDoSistema {
 		}
 		public void setNome(String nome) {
 			this.nome = nome;
-		}
-		
-		
-		public static String getPrefixo() {
-			return preFixo;
 		}
 
 

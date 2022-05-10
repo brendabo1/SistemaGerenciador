@@ -1,37 +1,30 @@
 package sistemaGeral.models.gerenciadores;
 
-import java.util.ArrayList;
-
+import java.util.HashMap;
 
 import sistemaGeral.models.BancoDeDados;
-import sistemaGeral.models.entidades.Fornecedor;
+import sistemaGeral.models.entidades.IngredienteDoItem;
 import sistemaGeral.models.entidades.ItemCardapio;
 import sistemaGeral.models.entidades.Produto;
 import sistemaGeral.models.entidades.enums.CategoriasDeItens;
 
 public class GerenciamentoItemCardapio extends GerenciamentoGeral{
-	
-	 	private ArrayList<ItemCardapio> lista_itensCardapio;
+		private HashMap<String, ItemCardapio> map_itemCardapio;
 	 	
-	 	public GerenciamentoItemCardapio(BancoDeDados bancoDados) {
-	 		this.lista_itensCardapio = bancoDados.getLista_itensCardapio();
+	 	public GerenciamentoItemCardapio(BancoDeDados banco) {
+	 		this.map_itemCardapio = banco.getMap_itensCardapio();
 	 	}
 	 	
-		public boolean cadastrar(String nome, ArrayList<Produto> ingredientes, Double preco, CategoriasDeItens categoria) {
-				String id = gerarID(this.lista_itensCardapio, ItemCardapio.getPrefixo());
-				ItemCardapio novo_itemCardapio = new ItemCardapio(id, nome, ingredientes, preco, categoria);
-				return adicionar(this.lista_itensCardapio, novo_itemCardapio);
+		public boolean cadastrar(String nome, HashMap<String, IngredienteDoItem> ingredientes, Double preco, CategoriasDeItens categoria) {
+				String novo_id = gerarID(ItemCardapio.getPreFixo());
+				ItemCardapio novo_itemCardapio = new ItemCardapio(novo_id, nome, ingredientes, preco, categoria);
+				return adicionar(map_itemCardapio, novo_itemCardapio);
 		}
 					
 			
 		public boolean editarNome(String novo_nome, ItemCardapio item) {
 				item.setNome(novo_nome);
 				return item.getNome().equals(novo_nome);
-		}
-		
-		public boolean editarIngredientes(ArrayList<Produto> novos_ingredientes, ItemCardapio item) {
-				item.setIngredientes(novos_ingredientes);
-				return item.getIngredientes().equals(novos_ingredientes);
 		}
 
 		public boolean editarPreco(Double novo_preco, ItemCardapio item) {
@@ -43,16 +36,28 @@ public class GerenciamentoItemCardapio extends GerenciamentoGeral{
 				item.setCategoria(nova_categoria);
 				return item.getCategoria().equals(nova_categoria);
 		}
-
-
-		public ArrayList<ItemCardapio> listarNomesBuscadosCorrespondentes(String nome_buscado) {
-			ArrayList<ItemCardapio> itensCorrespondentes = new ArrayList<>();
-			for(ItemCardapio item: this.lista_itensCardapio) {
-				if(item.getNome().contains(nome_buscado)) itensCorrespondentes.add(item);
-			}
-			return itensCorrespondentes;
-			
+		
+		public boolean editarProdutoDoIngrediente(Produto novo_produto, String id_selecionado, ItemCardapio item) {
+			IngredienteDoItem ingrediente = item.getIngredientes().get(id_selecionado);
+			if (ingrediente == null)
+					return false;
+			ingrediente.setProduto(novo_produto);
+			return ingrediente.getProduto().equals(novo_produto);
 		}
 		
+		public boolean editarQuantidadeDoIngrediente(Double nova_quantidade, String id_selecionado, ItemCardapio item) {
+			IngredienteDoItem ingrediente = item.getIngredientes().get(id_selecionado);
+			if (ingrediente == null)
+					return false;
+			ingrediente.setQuantidade_usada(nova_quantidade);
+			return ingrediente.getQuantidade_usada().equals(nova_quantidade);
+		}
 		
+		public boolean adicionarIngrediente(IngredienteDoItem novo_ingrediente, ItemCardapio item) {
+			return adicionar(item.getIngredientes(), novo_ingrediente);
+		}
+		
+		public boolean excluirIngrediente (String id_selecionado, ItemCardapio item) {
+			return excluir(item.getIngredientes(), id_selecionado);
+		}
 }

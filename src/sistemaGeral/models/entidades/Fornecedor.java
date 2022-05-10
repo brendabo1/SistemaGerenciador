@@ -1,24 +1,23 @@
 package sistemaGeral.models.entidades;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Fornecedor extends EntidadesDoSistema {
 		private String CNPJ;
 		private String nome;
 		private String endereco;
-		private ArrayList<Produto> produtos_fornecidos;
+		private HashMap<String, Produto> map_produtosFornecidos = new HashMap<>();
 		
 		
-	
 		
 		public Fornecedor(String id, String CNPJ, String nome, String endereco) {
 			this.id = id;
 			this.CNPJ = CNPJ;
 			this.nome = nome;
 			this.endereco = endereco;
-			this.produtos_fornecidos = new ArrayList<>();
 			Fornecedor.preFixo = "FOR";
 		}
+	
 		
 		
 		@Override
@@ -51,17 +50,9 @@ public class Fornecedor extends EntidadesDoSistema {
 		public void setEndereco(String endereco) {
 			this.endereco = endereco;
 		}
-		
-		
-		public ArrayList<Produto> getProdutos_fornecidos() {
-			return produtos_fornecidos;
-		}
-		public void setProdutos_fornecidos(ArrayList<Produto> produtos_fornecidos) {
-			this.produtos_fornecidos = produtos_fornecidos;
-		}
 
-		
-		public static String getPrefixo() {
-			return preFixo;
+
+		public HashMap<String, Produto> getMap_produtosFornecidos() {
+			return map_produtosFornecidos;
 		}
 }

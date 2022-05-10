@@ -1,21 +1,22 @@
 package sistemaGeral.models.gerenciadores;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 import sistemaGeral.models.BancoDeDados;
 import sistemaGeral.models.entidades.Fornecedor;
+import sistemaGeral.models.entidades.Produto;
 
 public class GerenciamentoFornecedor extends GerenciamentoGeral {
-		private ArrayList<Fornecedor> lista_fornecedores;
+		private HashMap<String, Fornecedor> map_fornecedores;
 	
-		public GerenciamentoFornecedor(BancoDeDados bancoDados) {
-			this.lista_fornecedores = bancoDados.getLista_fornecedores();
+		public GerenciamentoFornecedor(BancoDeDados banco) {
+			this.map_fornecedores = banco.getMap_fornecedores();
 		}
 		
 		public boolean cadastrar(String nome, String CNPJ, String endereco) {
-			String id = gerarID(this.lista_fornecedores, Fornecedor.getPrefixo());
-			Fornecedor novo_fornecedor = new Fornecedor(id, CNPJ, nome, endereco);
-			return adicionar(this.lista_fornecedores, novo_fornecedor);
+			String novo_id = gerarID(Fornecedor.getPreFixo());
+			Fornecedor novo_fornecedor = new Fornecedor(novo_id, CNPJ, nome, endereco);
+			return adicionar(map_fornecedores, novo_fornecedor);
 		}
 						
 		
@@ -34,21 +35,14 @@ public class GerenciamentoFornecedor extends GerenciamentoGeral {
 			return fornecedor.getEndereco().equals(novo_endereco);
 		}
 		
-		public Fornecedor buscarFornecedor_Nome(String nomeBuscado) {
-			for(Fornecedor fornecedor: this.lista_fornecedores) {
-				if(fornecedor.getNome().equals(nomeBuscado)) return fornecedor;
-			}
-			return null;
-			
+		
+		public boolean adicionarProdutoEmFornecedor (Produto novo_produto, Fornecedor fornecedor) {
+			fornecedor.getMap_produtosFornecidos().put(novo_produto.getId(), novo_produto);
+			return (fornecedor.getMap_produtosFornecidos().get(novo_produto.getId()).equals(novo_produto));
 		}
 		
-		public ArrayList<Fornecedor> listarNomesBuscadosCorrespondentes(String nome_buscado) {
-			ArrayList<Fornecedor> fornecedoresCorrespondentes = new ArrayList<>();
-			for(Fornecedor fornecedor: this.lista_fornecedores) {
-				if(fornecedor.getNome().contains(nome_buscado)) fornecedoresCorrespondentes.add(fornecedor);
-			}
-			return fornecedoresCorrespondentes;
-			
+		public boolean removerProdutoEmFornecedor (String id_selecionado, Fornecedor fornecedor) {
+			Produto produto_removido = fornecedor.getMap_produtosFornecidos().remove(id_selecionado);
+			return (produto_removido != null);
 		}
-			
 }
