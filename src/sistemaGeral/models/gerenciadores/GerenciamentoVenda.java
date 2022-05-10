@@ -16,47 +16,25 @@ import sistemaGeral.models.entidades.Venda;
 
 public class GerenciamentoVenda extends GerenciamentoGeral {
 	
-	
-	private HashMap<String, Venda> map_vendas;
-	
-	public GerenciamentoVenda(BancoDeDados banco) {
-		this.map_vendas = banco.getMap_vendas();
-	}
-	
-	
-	public boolean cadastrar(ArrayList<ItemCardapio> compras, String formaDePagamento) {
-		String id = gerarID(this.lista_vendas, Venda.getPrefixo());
-		Venda nova_venda = new Venda(id, compras, formaDePagamento);
-		return adicionar(this.lista_vendas, nova_venda);
-		
-	}
-	
-	
-	public boolean editarFormaDePagamento(String formaDePagamento, Venda venda) {
-		venda.setForma_de_pagamento(formaDePagamento);
-		return venda.getForma_de_pagamento().equals(formaDePagamento);
-	}
-	
-	//TO DO editar carrinho de compras, preco 
 
-	
-	/**
-	 * Gera um relat�rio PDF na ra�z do projeto contendo a mensagem recebida.
-	 * @param message
-	 * @throws FileNotFoundException
-	 * @throws DocumentException
-	 */
-	                             
-	public boolean gerarPDF(String message) throws FileNotFoundException, DocumentException {
-		Document docpdf = new Document();
-		PdfWriter.getInstance(docpdf, new FileOutputStream("src\\PDF_Teste.pdf")); //caminho relativo
-		docpdf.open();
-		boolean t= docpdf.add(new Paragraph(message));
-		docpdf.close();
-		return t;
+		private HashMap<String, Venda> map_vendas;
 		
-		//importar a lib itext
-	}
+		public GerenciamentoVenda(BancoDeDados banco) {
+			this.map_vendas = banco.getMap_vendas();
+		}
 		
 		
+		public boolean cadastrar(ArrayList<ItemCardapio> compras, String formaDePagamento) {
+			String id = gerarID(this.lista_vendas, Venda.getPrefixo());
+			Venda nova_venda = new Venda(id, compras, formaDePagamento);
+			return adicionar(this.lista_vendas, nova_venda);
+			
+		}
+		
+		
+		public boolean editarFormaDePagamento(String formaDePagamento, Venda venda) {
+			venda.setForma_de_pagamento(formaDePagamento);
+			return venda.getForma_de_pagamento().equals(formaDePagamento);
+		}
+			
 }

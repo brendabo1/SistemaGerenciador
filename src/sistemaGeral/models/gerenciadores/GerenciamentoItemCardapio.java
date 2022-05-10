@@ -1,18 +1,22 @@
 package sistemaGeral.models.gerenciadores;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import sistemaGeral.models.BancoDeDados;
 import sistemaGeral.models.entidades.IngredienteDoItem;
 import sistemaGeral.models.entidades.ItemCardapio;
+import sistemaGeral.models.entidades.Lote;
 import sistemaGeral.models.entidades.Produto;
 import sistemaGeral.models.entidades.enums.CategoriasDeItens;
 
 public class GerenciamentoItemCardapio extends GerenciamentoGeral{
 		private HashMap<String, ItemCardapio> map_itemCardapio;
+		private GerenciamentoLote gerLote;
 	 	
-	 	public GerenciamentoItemCardapio(BancoDeDados banco) {
+	 	public GerenciamentoItemCardapio(BancoDeDados banco, GerenciamentoLote gerLote) {
 	 		this.map_itemCardapio = banco.getMap_itensCardapio();
+	 		this.gerLote = gerLote;
 	 	}
 	 	
 		public boolean cadastrar(String nome, HashMap<String, IngredienteDoItem> ingredientes, Double preco, CategoriasDeItens categoria) {
@@ -21,6 +25,24 @@ public class GerenciamentoItemCardapio extends GerenciamentoGeral{
 				return adicionar(map_itemCardapio, novo_itemCardapio);
 		}
 					
+		public boolean verificarSePodeSerVendido (ItemCardapio item) {
+			for (IngredienteDoItem ingrediente : item.getIngredientes().values()) {
+				String nome_produto = ingrediente.getProduto().getNome().toLowerCase();
+				ArrayList<String> id_lotes = gerLote.getAgrupamentoDeLotes().get(nome_produto);
+				
+				if (id_lotes == null)
+						return false;
+				
+				Double quantidadeNoEstoque = 0.0;
+				for (String id : id_lotes) 
+						quantidadeNoEstoque += gerLote.getMap_estoque().get(id).getQuantidade_em_armazenamento();
+				
+				if (quantidadeNoEstoque < ingrediente.getQuantidade_usada())
+						return false;
+			}
+			return true;
+		}
+		
 			
 		public boolean editarNome(String novo_nome, ItemCardapio item) {
 				item.setNome(novo_nome);
