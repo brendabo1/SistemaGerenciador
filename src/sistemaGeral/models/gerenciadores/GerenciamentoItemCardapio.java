@@ -19,10 +19,12 @@ public class GerenciamentoItemCardapio extends GerenciamentoGeral{
 	 		this.gerLote = gerLote;
 	 	}
 	 	
-		public boolean cadastrar(String nome, HashMap<String, IngredienteDoItem> ingredientes, Double preco, CategoriasDeItens categoria) {
+		public ItemCardapio cadastrar(String nome, HashMap<String, IngredienteDoItem> ingredientes, Double preco, CategoriasDeItens categoria) {
 				String novo_id = gerarID(ItemCardapio.getPreFixo());
 				ItemCardapio novo_itemCardapio = new ItemCardapio(novo_id, nome, ingredientes, preco, categoria);
-				return adicionar(map_itemCardapio, novo_itemCardapio);
+				if (adicionar(map_itemCardapio, novo_itemCardapio))
+					return novo_itemCardapio;
+				return null;
 		}
 					
 		public boolean verificarSePodeSerVendido (ItemCardapio item) {

@@ -21,10 +21,12 @@ public class GerenciamentoLote extends GerenciamentoGeral implements DatasUtils 
 		}
 		
 		
-	public boolean cadastrar (Produto produto, Double quantidade_comprada, Double preco_unitario, LocalDate validade) {
+	public Lote cadastrar (Produto produto, Double quantidade_comprada, Double preco_unitario, LocalDate validade) {
 		String novo_id = gerarID(Lote.getPreFixo());
 		Lote novo_lote = new Lote(produto, quantidade_comprada, preco_unitario, validade, novo_id);
-		return (adicionar(map_estoque, novo_lote) && inserirLoteOrdenado(novo_lote));
+		if (adicionar(map_estoque, novo_lote) && inserirLoteOrdenado(novo_lote))
+			return novo_lote;
+		return null;
 	}
 	
 	

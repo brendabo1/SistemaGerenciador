@@ -22,7 +22,7 @@ public class Fornecedor extends EntidadesDoSistema {
 		
 		@Override
 		public  String toString() {
-			String message = String.format("ID: %s  CNPJ: %s  NOME: %s  ENDEREÇO: %s", this.id, this.CNPJ, this.nome, this.endereco);
+			String message = String.format("ID: %s  CNPJ: %s  NOME: %s  ENDEREÇO: %s\n", this.id, this.CNPJ, this.nome, this.endereco);
 			return message;
 		}
 

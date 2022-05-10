@@ -1,17 +1,18 @@
 package sistemaGeral.models.gerenciadores;
 
+import sistemaGeral.models.BancoDeDados;
+
 public class TESTE_GERENCIAMENTO {
 	
 	
 		public static void main(String[] args) {
-				GerenciamentoFornecedor GE = new GerenciamentoFornecedor();
+				BancoDeDados banco = new BancoDeDados();
+				GerenciamentoFornecedor gerFornecedor = new GerenciamentoFornecedor(banco);
 				
-				for (int i = 0; i < 10; i++) System.out.println(GE.gerarID("FOR"));
+				gerFornecedor.cadastrar("Mario", "9821", "Rua Antonio");
+				gerFornecedor.cadastrar("Rogerio", "4312", "Praça da Margarida");
+				gerFornecedor.cadastrar("Joana", "4333", "Cidade Nova");
 				
-				
-				
-				
-			
-			
+				System.out.println(gerFornecedor.listar(gerFornecedor.getMap_fornecedores()));
 		}
 }

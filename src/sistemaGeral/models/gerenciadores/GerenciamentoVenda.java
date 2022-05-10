@@ -1,21 +1,16 @@
 package sistemaGeral.models.gerenciadores;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.util.ArrayList;
+
 import java.util.HashMap;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
+
 
 import sistemaGeral.models.BancoDeDados;
 import sistemaGeral.models.entidades.ItemCardapio;
 import sistemaGeral.models.entidades.Venda;
+import sistemaGeral.models.entidades.enums.FormasDePagamento;
 
 public class GerenciamentoVenda extends GerenciamentoGeral {
-	
 		private HashMap<String, Venda> map_vendas;
 		
 		public GerenciamentoVenda(BancoDeDados banco) {
@@ -23,39 +18,23 @@ public class GerenciamentoVenda extends GerenciamentoGeral {
 		}
 		
 		
-		public boolean cadastrar(ArrayList<ItemCardapio> compras, String formaDePagamento) {
-			String id = gerarID(this.lista_vendas, Venda.getPrefixo());
-			Venda nova_venda = new Venda(id, compras, formaDePagamento);
-			return adicionar(this.lista_vendas, nova_venda);
-			
+		public Venda cadastrar(HashMap<String, ItemCardapio> itens_comprados, FormasDePagamento formaDePagamento) {
+			String nova_id = gerarID(Venda.getPreFixo());
+			Venda nova_venda = new Venda(nova_id, itens_comprados, formaDePagamento);
+			if (adicionar(this.map_vendas, nova_venda))
+				return nova_venda;
+			return null;
 		}
 		
 		
-		public boolean editarFormaDePagamento(String formaDePagamento, Venda venda) {
+		public boolean editarFormaDePagamento (FormasDePagamento formaDePagamento, Venda venda) {
 			venda.setForma_de_pagamento(formaDePagamento);
 			return venda.getForma_de_pagamento().equals(formaDePagamento);
 		}
 		
-		//TO DO editar carrinho de compras, preco 
-
-		
-		/**
-		 * Gera um relat�rio PDF na ra�z do projeto contendo a mensagem recebida.
-		 * @param message
-		 * @throws FileNotFoundException
-		 * @throws DocumentException
-		 */
-		                             
-		public boolean gerarPDF(String message) throws FileNotFoundException, DocumentException {
-			Document docpdf = new Document();
-			PdfWriter.getInstance(docpdf, new FileOutputStream("src\\PDF_Teste.pdf")); //caminho relativo
-			docpdf.open();
-			boolean t= docpdf.add(new Paragraph(message));
-			docpdf.close();
-			return t;
-			
-			//importar a lib itext
+		public boolean adicionarItemComprado (ItemCardapio novo_item, Venda venda) {
+			venda.getItens_comprados().put(novo_item.getId(), novo_item);
+			venda.setPreco_total(venda.getPreco_total() + novo_item.getPreco());
+			return true;
 		}
-		
-		
 }
