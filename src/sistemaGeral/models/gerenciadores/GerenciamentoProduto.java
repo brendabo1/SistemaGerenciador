@@ -26,7 +26,7 @@ public class GerenciamentoProduto extends GerenciamentoGeral{
 			this.gerFornecedor = gerFornecedor;
 		}
 					
-		public Produto cadastrar(String nome,  Fornecedor fornecedor, UnidadeMedida unidade, Double quantidade_conteudo) {
+		public Produto cadastrar(String nome, Fornecedor fornecedor, UnidadeMedida unidade, Double quantidade_conteudo) {
 			String novo_id = gerarID(Produto.getPreFixo());
 			Produto novo_produto = new Produto(novo_id, nome, fornecedor, unidade, quantidade_conteudo);
 			if (adicionar(map_produtos, novo_produto) && gerFornecedor.adicionarProdutoEmFornecedor(novo_produto, fornecedor))

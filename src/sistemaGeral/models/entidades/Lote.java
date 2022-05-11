@@ -36,8 +36,12 @@ public class Lote extends EntidadesDoSistema {
 	
 		@Override
 		public String toString() {
-			String message = String.format("ID: %s   PRODUTO: %s   QUANTIDADE: %.1f   PREÇO: R$%.2f   VALIDADE: %s", 
-																		  this.id, this.produto.getNome(), this.unidades_compradas, this.validade);
+			String message = String.format("%5s %5s R$%4.2f %2.1f %10s", this.id, this.produto.getNome(), this.preco,  this.unidades_compradas, this.validade);
+			return message;
+		}
+		
+		public String linhaTituloToString() {
+			String message = String.format("\n%2s %19s %22s %12s", "ID", "PRODUTO", "PREÇO", "QNT", "VALIDADE");
 			return message;
 		}
 	

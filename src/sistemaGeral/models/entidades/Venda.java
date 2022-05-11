@@ -3,7 +3,6 @@ package sistemaGeral.models.entidades;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import sistemaGeral.models.entidades.enums.FormasDePagamento;
@@ -14,8 +13,9 @@ import sistemaGeral.models.entidades.enums.FormasDePagamento;
  *@author Brenda Barbosa
  */
 public class Venda extends EntidadesDoSistema{
-		private String data = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-		private String hora = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+		private LocalDate data = LocalDate.now();
+		private LocalTime hora = LocalTime.now();
 		private HashMap<String, CarrinhoDeCompra> itens_comprados;
 		private Double preco_total;
 		private FormasDePagamento forma_de_pagamento;
@@ -37,11 +37,10 @@ public class Venda extends EntidadesDoSistema{
 		
 	@Override
 	public String toString() {
-		String message = String.format("ID: %s  DATA: %s  HORA: %s  \nCOMPRAS:\n", this.id, this.data, this.hora);
+		String message = String.format("%s  DATA: %s  HORA: %s  \nItem:\n", this.id, this.data, this.hora);
 		
 		for (CarrinhoDeCompra item: this.itens_comprados.values()) {
-			
-			message +=  item.getNome() + "   R$" + item.getPreco() + "\n";
+			message +=  item.getItem_comprado().getNome() +  "   R$" + item.getItem_comprado().getPreco() + item.getQuantidade_comprada() +"\n";
 		}
 		
 		message += "PREÇO TOTAL  R$: " + this.preco_total + 
@@ -50,6 +49,11 @@ public class Venda extends EntidadesDoSistema{
 		return message;
 	}
 	
+	public String linhaTituloToString() {
+		String message = String.format("\n%2s %19s %22s %12s %s %s %s", "ID", "DATA", "HORA", "ITEM", "PRECO UNT", "QNT");
+		return message;
+	}
+
 	
 	private Double calcularPrecoTotal  () {
 		Double preco_total = 0.0;
@@ -59,24 +63,12 @@ public class Venda extends EntidadesDoSistema{
 		return preco_total;
 	}	
 	
-	
-	public String getHora() {
-		return this.hora;
-	}
-	public void setHora(String hora) {
-		this.hora = hora;
-	}
-	
-	public String getData() {
-		return this.data;
-	}
-	public void setData(String data) {
-		this.data = data;
-	}
+
 
 	public  HashMap<String, CarrinhoDeCompra> getItens_comprados() {
 		return itens_comprados;
 	}
+	
 	public void setItens_comprados( HashMap<String, CarrinhoDeCompra> itens_comprados) {
 		this.itens_comprados = itens_comprados;
 	}
@@ -99,4 +91,36 @@ public class Venda extends EntidadesDoSistema{
 	public static String getPreFixo() {
 		return preFixo;
 	}
+
+		
+	public String formatarData(LocalDate data) {
+		String dataFormatada = data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		return dataFormatada;
+	}
+	
+	public String formatarHora(LocalTime hora) {
+		String horaFormatada = data.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+		return horaFormatada;
+	}
+
+
+	public LocalDate getData() {
+		return data;
+	}
+
+
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+
+
+	public LocalTime getHora() {
+		return hora;
+	}
+
+
+	public void setHora(LocalTime hora) {
+		this.hora = hora;
+	}
+	
 }

@@ -10,10 +10,11 @@ package sistemaGeral.models.entidades;
  */
 public class CarrinhoDeCompra extends EntidadesDoSistema{
 		private ItemCardapio item_comprado;
-		private Integer quantidade_comprada;
+		private int quantidade_comprada;
 		private Double preco_compras = 0.0;
 		final static private String preFixo = "CAR";
 		
+
 		
 		/**
 		 * Cria uma entidade que representa a compra de um item.

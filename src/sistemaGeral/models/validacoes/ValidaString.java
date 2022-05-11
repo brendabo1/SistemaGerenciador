@@ -2,7 +2,7 @@ package sistemaGeral.models.validacoes;
 
 /**
  * Interface responsável por identificar e validar as Strings aceitas pelas entidades do sistema
- * @author Brenda Barboosa
+ * @author Brenda Barbosa
  * @author Elmer Carvalho
  */
 
@@ -23,7 +23,12 @@ public interface ValidaString {
 		}
 		return str;
 	}
-	
+	/**
+	 * Verifica se a string possui o tamanho mínimo especificado
+	 * @param entrada string a ser analisada
+	 * @param tam_min tam_min comprimento mínimo ao qual a String entrada deve atender
+	 * @return true se a string nao nula possuir comprimento igual ou superior ao tamanho minimo especificado
+	 */
 	public static boolean stringTamMin(String entrada, int tam_min) {
 		return (!entrada.isBlank() && entrada.trim().length() >= tam_min);		
 	}

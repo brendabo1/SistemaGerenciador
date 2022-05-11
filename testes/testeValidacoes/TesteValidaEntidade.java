@@ -24,7 +24,6 @@ class TesteValidaEntidade {
 		LocalDate data = LocalDate.of(2022, 1, 10);  //  10/01/2022
 		assertFalse(ValidaEntidade.validarData(data));
 	}
-	
-	
+		
 
 }

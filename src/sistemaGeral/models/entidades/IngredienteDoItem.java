@@ -25,10 +25,15 @@ public class IngredienteDoItem extends EntidadesDoSistema{
 	 
 	@Override
 	public String toString() {
-		String message = String.format("[%s] - %s  -  %f %s", produto.getId(), produto.getNome(), quantidade_usada, produto.getUnidade_medida());
+		String message = String.format("%10s %10s %6f %5s", produto.getId(), produto.getNome(), quantidade_usada, produto.getUnidade_medida());
 		return message;
 	}
 	
+
+	public String linhaTituloToString() {
+		String message = String.format("%10s %10s %3s %6s", "ID", "NOME", "QNT", "MEDIDA");
+		return message;
+	}
 
 	public Produto getProduto() {
 		return produto;

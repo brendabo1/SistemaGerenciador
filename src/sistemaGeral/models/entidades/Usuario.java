@@ -25,10 +25,15 @@ public class Usuario extends EntidadesDoSistema {
 		
 		@Override
 		public String toString() {
-			String message = String.format("ID: %s  NOME: %s", this.id, this.nome);
+			String message = String.format("%10s %10s", this.id, this.nome);
 			return message;
 		}
-		
+
+
+		public String linhaTituloToString() {
+			String message = String.format("%10s %10s", "ID", "NOME");
+			return message;
+		}
 		
 		public String getNome() {
 			return this.nome;

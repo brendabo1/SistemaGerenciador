@@ -19,7 +19,7 @@ public class ValidaProduto implements ValidaString, ValidaNumero{
 		Collection<Produto> collectionProdutos = bancoDados.getMap_produtos().values();
 		ArrayList<Produto> lista_produtos = new ArrayList<>(collectionProdutos);
 		for(Produto p:lista_produtos) {
-			if(p.getNome() == nomeProduto_buscado && p.getFornecedor().getNome() == nomeFornecedor_buscado) 
+			if(p.getNome().equals(nomeProduto_buscado) && p.getFornecedor().getNome().equals(nomeFornecedor_buscado)) 
 				return true;
 		}
 		return false;		

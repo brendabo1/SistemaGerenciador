@@ -21,6 +21,7 @@ public class TesteValidaNumero {
 	@Test
 	void test_isDoublePositivo_InteiroPositivo() {
 		assertTrue(ValidaNumero.isDoublePositivo(14));
+		
 	}
 	
 	@Test
