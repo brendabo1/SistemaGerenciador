@@ -1,5 +1,7 @@
 package sistemaGeral.models.gerenciadores;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
@@ -62,5 +64,11 @@ abstract public class GerenciamentoGeral {
 	
 	public <T extends EntidadesDoSistema> T buscarEntidade_ID(HashMap<String, T> map_entidade, String id_buscada) {
 			return map_entidade.get(id_buscada);
+	}
+	
+	public <T extends EntidadesDoSistema> ArrayList<T> convertHashToArr(HashMap<String, T> hash){
+		Collection<T> colecao = hash.values();
+		ArrayList<T> lista = new ArrayList<>(colecao);
+		return lista;
 	}
 }

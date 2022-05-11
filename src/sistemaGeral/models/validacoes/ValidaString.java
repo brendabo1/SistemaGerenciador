@@ -2,7 +2,7 @@ package sistemaGeral.models.validacoes;
 
 /**
  * Interface responsável por identificar e validar as Strings aceitas pelas entidades do sistema
- * @author Brenda Barboosa
+ * @author Brenda Barbosa
  * @author Elmer Carvalho
  */
 

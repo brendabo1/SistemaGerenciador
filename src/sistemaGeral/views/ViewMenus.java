@@ -23,7 +23,8 @@ public class ViewMenus {
 		System.out.println("[3] Cardapio");
 		System.out.println("[4] Produtos"); //Apenas os produtos cadastrados no sistema
 		System.out.println("[5] Vendas");
-		System.out.println("[6] Estoque");  //Produtos e seus dados (validade, quantidade)
+		System.out.println("[6] Estoque");
+		System.out.println("[7] Sair");
 		System.out.println("Opçao: ");
 		
 	}
@@ -39,6 +40,7 @@ public class ViewMenus {
 		System.out.println("[3] Listar");
 		System.out.println("[4] Excluir");
 		System.out.println("[5] Gerar PDF");
+		System.out.println("[6] Voltar");
 		
 	}
 	
@@ -50,6 +52,7 @@ public class ViewMenus {
 		System.out.println("[2] Editar");
 		System.out.println("[3] Listar");
 		System.out.println("[4] Excluir");
+		System.out.println("[5] Voltar");
 		
 	}
 	

@@ -14,6 +14,6 @@ public interface ValidaEntidade {
 	public static boolean validarData(LocalDate data) {	
 		if(data.compareTo(LocalDate.now())>0) return true;
 		return false;
-	}
+	}  //nao usar pra permitir verificar produtos vencidos
 
 }

@@ -1,6 +1,5 @@
 package sistemaGeral.models.entidades;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import sistemaGeral.models.entidades.enums.CategoriasDeItens;

@@ -28,10 +28,10 @@ public class Venda extends EntidadesDoSistema{
 		
 	@Override
 	public String toString() {
-		String message = String.format("%s  DATA: %s  HORA: %s  \nCOMPRAS:\n", this.id, this.data, this.hora);
+		String message = String.format("%s  DATA: %s  HORA: %s  \nItem:\n", this.id, this.data, this.hora);
 		
 		for (CarrinhoDeCompra item: this.itens_comprados.values()) {
-			message +=  item.getItem_comprado().getNome() + "   R$" + item.getPreco() + "\n";
+			message +=  item.getItem_comprado().getNome() +  "   R$" + item.getItem_comprado().getPreco() + item.getQuantidade_comprada() +"\n";
 		}
 		
 		message += "PREÇO TOTAL  R$: " + this.preco_total + 
@@ -40,6 +40,11 @@ public class Venda extends EntidadesDoSistema{
 		return message;
 	}
 	
+	public String linhaTituloToString() {
+		String message = String.format("\n%2s %19s %22s %12s %s %s %s", "ID", "DATA", "HORA", "ITEM", "PRECO UNT", "QNT");
+		return message;
+	}
+
 	
 	private Double calcularPrecoTotal  () {
 		Double preco_total = 0.0;

@@ -1,16 +1,30 @@
 package sistemaGeral.models.gerenciadores;
 
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
-
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import sistemaGeral.models.BancoDeDados;
 import sistemaGeral.models.entidades.CarrinhoDeCompra;
+import sistemaGeral.models.entidades.EntidadesDoSistema;
 import sistemaGeral.models.entidades.IngredienteDoItem;
 import sistemaGeral.models.entidades.ItemCardapio;
 import sistemaGeral.models.entidades.Lote;
 import sistemaGeral.models.entidades.Venda;
+import sistemaGeral.models.entidades.enums.CategoriasDeItens;
 import sistemaGeral.models.entidades.enums.FormasDePagamento;
 
 public class GerenciamentoVenda extends GerenciamentoGeral {
@@ -79,4 +93,75 @@ public class GerenciamentoVenda extends GerenciamentoGeral {
 				venda.getItens_comprados().remove(compra.getId());
 			return true;
 		}
+		
+		
+		public boolean gerarPDF(String titulo, ArrayList<Venda> listaVendas) throws FileNotFoundException, DocumentException {
+			Document docpdf = new Document(PageSize.A4, 10f, 10f, 10f, 10f);
+			PdfWriter.getInstance(docpdf, new FileOutputStream("src\\PDF_Venda.pdf")); 
+			docpdf.open();
+			Paragraph pTitulo = new Paragraph(15F , titulo, FontFactory.getFont(FontFactory.HELVETICA, 18F));
+			Paragraph pLinha = new Paragraph(12F , listaVendas.get(0).linhaTituloToString(), FontFactory.getFont(FontFactory.HELVETICA, 15F));
+			pTitulo.setAlignment(Element.ALIGN_CENTER);
+			docpdf.add(pTitulo);
+			docpdf.add(pLinha);
+			for(Venda f:listaVendas) {
+				Paragraph pMessage = new Paragraph(15F , f.toString(), FontFactory.getFont(FontFactory.HELVETICA, 15F));
+				pTitulo.setAlignment(Element.ALIGN_JUSTIFIED);
+				docpdf.add(pMessage);
+			}
+				
+			docpdf.close();
+			return true;
+		}
+		
+		public boolean gerarPDFVendaGeral(BancoDeDados bancoDados) throws FileNotFoundException, DocumentException {
+			ArrayList<Venda> listaVendasGeral = this.convertHashToArr(bancoDados.getMap_vendas());
+			this.gerarPDF("VENDAS", listaVendasGeral);
+			
+			 return true;
+		 }
+		
+		public ArrayList<Venda> listaVendasNoMes(int mes, BancoDeDados bancoDados){
+			ArrayList<Venda> listaVendas = this.convertHashToArr(bancoDados.getMap_vendas());
+			ArrayList<Venda> vendasNoMes = new ArrayList<>();
+			
+			for(Venda venda: listaVendas) {
+				if(venda.getData().getMonthValue() == mes){
+					vendasNoMes.add(venda);
+				}
+			}
+			return vendasNoMes;
+		}
+		
+		 public boolean gerarPDFPorMes(int mes, BancoDeDados bancoDados) throws FileNotFoundException, DocumentException {
+			ArrayList<Venda> vendas_periodo = this.listaVendasNoMes(mes, bancoDados);
+			String titulo = "Vendas no Mês: " + mes;
+			return this.gerarPDF(titulo, vendas_periodo);
+		 }
+		 
+		 public ArrayList<Venda> listaVendasporCategoria(CategoriasDeItens categoria, BancoDeDados bancoDados){
+			 //erros no Comparator e collection.sort
+			 ArrayList<Venda> listaVendas = this.convertHashToArr(bancoDados.getMap_vendas());
+			 ArrayList<Venda> vendasPorCategoria = new ArrayList<>();
+			 for(Venda venda: listaVendas) {
+				 ArrayList<CarrinhoDeCompra> listaPratosComprados = this.convertHashToArr(venda.getItens_comprados());
+				 for(CarrinhoDeCompra item: listaPratosComprados) {
+					if(item.getItem_comprado().getCategoria() == categoria) {
+						vendasPorCategoria.add(venda);
+					}
+				 }
+			 }	 
+			
+			 return vendasPorCategoria;	
+	
+			}
+		 
+		 public boolean gerarPDFCategoriaPrato(CategoriasDeItens categoria, BancoDeDados bancoDados) throws FileNotFoundException, DocumentException {
+				ArrayList<Venda> vendasCategoria = this.listaVendasporCategoria(categoria, bancoDados);
+				String titulo = "Vendas no Mês: " + categoria;
+				return this.gerarPDF(titulo, vendasCategoria);
+			 }
+		 
+		 
+		 
 }

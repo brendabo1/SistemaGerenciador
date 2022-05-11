@@ -26,17 +26,20 @@ public class TESTE {
 		 ArrayList<Fornecedor> lista_f = new ArrayList<>(collectionF);	
 		 
 		 Collection<Produto> collectionP = banco.getMap_produtos().values();
-		 ArrayList<Produto> lista_P = new ArrayList<>(collectionP);	
+		 ArrayList<Produto> lista_P = new ArrayList<>(collectionP);
+		 
+		 Collection<Venda> collectionV = banco.getMap_vendas().values();
+		 ArrayList<Venda> lista_V = new ArrayList<>(collectionV);
 		 
 		 Document docpdf = new Document(PageSize.A4, 10f, 10f, 10f, 10f);
 			PdfWriter.getInstance(docpdf, new FileOutputStream("src\\PDF_Teste.pdf")); //caminho relativo
 			docpdf.open();
 			Paragraph pTitulo = new Paragraph(15F , titulo, FontFactory.getFont(FontFactory.HELVETICA, 18F));
-			Paragraph pLinha = new Paragraph(12F , lista_P.get(0).linhaTituloToString(), FontFactory.getFont(FontFactory.HELVETICA, 15F));
+			Paragraph pLinha = new Paragraph(12F , lista_V.get(0).linhaTituloToString(), FontFactory.getFont(FontFactory.HELVETICA, 15F));
 			pTitulo.setAlignment(Element.ALIGN_CENTER);
 			docpdf.add(pTitulo);
 			docpdf.add(pLinha);
-			for(Produto f:lista_P) {
+			for(Venda f:lista_V) {
 				Paragraph pMessage = new Paragraph(15F , f.toString(), FontFactory.getFont(FontFactory.HELVETICA, 15F));
 				pTitulo.setAlignment(Element.ALIGN_JUSTIFIED);
 				docpdf.add(pMessage);
@@ -48,9 +51,7 @@ public class TESTE {
 			//importar a lib itext
 		}
 	 
-	 public boolean gerarPDFVendaGeral(String titulo, BancoDeDados banco) {
-		 return true;
-	 }
+	 
 	 
 	 public boolean gerarPDFPorPeriodo(String periodo, BancoDeDados banco) {
 		Collection<Venda> collectionVendas = banco.getMap_vendas().values();
