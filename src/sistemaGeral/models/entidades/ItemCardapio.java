@@ -4,6 +4,12 @@ import java.util.HashMap;
 
 import sistemaGeral.models.entidades.enums.CategoriasDeItens;
 
+
+/**
+ * Entidade referente aos itens que compoe o cardapio.
+ * @author Elmer Carvalho
+ *@author Brenda Barbosa
+ */
 public class ItemCardapio extends EntidadesDoSistema {
 		private String nome;
 		private Double preco;
@@ -11,7 +17,15 @@ public class ItemCardapio extends EntidadesDoSistema {
 		private CategoriasDeItens categoria;
 		final private static String preFixo = "ITM";
 
-
+		
+		/**
+		 * Construtor do item.
+		 * @param id Identificação do item.
+		 * @param nome Nome do item.
+		 * @param ingredientes HashMap dos ingredientes que compoe o item.
+		 * @param preco Preco do item.
+		 * @param categoria Categoria do item.
+		 */
 		public ItemCardapio(String id, String nome, HashMap<String, IngredienteDoItem> ingredientes, Double preco, CategoriasDeItens categoria) {
 			this.id = id;
 			this.nome = nome;

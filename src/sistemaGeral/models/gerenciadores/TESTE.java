@@ -2,8 +2,13 @@ package sistemaGeral.models.gerenciadores;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+<<<<<<< HEAD
+import java.util.Set;
+import java.util.TreeSet;
+=======
 import java.util.ArrayList;
 import java.util.Collection;
+>>>>>>> 274760bbc9b264d2801c042ca4d547fa12f2086f
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -20,6 +25,11 @@ import sistemaGeral.models.entidades.Venda;
 
 
 public class TESTE {
+<<<<<<< HEAD
+			public static void main(String[] args) {
+				System.out.println("\033[0;31m" + "BRENDA" + "\033[0m");
+			}
+=======
 	
 	 public void gerarPDF(String titulo, BancoDeDados banco) throws FileNotFoundException, DocumentException {
 		 Collection<Fornecedor> collectionF = banco.getMap_fornecedores().values();
@@ -49,6 +59,7 @@ public class TESTE {
 			
 			
 			//importar a lib itext
+>>>>>>> 274760bbc9b264d2801c042ca4d547fa12f2086f
 		}
 	 
 	 
@@ -77,4 +88,3 @@ public class TESTE {
 	
 	
 
-}

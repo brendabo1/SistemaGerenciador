@@ -3,11 +3,15 @@ package sistemaGeral.models.entidades;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import sistemaGeral.models.entidades.enums.FormasDePagamento;
 
+/**
+ * Entidade referente a representacao de vendas no sistema.
+ * @author Elmer Carvalho
+ *@author Brenda Barbosa
+ */
 public class Venda extends EntidadesDoSistema{
 
 		private LocalDate data = LocalDate.now();
@@ -17,7 +21,12 @@ public class Venda extends EntidadesDoSistema{
 		private FormasDePagamento forma_de_pagamento;
 		final private static String preFixo = "VEN";
 
-
+		/**
+		 * Construtor de venda.
+		 * @param id identificacao de venda.
+		 * @param itens_comprados HashMap dos itens comprados.
+		 * @param forma_de_pagamento forma de pagamento da venda.
+		 */
 		public Venda(String id,  HashMap<String, CarrinhoDeCompra> itens_comprados, FormasDePagamento forma_de_pagamento) {
 			this.id = id;
 			this.itens_comprados = itens_comprados;

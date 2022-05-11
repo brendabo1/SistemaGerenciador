@@ -1,7 +1,14 @@
 package sistemaGeral.models.entidades;
 
 import java.util.HashMap;
+import java.util.Objects;
 
+
+/**
+ * Entidade referente ao fornecedor de produtos do sistema.
+ * @author Elmer Carvalho
+ *@author Brenda Barbosa
+ */
 public class Fornecedor extends EntidadesDoSistema {
 		private String CNPJ;
 		private String nome;
@@ -9,7 +16,13 @@ public class Fornecedor extends EntidadesDoSistema {
 		private HashMap<String, Produto> map_produtosFornecidos = new HashMap<>();
 		final private static String preFixo = "FOR";
 		
-		
+		/**
+		 * Construtor da entidade fornecedor.
+		 * @param id Identificação única da entidade.
+		 * @param CNPJ cnpj do fornecedor.
+		 * @param nome nome do fornecedor.
+		 * @param endereco endereço do fornecedor.
+		 */
 		public Fornecedor(String id, String CNPJ, String nome, String endereco) {
 			this.id = id;
 			this.CNPJ = CNPJ;
@@ -31,7 +44,23 @@ public class Fornecedor extends EntidadesDoSistema {
 			return message;
 		}
 
-		
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Fornecedor other = (Fornecedor) obj;
+			return Objects.equals(CNPJ, other.CNPJ) && Objects.equals(endereco, other.endereco)
+					&& Objects.equals(map_produtosFornecidos, other.map_produtosFornecidos)
+					&& Objects.equals(nome, other.nome);
+		}
+
+
+
 		public String getCNPJ() {
 			return CNPJ;
 		}

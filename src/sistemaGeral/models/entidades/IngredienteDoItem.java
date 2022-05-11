@@ -1,16 +1,25 @@
 package sistemaGeral.models.entidades;
 
+/**
+ * Entidade responsavel por compor os Itens do Cardapio.
+ * @author Elmer Carvalho
+ *@author Brenda Barbosa
+ */
 public class IngredienteDoItem extends EntidadesDoSistema{
 	private Produto produto;
 	private Double quantidade_usada;
 	final private static String preFixo = "ING";
 
-	
-	 IngredienteDoItem (Produto produto, Double quantidade_usada, String id) {
+	/**
+	 * Construtor do ingrediente.
+	 * @param produto Entidade produto utilizado.
+	 * @param quantidade_usada Quantidade do produto.
+	 * @param id Identificação do Ingrediente. 
+	 */
+	 public IngredienteDoItem (Produto produto, Double quantidade_usada, String id) {
 		this.id = id;
 		this.produto = produto;
 		this.quantidade_usada = quantidade_usada;
-		
 	}
 	 
 	 

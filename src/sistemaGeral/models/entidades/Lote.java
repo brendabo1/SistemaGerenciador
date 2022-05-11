@@ -2,6 +2,11 @@ package sistemaGeral.models.entidades;
 
 import java.time.LocalDate;
 
+/**
+ * Entidade referente a compra de produtos e suas quantidades.
+ * @author Elmer Carvalho
+ *@author Brenda Barbosa
+ */
 public class Lote extends EntidadesDoSistema {
 		private Produto produto;
 		private Double unidades_compradas;
@@ -10,7 +15,14 @@ public class Lote extends EntidadesDoSistema {
 		private Double quantidade_em_armazenamento;
 		final private static String preFixo = "LOT";
 		
-		
+		/**
+		 * Construtor da entidade lote.
+		 * @param produto produto que compoe a compra do lote.
+		 * @param quantidade_comprada quantidade comprada de produto.
+		 * @param preco_unitario preco do produto.
+		 * @param validade validade do produto.
+		 * @param id identificacao do produto.
+		 */
 		public Lote (Produto produto, Double quantidade_comprada, Double preco_unitario, LocalDate validade, String id) {
 				this.produto = produto;
 				this.unidades_compradas = quantidade_comprada;
