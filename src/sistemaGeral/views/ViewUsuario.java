@@ -15,42 +15,55 @@ public class ViewUsuario {
 				+ "Realize o cadastro para logar no sistema.\n");
 	}
 	
-	public void login_ID() {
+	public String login_ID() throws NoSuchElementException{
 		String id;
-		//Scanner input = new Scanner(System.in);
+		Scanner input = new Scanner(System.in);
 		this.menus.cabecalhoMenu("LOGIN", 20);
 		System.out.println("ID: ");
-		//id = input.nextLine().trim();
-		//input.close();
+		id = input.nextLine().trim();
+		return id;
 	}
 	
-	public void login_senha() {
+	public String login_senha() {
 		String senha;
+		Scanner input = new Scanner(System.in);
 		System.out.println("SENHA: ");
-		//Scanner input = new Scanner(System.in);
-		//senha = input.nextLine().trim();
+		senha = input.nextLine();
+		return senha;
+	}
+	
+	
+	public int menuInicial() throws InputMismatchException, NoSuchElementException {
+		int opcao;
+		Scanner input = new Scanner(System.in);
+		this.menus.menuInicial();
+		opcao = input.nextInt();
+		return opcao;
 		
 	}
 	
-	
-	public void menuInicial() throws InputMismatchException, NoSuchElementException {
-		int opcao;
-		//Scanner input = new Scanner(System.in);
-		this.menus.menuInicial();
-		//opcao = input.nextInt();
-		//input.close();
-	}
-	
-	public void exibirMensagemErro(String mensagem) {
+	public void exibirMensagem(String mensagem) {
 		System.out.println(mensagem);
 	}
-	
-	public void subMenu() {
-		this.menus.subMenu_semPDF("USUARIOS", 15);
+	public void exibirCabecalho(String titulo) {
+		this.menus.cabecalhoMenu(titulo, 20);
 	}
 	
-	public void cadastro() {
-		this.menus.cabecalhoMenu("CADASTRO", 15);
+	public int subMenu() throws InputMismatchException, NoSuchElementException {
+		int opcao;
+		Scanner input = new Scanner(System.in);
+		this.menus.subMenu_semPDF("USUARIOS", 20);
+		opcao = input.nextInt();
+		return opcao;
+	}
+	
+	public String cadastro() throws NoSuchElementException{
+		String nome;
+		Scanner input = new Scanner(System.in);
+		this.menus.cabecalhoMenu("CADASTRO", 20);
+		System.out.println("Nome: ");
+		nome = input.nextLine();
+		return nome;
 	}
 	
 	

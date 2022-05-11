@@ -1,6 +1,8 @@
 package sistemaGeral.models.validacoes;
 
 import java.util.Collection;
+import java.util.HashMap;
+
 import sistemaGeral.models.BancoDeDados;
 import sistemaGeral.models.entidades.Fornecedor;
 
@@ -43,13 +45,20 @@ public class ValidaFornecedor implements ValidaString, ValidaEntidade {
 	 * @param bancoDados banco responsável por armazenar as estruturas de dados do sistema
 	 * @return true se o cnpj já estiver cadastrado no sistema
 	 */
-	public boolean isFornecedoroExistente(String cnpjBuscado, BancoDeDados bancoDados) {
-		Collection<Fornecedor> fornecedores = bancoDados.getMap_fornecedores().values();
+	public boolean isFornecedoroExistente(String cnpjBuscado, HashMap<String, Fornecedor> mapFornecedores) {
+		Collection<Fornecedor> fornecedores = mapFornecedores.values();
 		for(Fornecedor f:fornecedores) {
 			if(f.getCNPJ().equals(cnpjBuscado)) 
 				return true;
 		}
 		return false;		
+	}
+	
+	public boolean isFornecedorValido(String nome, String cnpj, String end, HashMap<String, Fornecedor> mapFornecedores) {
+		if(this.isNomeValido(nome) && this.isCnpjValido(cnpj) && this.isEnderecoValido(end)) {
+			if(!this.isFornecedoroExistente(cnpj, mapFornecedores)) return true;
+		}
+		throw new IllegalArgumentException();
 	}
 
 }

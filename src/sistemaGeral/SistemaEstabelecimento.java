@@ -27,57 +27,58 @@ public class SistemaEstabelecimento {
 		//private Usuario usuarioLogado = null;
 		*/		
 		public void run() {
-			String opcao, op_submenu;
+			int opcao, op_submenu; 
+			//String op_submenu;
 			boolean userAutenticado;
 			
 			ctrUsuario.msgAbertura();
 			do {
 				userAutenticado = this.ctrUsuario.autenticarUser();
 			}while(!userAutenticado);
-			
-			opcao = ctrUsuario.menuInicial();
-			switch(opcao) {
-			case "1": {
-				op_submenu = this.ctrUsuario.opcaoSubMenu();
-				
-			break;
-		
-			}			
+			while(sistema_on) {
+				opcao = ctrUsuario.menuInicial();
+				switch(opcao) {
+				case 1: {
+					this.ctrUsuario.subMenu();
+					
+				break;
+				}		
+				}
+			}
 		}
-	}
-			/*
-			case "2": {
-				menu_switch(2);
-				break;
-			}
-			
-			case "3": {
-				menu_switch(3);
-				break;
-			}
-			
-			case "4": {
-				menu_switch(4);
-				break;
-			}
-			
-			case "5": {
-				menu_switch(5);
-				break;
-			}
-			
-			case "6": {
-				System.out.println("Programa Encerrado . . .");
-				menu = false;
-				sistema_on = false;
-				break;
-			}
-			
-			default: {
-				System.out.println("Digite 1, 2, 3, 4, 5 ou 6");
-				break;
-			}
-			
+		/*
+				case 2: {
+					menu_switch(2);
+					break;
+				}
+				
+				case "3": {
+					menu_switch(3);
+					break;
+				}
+				
+				case "4": {
+					menu_switch(4);
+					break;
+				}
+				
+				case "5": {
+					menu_switch(5);
+					break;
+				}
+				
+				case "6": {
+					System.out.println("Programa Encerrado . . .");
+					menu = false;
+					sistema_on = false;
+					break;
+				}
+				
+				default: {
+					System.out.println("Digite 1, 2, 3, 4, 5 ou 6");
+					break;
+				}
+			}	
 		}
 	}*/
 		

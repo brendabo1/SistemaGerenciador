@@ -1,10 +1,12 @@
 package sistemaGeral.controllers;
 
+import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import sistemaGeral.models.BancoDeDados;
+import sistemaGeral.models.entidades.Usuario;
 import sistemaGeral.models.gerenciadores.GerenciamentoUsuario;
 import sistemaGeral.models.validacoes.ValidaUsuario;
 import sistemaGeral.views.ViewUsuario;
@@ -12,10 +14,12 @@ import sistemaGeral.views.ViewUsuario;
 public class ControllerUsuario {
 	
 	private GerenciamentoUsuario gerenUsuario;
-	private ViewUsuario tela = new ViewUsuario();;	
+	private ViewUsuario tela = new ViewUsuario();
+	private HashMap<String, Usuario> map_usuarios;	
 
 	public ControllerUsuario(BancoDeDados bancoDados) {
 		this.gerenUsuario = new GerenciamentoUsuario(bancoDados);
+		map_usuarios = this.gerenUsuario.getMap_usuarios();
 	}
 
 	public void msgAbertura() {
@@ -32,91 +36,144 @@ public class ControllerUsuario {
 		String id, senha;
 		Scanner input = new Scanner(System.in);
 		try {
-			this.tela.login_ID();
-			id = input.nextLine();
-			this.tela.login_senha();
-			senha = input.nextLine();
+			id = this.tela.login_ID();
+			senha = this.tela.login_senha();
 			this.login(id, senha);
-			input.close();
 			
 		} catch (IllegalArgumentException e) {
-			this.tela.exibirMensagemErro("ID ou Senha inválidos");
+			this.tela.exibirMensagem("ID ou Senha inválidos");
+			return false;
+		} catch (NoSuchElementException e) {
+			this.tela.exibirMensagem("ID ou Senha inválidos");
 			return false;
 		}
 		
 		return true;
 	}
 	
-	public String menuInicial() {
-		String opcao = null;
-		Scanner input = new Scanner(System.in);
-	
+	public int menuInicial() {
+		int opcao = 0;
 		try {
-			tela.menuInicial();
-			opcao = input.nextLine().trim();
-				
-		} catch (IllegalArgumentException e) {
-			this.tela.exibirMensagemErro("\nInsira uma opcao valida");
+		opcao = tela.menuInicial();		
+		} catch (InputMismatchException e) {
+			this.tela.exibirMensagem("\nInsira uma opcao valida");
 		} catch (NoSuchElementException e) {
-			this.tela.exibirMensagemErro("\nInsira uma opcao valida");
-		}
-		input.close();
+			this.tela.exibirMensagem("\nInsira uma opcao valida");
+		}	
 		return opcao;
-	
 	}
 
-	public String opcaoSubMenu() {
-		String opcao = null;
-		Scanner input = new Scanner(System.in);
+	public int opcaoSubMenu() {
+		int opcao = 0;
 	
 		try {
-			this.tela.subMenu();
-			opcao = input.nextLine().trim();
+			opcao = this.tela.subMenu();
 				
-		} catch (IllegalArgumentException e) {
-			this.tela.exibirMensagemErro("\nInsira uma opcao valida");
+		} catch (InputMismatchException e) {
+			this.tela.exibirMensagem("\nInsira uma opcao valida");
 		} catch (NoSuchElementException e) {
-			this.tela.exibirMensagemErro("\nInsira uma opcao valida");
+			this.tela.exibirMensagem("\nInsira uma opcao valida");
 		}
-		input.close();
 		return opcao;
 	
 	}
 	
 	public void subMenu() {
-		String opcao;
+		int opcao;
 		boolean continuar = true;
 		do {
 			opcao = this.opcaoSubMenu();
 			switch (opcao) {
-			case "1": {this.cadastro(); break;}
-			case "2": {this.edicao(); break;}
-			case "3": {this.listagem(); break;}
-			case "4": {this.exclusao(); break;}
-			case "5": {continuar = false; break;}
+			case 1: {this.cadastro(); break;}
+			case 2: {this.edicao(); break;}
+			case 3: {this.listagem(); break;}
+			case 4: {this.exclusao(); break;}
+			case 5: {continuar = false; break;}
+			default:{this.tela.exibirMensagem("Insira uma opcao valida"); break;}
 			}
 		}while(continuar);	
 	}
-		
+	
+	
 	public void cadastro() {
 		String nome, senha;
 		ValidaUsuario validacao = new ValidaUsuario();
 		Scanner input = new Scanner(System.in);
+		
 		try {
-			this.tela.login_ID();
-			id = input.nextLine();
-			this.tela.login_senha();
-			senha = input.nextLine();
-			this.login(id, senha);
-			input.close();
 			
+			nome = this.tela.cadastro();
+			tela.exibirMensagem("Senha: ");
+			senha = input.nextLine();
+			if(validacao.isUsuarioValido(nome, senha)) {
+				this.gerenUsuario.cadastrar(nome, senha);
+				tela.exibirMensagem("Usuário cadastrado com sucesso");
+			}
+		} catch(NoSuchElementException e){
+			tela.exibirMensagem("Usuário nao cadastrado. \nInsira uma opcao valida");
 		} catch (IllegalArgumentException e) {
-			this.tela.exibirMensagemErro("ID ou Senha inválidos");
+			this.tela.exibirMensagem("Usuário nao cadastrado. \nNome ou senha muito curtos");
 		}
 		
+	}
+	
+	public void edicao(){
+		String nome, id, senha;
+		Usuario user;
+		ValidaUsuario validacao = new ValidaUsuario();
+		Scanner input = new Scanner(System.in);
 		
-		validacao.isNomeValido(null)
-		validacao.isSenhaValido(null)
+		try {
+			this.tela.exibirCabecalho("EDITAR");
+			tela.exibirMensagem("ID: ");
+			id = input.nextLine();
+			user = (Usuario) this.gerenUsuario.buscarEntidade_ID(this.map_usuarios, id);
+			tela.exibirMensagem("Novo nome: ");
+			nome = input.nextLine();
+			tela.exibirMensagem("Nova senha: ");
+			senha = input.nextLine();
+			if(validacao.isUsuarioValido(nome, senha)) {
+				this.gerenUsuario.editarNome(nome, user);
+				this.gerenUsuario.editarSenha(senha, user);
+				tela.exibirMensagem("Usuário editado com sucesso");
+			}
+		} catch(NoSuchElementException e){
+			this.tela.exibirMensagem(e.getMessage());
+		} catch (IllegalArgumentException e) {
+			this.tela.exibirMensagem(e.getMessage());
+		}
+		
+	}
+	
+	public void listagem(){
+		String usuarios, topo = String.format("%10s %10s", "ID", "NOME");;
+		
+		this.tela.exibirCabecalho("USUARIOS");
+		usuarios = this.gerenUsuario.listar(this.map_usuarios);
+		if(usuarios == null)
+			this.tela.exibirMensagem("Nenhum usuario cadastrado");
+		else {
+			this.tela.exibirMensagem(topo);
+			this.tela.exibirMensagem(usuarios);
+		}
+	}
+	
+	public void exclusao() {
+		String id;
+		Usuario user;
+		Scanner input = new Scanner(System.in);
+		try {
+			this.tela.exibirCabecalho("EXCLUIR");
+			tela.exibirMensagem("ID: ");
+			id = input.nextLine();
+			user = (Usuario) this.gerenUsuario.buscarEntidade_ID(this.map_usuarios, id);
+			this.gerenUsuario.excluir(this.map_usuarios, id);
+			tela.exibirMensagem("Usuário excluido com sucesso");
+		} catch(NoSuchElementException e){
+			this.tela.exibirMensagem(e.getMessage());
+		} catch (IllegalArgumentException e) {
+			this.tela.exibirMensagem("Valor Invalido");
+		}
 	}
 	
 	

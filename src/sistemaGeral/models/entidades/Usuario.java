@@ -15,7 +15,7 @@ public class Usuario extends EntidadesDoSistema {
 		
 		@Override
 		public String toString() {
-			String message = String.format("%10s %10s", this.id, this.nome);
+			String message = String.format("\n%10s %10s", this.id, this.nome);
 			return message;
 		}
 
@@ -35,6 +35,11 @@ public class Usuario extends EntidadesDoSistema {
 		
 		public String getSenha() {
 			return this.senha;
+		}
+
+
+		public void setSenha(String senha) {
+			this.senha = senha;
 		}
 
 

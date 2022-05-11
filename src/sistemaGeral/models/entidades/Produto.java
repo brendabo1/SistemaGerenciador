@@ -22,7 +22,7 @@ public class Produto extends EntidadesDoSistema {
 		
 		@Override
 		public String toString() {
-			String message = String.format("%s %6s %10s", this.id, this.nome, this.fornecedor.getNome());
+			String message = String.format("\n%s %6s %10s", this.id, this.nome, this.fornecedor.getNome());
 			return message;
 		}
 	

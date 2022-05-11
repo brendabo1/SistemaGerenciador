@@ -1,6 +1,7 @@
 package sistemaGeral.models.gerenciadores;
 
 import java.util.HashMap;
+import java.util.NoSuchElementException;
 
 import sistemaGeral.models.BancoDeDados;
 import sistemaGeral.models.entidades.Usuario;
@@ -43,5 +44,24 @@ public class GerenciamentoUsuario extends GerenciamentoGeral {
 		public boolean editarNome(String novo_nome, Usuario usuario) {
 			usuario.setNome(novo_nome);
 			return usuario.getNome().equals(novo_nome);
+		}
+		
+		public boolean editarSenha(String nova_senha, Usuario usuario) {
+			usuario.setSenha(nova_senha);
+			return usuario.getSenha().equals(nova_senha);
+		}
+		
+		
+
+
+
+		public HashMap<String, Usuario> getMap_usuarios() {
+			return map_usuarios;
+		}
+
+
+
+		public void setMap_usuarios(HashMap<String, Usuario> map_usuarios) {
+			this.map_usuarios = map_usuarios;
 		}
 }

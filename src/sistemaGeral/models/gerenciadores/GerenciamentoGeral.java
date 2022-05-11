@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.NoSuchElementException;
 import java.util.Random;
 
 import sistemaGeral.models.entidades.EntidadesDoSistema;
@@ -62,8 +63,11 @@ abstract public class GerenciamentoGeral {
 	}
 	
 	
-	public <T extends EntidadesDoSistema> T buscarEntidade_ID(HashMap<String, T> map_entidade, String id_buscada) {
-			return map_entidade.get(id_buscada);
+	public <T extends EntidadesDoSistema> EntidadesDoSistema buscarEntidade_ID(HashMap<String, T> map_entidade, String id_buscada) {
+		EntidadesDoSistema entidade;
+		entidade = map_entidade.get(id_buscada);
+		if(entidade == null) throw new NoSuchElementException("ID não encontrado");
+		return entidade;
 	}
 	
 	public <T extends EntidadesDoSistema> ArrayList<T> convertHashToArr(HashMap<String, T> hash){
