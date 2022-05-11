@@ -7,11 +7,20 @@ import sistemaGeral.models.entidades.Fornecedor;
 import sistemaGeral.models.entidades.Produto;
 import sistemaGeral.models.entidades.enums.UnidadeMedida;
 
+/**
+ * Classe para aplicacao de operacoes na entidade Produto.
+ * @author Elmer Carvalho
+ *@author Brenda Barbosa
+ */
 public class GerenciamentoProduto extends GerenciamentoGeral{
 		private HashMap<String, Produto> map_produtos;
 		private GerenciamentoFornecedor gerFornecedor;
 
-		
+		/**
+		 * Construtor do gerenciamento de produto.
+		 * @param banco objeto que arm
+		 * @param gerFornecedor
+		 */
 		public GerenciamentoProduto(BancoDeDados banco, GerenciamentoFornecedor gerFornecedor) {
 			this.map_produtos = banco.getMap_produtos();
 			this.gerFornecedor = gerFornecedor;

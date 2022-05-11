@@ -8,6 +8,11 @@ import java.util.HashMap;
 
 import sistemaGeral.models.entidades.enums.FormasDePagamento;
 
+/**
+ * Entidade referente a representacao de vendas no sistema.
+ * @author Elmer Carvalho
+ *@author Brenda Barbosa
+ */
 public class Venda extends EntidadesDoSistema{
 		private String data = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 		private String hora = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
@@ -16,7 +21,12 @@ public class Venda extends EntidadesDoSistema{
 		private FormasDePagamento forma_de_pagamento;
 		final private static String preFixo = "VEN";
 
-
+		/**
+		 * Construtor de venda.
+		 * @param id identificacao de venda.
+		 * @param itens_comprados HashMap dos itens comprados.
+		 * @param forma_de_pagamento forma de pagamento da venda.
+		 */
 		public Venda(String id,  HashMap<String, CarrinhoDeCompra> itens_comprados, FormasDePagamento forma_de_pagamento) {
 			this.id = id;
 			this.itens_comprados = itens_comprados;
@@ -29,7 +39,8 @@ public class Venda extends EntidadesDoSistema{
 	public String toString() {
 		String message = String.format("ID: %s  DATA: %s  HORA: %s  \nCOMPRAS:\n", this.id, this.data, this.hora);
 		
-		for (ItemCardapio item: this.itens_comprados.values()) {
+		for (CarrinhoDeCompra item: this.itens_comprados.values()) {
+			
 			message +=  item.getNome() + "   R$" + item.getPreco() + "\n";
 		}
 		

@@ -19,5 +19,7 @@ public class TESTE_GERENCIAMENTO {
 				gerFornecedor.cadastrar("Joana", "4333", "Cidade Nova");
 				
 				System.out.println(gerFornecedor.listar(gerFornecedor.getMap_fornecedores()));
+				
+				Set set = new
 
 }

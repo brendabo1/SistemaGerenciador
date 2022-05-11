@@ -1,43 +1,47 @@
 package testeGerenciamentos;
 
-import static org.junit.Assert.assertEquals;
 
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import sistemaGeral.models.BancoDeDados;
 import sistemaGeral.models.entidades.Fornecedor;
 import sistemaGeral.models.gerenciadores.GerenciamentoFornecedor;
+import sistemaGeral.models.gerenciadores.GerenciamentoProduto;
+
 
 
 
 class TesteGerenciamentoFornecedor {
+		
+	BancoDeDados banco = new BancoDeDados();
+	GerenciamentoFornecedor gerFornecedor = new GerenciamentoFornecedor(banco);
+	GerenciamentoProduto gerProduto = new GerenciamentoProduto(banco, gerFornecedor);
+	
+	@Test
+	void testCriandoUmFornecedor() {
+		assertNotNull(gerFornecedor.cadastrar("Paulo", "91919191919", "Rua Ansiedade"));
+	}
 
-	@Test
-	void testCadastrar_Fornecedor() {
-		GerenciamentoFornecedor gerenciamentoFornecedor = new GerenciamentoFornecedor();
-		assertTrue(gerenciamentoFornecedor.cadastrar("Central dos Papeis", "12312312332112", "Rua da Graça, n65"));
+	@Test 
+	void testEditarNomeDoFornecedor() {
+		Fornecedor fornecedor = gerFornecedor.cadastrar("Antonio", "9191919191", "Avenida Cansado");
+		assertTrue(gerFornecedor.editarNome("Gustavo", fornecedor));
 	}
 	
 	@Test
-	void testCadastrar_MultiplosFornecedores() {
-		GerenciamentoFornecedor gerenciamentoFornecedor = new GerenciamentoFornecedor();
-		gerenciamentoFornecedor.cadastrar("Casa do Molho", "cnpjnumerico", "Rua da Graça, n65");
-		gerenciamentoFornecedor.cadastrar("Felipe Martins ltda", "12312312332000", "Avenida Misericordia, n1");
-		gerenciamentoFornecedor.cadastrar("Central dos Papeis", "12312312330001", "Rua da Paz, n201");
-		gerenciamentoFornecedor.cadastrar("Distribuidora Camargo", "00012312332112", "Rua M, caminho 12, n5");
-		assertEquals(4, gerenciamentoFornecedor.getLista_fornecedores().size());
+	void testEditarCNPJdoFornecedor() {
+		Fornecedor fornecedor = gerFornecedor.cadastrar("Antonio", "9191919191", "Pra�a VouTrancar");
+		assertTrue(gerFornecedor.editarCNPJ("55555555555", fornecedor));
 	}
 	
 	@Test
-	void testEditar_NomeFornecedorValido() {
-		GerenciamentoFornecedor gerenciamentoFornecedor = new GerenciamentoFornecedor();
-		gerenciamentoFornecedor.cadastrar("Casa do Molho", "12312312332112", "Rua da Graça, n65");
-		Fornecedor fornecedor2 = new Fornecedor("FOR1", "cnpj", "nome", "endereco");
-		gerenciamentoFornecedor.cadastrar("Nome", "12312312332112", "endereco");
-		assertTrue(gerenciamentoFornecedor.editarNome("Distribuidora VALIDA", fornecedor2));
+	void testEditarEnderecoDoFornecedor() {
+		Fornecedor fornecedor = gerFornecedor.cadastrar("Antonio", "9191919191", "Rua SemTempo");
+		assertTrue(gerFornecedor.editarEndereco("Rua PrecisoRespirar", fornecedor));
 	}
 	
-
+	
 }
