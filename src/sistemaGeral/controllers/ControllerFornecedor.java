@@ -23,7 +23,7 @@ public class ControllerFornecedor {
 
 	public ControllerFornecedor(BancoDeDados bancoDados) {
 		this.gerenFornecedor = new GerenciamentoFornecedor(bancoDados);
-		this.map_fornecedores = this.gerenFornecedor.getMap_fornecedores();
+		this.map_fornecedores = this.gerenFornecedor.getMap_fornecedores();S
 	}
 	
 	

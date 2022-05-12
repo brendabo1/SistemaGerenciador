@@ -17,7 +17,7 @@ public class Venda extends EntidadesDoSistema{
 		private LocalDate data = LocalDate.now();
 		private LocalTime hora = LocalTime.now();
 		private HashMap<String, CarrinhoDeCompra> itens_comprados;
-		private Double preco_total;
+		private Double preco_total = 0.0;
 		private FormasDePagamento forma_de_pagamento;
 		final private static String preFixo = "VEN";
 

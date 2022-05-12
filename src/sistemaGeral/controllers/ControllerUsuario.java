@@ -174,7 +174,5 @@ public class ControllerUsuario {
 		} catch (IllegalArgumentException e) {
 			this.tela.exibirMensagem("Valor Invalido");
 		}
-	}
-	
-	
+	}	
 }

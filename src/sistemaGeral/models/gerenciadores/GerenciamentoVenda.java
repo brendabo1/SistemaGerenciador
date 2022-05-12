@@ -4,10 +4,7 @@ package sistemaGeral.models.gerenciadores;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -19,7 +16,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import sistemaGeral.models.BancoDeDados;
 import sistemaGeral.models.entidades.CarrinhoDeCompra;
-import sistemaGeral.models.entidades.EntidadesDoSistema;
 import sistemaGeral.models.entidades.IngredienteDoItem;
 import sistemaGeral.models.entidades.ItemCardapio;
 import sistemaGeral.models.entidades.Lote;
@@ -45,6 +41,11 @@ public class GerenciamentoVenda extends GerenciamentoGeral {
 			if (adicionar(this.map_vendas, nova_venda))
 				return nova_venda;
 			return null;
+		}
+		
+		public CarrinhoDeCompra criarCarrinhoDeCompra (ItemCardapio item_comprado, Integer quantidade_comprada) {
+				String novo_id = gerarID(CarrinhoDeCompra.getPreFixo());
+				return new CarrinhoDeCompra(item_comprado, quantidade_comprada, novo_id);
 		}
 		
 
@@ -80,14 +81,17 @@ public class GerenciamentoVenda extends GerenciamentoGeral {
 			
 			if (compra == null || quantidade_retirada <= 0 || quantidade_retirada > compra.getQuantidade_comprada())
 					return false;
+
 			
-			String nome_produto = compra.getItem_comprado().getNome().toLowerCase();
-			String id_lote = gerLote.getAgrupamentoDeLotes().get(nome_produto).get(0);
-			Lote lote = gerLote.getMap_estoque().get(id_lote);
-			
-			Double valor_devolvido = lote.getProduto().getConteudo_produto() * quantidade_retirada;
-			lote.setQuantidade_em_armazenamento(lote.getQuantidade_em_armazenamento() + valor_devolvido);
-			
+			HashMap<String, IngredienteDoItem> ingredientes_usados = compra.getItem_comprado().getIngredientes();
+			for (IngredienteDoItem ingrediente : ingredientes_usados.values()) {
+				String nome_produto = ingrediente.getProduto().getNome().toLowerCase();
+				String id_lote = gerLote.getAgrupamentoDeLotes().get(nome_produto).get(0);
+				Lote lote = gerLote.getMap_estoque().get(id_lote);
+				
+				Double valor_devolvido = ingrediente.getQuantidade_usada() * quantidade_retirada;
+				lote.setQuantidade_em_armazenamento(lote.getQuantidade_em_armazenamento() + valor_devolvido);
+			}
 			compra.setQuantidade_comprada(compra.getQuantidade_comprada() - quantidade_retirada);
 			if (compra.getQuantidade_comprada() == 0)
 				venda.getItens_comprados().remove(compra.getId());
