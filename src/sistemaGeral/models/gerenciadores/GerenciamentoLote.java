@@ -15,7 +15,6 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import sistemaGeral.models.BancoDeDados;
-import sistemaGeral.models.DatasUtils;
 import sistemaGeral.models.entidades.EntidadesDoSistema;
 import sistemaGeral.models.entidades.Lote;
 import sistemaGeral.models.entidades.Produto;
@@ -26,7 +25,7 @@ import sistemaGeral.models.entidades.Venda;
  * @author Elmer Carvalho
  *@author Brenda Barbosa
  */
-public class GerenciamentoLote extends GerenciamentoGeral implements DatasUtils {
+public class GerenciamentoLote extends GerenciamentoGeral {
 		private HashMap<String, Lote> map_estoque;
 		private HashMap<String, ArrayList<String>> agrupamentoDeLotes;
 		
@@ -160,7 +159,7 @@ public class GerenciamentoLote extends GerenciamentoGeral implements DatasUtils 
 			} else {
 				for (int i = 0; i < listaLote.size(); i++) {
 					Lote lote_cadastrado = map_estoque.get(listaLote.get(i));
-					if (DatasUtils.primeiraDataMenor(novo_lote.getValidade(), lote_cadastrado.getValidade())) {
+					if (novo_lote.getValidade().isBefore(lote_cadastrado.getValidade())) {
 							listaLote.add(i, novo_lote.getId());
 							return true;
 					}
@@ -209,6 +208,7 @@ public class GerenciamentoLote extends GerenciamentoGeral implements DatasUtils 
 	 		return this.gerarPDF(titulo, listaEstoqueProduto); 
 	 		
 	 	}
+	 	
 	 	
 	 	
 	 	public HashMap<String, Lote> getMap_estoque() {

@@ -10,7 +10,7 @@ package sistemaGeral.models.entidades;
  */
 public class CarrinhoDeCompra extends EntidadesDoSistema{
 		private ItemCardapio item_comprado;
-		private int quantidade_comprada;
+		private Integer quantidade_comprada;
 		private Double preco_compras = 0.0;
 		final static private String preFixo = "CAR";
 		
