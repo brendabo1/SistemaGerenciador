@@ -2,6 +2,7 @@ package sistemaGeral.models.gerenciadores;
 
 import java.util.HashMap;
 
+import sistemaGeral.controllers.ControllerFornecedor;
 import sistemaGeral.models.BancoDeDados;
 import sistemaGeral.models.entidades.Fornecedor;
 import sistemaGeral.models.entidades.Produto;
@@ -55,4 +56,17 @@ public class GerenciamentoProduto extends GerenciamentoGeral{
 			produto.setConteudo_produto(nova_quantidadeConteudo);
 			return produto.getConteudo_produto().equals(nova_quantidadeConteudo);
 		}
+
+		public HashMap<String, Produto> getMap_produtos() {
+			return map_produtos;
+		}
+
+		public void setMap_produtos(HashMap<String, Produto> map_produtos) {
+			this.map_produtos = map_produtos;
+		}
+
+		public GerenciamentoFornecedor getGerFornecedor() {
+			return gerFornecedor;
+		}
+		
 }

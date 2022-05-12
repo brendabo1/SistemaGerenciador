@@ -120,6 +120,7 @@ public class ControllerUsuario {
 	public void edicao(){
 		String nome, id, senha;
 		Usuario user;
+		int opcao; 
 		ValidaUsuario validacao = new ValidaUsuario();
 		Scanner input = new Scanner(System.in);
 		
@@ -128,15 +129,24 @@ public class ControllerUsuario {
 			tela.exibirMensagem("ID: ");
 			id = input.nextLine();
 			user = (Usuario) this.gerenUsuario.buscarEntidade_ID(this.map_usuarios, id);
-			tela.exibirMensagem("Novo nome: ");
-			nome = input.nextLine();
-			tela.exibirMensagem("Nova senha: ");
-			senha = input.nextLine();
-			if(validacao.isUsuarioValido(nome, senha)) {
-				this.gerenUsuario.editarNome(nome, user);
-				this.gerenUsuario.editarSenha(senha, user);
-				tela.exibirMensagem("Usuário editado com sucesso");
+			if(user != null) {
+				opcao = this.tela.edicao();
+				switch (opcao) {
+				case 1: {
+					nome = this.tela.entraDado("Novo nome: ");
+					if(validacao.isNomeValido(nome)) this.gerenUsuario.editarNome(nome, user);
+					else throw new IllegalArgumentException();
+					break;
+					}
+				case 2: {
+					senha = this.tela.entraDado("Nova senha: ");
+					if(validacao.isSenhaValido(senha)) this.gerenUsuario.editarSenha(senha, user);
+					else throw new IllegalArgumentException();
+					break;
+					}
+				}
 			}
+			tela.exibirMensagem("Usuário editado com sucesso");
 		} catch(NoSuchElementException e){
 			this.tela.exibirMensagem(e.getMessage());
 		} catch (IllegalArgumentException e) {

@@ -1,6 +1,8 @@
 package sistemaGeral;
 
 
+import sistemaGeral.controllers.ControllerFornecedor;
+import sistemaGeral.controllers.ControllerProdutos;
 import sistemaGeral.controllers.ControllerUsuario;
 import sistemaGeral.models.BancoDeDados;
 
@@ -9,23 +11,9 @@ public class SistemaEstabelecimento {
 		private boolean sistema_on = true;
 		private BancoDeDados bancoDeDados = new BancoDeDados();
 		private ControllerUsuario ctrUsuario = new ControllerUsuario(bancoDeDados);
-	/*
-		public static GerenciamentoUsuario gerUsuario = new GerenciamentoUsuario();
-		public static GerenciamentoFornecedor gerFornecedor = new GerenciamentoFornecedor();
-		public static GerenciamentoProduto gerProduto = new GerenciamentoProduto();
-		public static GerenciamentoItemCardapio gerItemCardapio = new GerenciamentoItemCardapio();
-		public static GerenciamentoVenda gerVenda = new GerenciamentoVenda();
-		
-		
-		public static ViewUsuario view_Usuario = new ViewUsuario(gerUsuario);
-		public static ViewProduto view_Produto = new ViewProduto(gerProduto);
-		public static ViewFornecedor view_Fornecedor = new ViewFornecedor(gerFornecedor);
-		public static ViewItemCardapio  view_ItemCardapio = new ViewItemCardapio(gerItemCardapio, gerProduto);
-		public static ViewVenda view_Venda = new ViewVenda(gerVenda, gerItemCardapio);
-		
-		
-		//private Usuario usuarioLogado = null;
-		*/		
+		private ControllerFornecedor ctrFornecedor = new ControllerFornecedor(bancoDeDados);
+		private ControllerProdutos ctrProduto = new ControllerProdutos(bancoDeDados, ctrFornecedor);
+			
 		public void run() {
 			int opcao, op_submenu; 
 			//String op_submenu;
@@ -43,33 +31,27 @@ public class SistemaEstabelecimento {
 					
 				break;
 				}		
-				}
-			}
-		}
-		/*
+				
 				case 2: {
-					menu_switch(2);
+					this.ctrFornecedor.subMenu();
 					break;
 				}
 				
-				case "3": {
-					menu_switch(3);
+				case 3: {
+					this.ctrProduto.subMenu();
 					break;
 				}
 				
-				case "4": {
-					menu_switch(4);
+				case 4: {
 					break;
 				}
 				
-				case "5": {
-					menu_switch(5);
+				case 5: {
 					break;
 				}
 				
-				case "6": {
+				case 6: {
 					System.out.println("Programa Encerrado . . .");
-					menu = false;
 					sistema_on = false;
 					break;
 				}
@@ -80,7 +62,7 @@ public class SistemaEstabelecimento {
 				}
 			}	
 		}
-	}*/
+	}
 		
 
 		public void submenus(int num) {

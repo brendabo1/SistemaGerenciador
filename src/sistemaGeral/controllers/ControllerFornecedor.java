@@ -59,17 +59,18 @@ public class ControllerFornecedor {
 	}
 	
 	public void cadastro() {
-		ArrayList<String> dadosFornecddor;
+		ArrayList<String> dadosFornecedor;
 		String nome, cnpj, end;
 		ValidaFornecedor validacao = new ValidaFornecedor();
 		Scanner input = new Scanner(System.in);
 		
 		try {	
-			dadosFornecddor = this.tela.cadastro();
-			nome = dadosFornecddor.get(0);
-			cnpj = dadosFornecddor.get(1);
-			end = dadosFornecddor.get(2);
+			dadosFornecedor = this.tela.cadastro();
+			nome = dadosFornecedor.get(0);
+			cnpj = dadosFornecedor.get(1);
+			end = dadosFornecedor.get(2);
 			if(validacao.isFornecedorValido(nome, cnpj, end, this.map_fornecedores)) {
+				this.gerenFornecedor.cadastrar(nome, cnpj, end);
 				tela.exibirMensagem("Usuário cadastrado com sucesso");
 			}
 		} catch(NoSuchElementException e){

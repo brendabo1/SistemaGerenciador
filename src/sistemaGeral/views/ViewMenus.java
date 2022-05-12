@@ -22,9 +22,10 @@ public class ViewMenus {
 		System.out.println("[2] Fornecedores");
 		System.out.println("[3] Cardapio");
 		System.out.println("[4] Produtos"); //Apenas os produtos cadastrados no sistema
-		System.out.println("[5] Vendas");
-		System.out.println("[6] Estoque");
-		System.out.println("[7] Sair");
+		System.out.println("[5] Lote");
+		System.out.println("[6] Vendas");
+		System.out.println("[7] Estoque");
+		System.out.println("[8] Sair");
 		System.out.println("Opçao: ");
 		
 	}

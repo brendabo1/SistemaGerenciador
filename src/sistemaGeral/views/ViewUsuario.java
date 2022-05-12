@@ -66,6 +66,24 @@ public class ViewUsuario {
 		return nome;
 	}
 	
+	public int edicao() throws NoSuchElementException, IllegalStateException, InputMismatchException {
+		int op;
+		Scanner input = new Scanner(System.in);
+		this.menus.cabecalhoMenu("EDICAO", 20);
+		System.out.println("[1] Nome");
+		System.out.println("[2] Senha");
+		System.out.println("Opçao: ");
+		op = input.nextInt();
+		return op;
+		
+	}
 	
+	public String entraDado(String msg) throws NoSuchElementException{
+		String dado;
+		Scanner input = new Scanner(System.in);	
+		System.out.println(msg);
+		dado = input.nextLine();
+		return dado;
+	}
 
 }

@@ -32,25 +32,34 @@ public class ViewProduto {
 		return dado;
 	}
 	
-	public ArrayList<String> cadastro() throws NoSuchElementException{
-		ArrayList<String> fornecedor = new ArrayList<>();
-		String nome, idFornecedor, end;
+	public int menuUnidadeMedida() throws InputMismatchException, NoSuchElementException {
+		int opcao;
+		Scanner input = new Scanner(System.in);
+		System.out.println("Unidade de Medida do Produto: ");
+		System.out.println("[1] Kilo(Kg)");
+		System.out.println("[2] Grama(g)");
+		System.out.println("[3] Litro(L)");
+		System.out.println("[4] Mililito(mL)");
+		System.out.println("[5] Unidade");
+		opcao = input.nextInt();
+		return opcao;
+	}
+	
+	public ArrayList<String> cadastro() throws InputMismatchException, NoSuchElementException{
+		ArrayList<String> produto = new ArrayList<>();
+		String nome, idFornecedor;
 		Scanner input = new Scanner(System.in);
 		
 		this.menus.cabecalhoMenu("CADASTRO", 20);
-		System.out.println("Nome: ");
+		System.out.println("Produto: ");
 		nome = input.nextLine();
-		fornecedor.add(nome);
+		produto.add(nome);
 		System.out.println("ID Fornecedor: ");
 		idFornecedor = input.nextLine();
-		fornecedor.add(idFornecedor);
-		System.out.println("Endereco: ");
-		end = input.nextLine();
-		fornecedor.add(end);
-		return fornecedor;
+		produto.add(idFornecedor);
+		return produto;
 	}
 	
-	s
 	
 	
 	public int edicao() throws NoSuchElementException, IllegalStateException, InputMismatchException {
