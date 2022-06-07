@@ -1,117 +1,75 @@
 package sistemaGeral;
 
-import java.util.Scanner;
 
-import sistemaGeral.models.gerenciadores.GerenciamentoFornecedor;
-import sistemaGeral.models.gerenciadores.GerenciamentoItemCardapio;
-import sistemaGeral.models.gerenciadores.GerenciamentoProduto;
-import sistemaGeral.models.gerenciadores.GerenciamentoUsuario;
-import sistemaGeral.models.gerenciadores.GerenciamentoVenda;
-import sistemaGeral.views.ViewFornecedor;
-import sistemaGeral.views.ViewItemCardapio;
-import sistemaGeral.views.ViewProduto;
-import sistemaGeral.views.ViewUsuario;
-import sistemaGeral.views.ViewVenda;
+import sistemaGeral.controllers.ControllerFornecedor;
+import sistemaGeral.controllers.ControllerProdutos;
+import sistemaGeral.controllers.ControllerUsuario;
+import sistemaGeral.models.BancoDeDados;
+
 
 public class SistemaEstabelecimento {
-		public static GerenciamentoUsuario gerUsuario = new GerenciamentoUsuario();
-		public static GerenciamentoFornecedor gerFornecedor = new GerenciamentoFornecedor();
-		public static GerenciamentoProduto gerProduto = new GerenciamentoProduto();
-		public static GerenciamentoItemCardapio gerItemCardapio = new GerenciamentoItemCardapio();
-		public static GerenciamentoVenda gerVenda = new GerenciamentoVenda();
-		
-		
-		public static ViewUsuario view_Usuario = new ViewUsuario(gerUsuario);
-		public static ViewProduto view_Produto = new ViewProduto(gerProduto);
-		public static ViewFornecedor view_Fornecedor = new ViewFornecedor(gerFornecedor);
-		public static ViewItemCardapio  view_ItemCardapio = new ViewItemCardapio(gerItemCardapio, gerProduto);
-		public static ViewVenda view_Venda = new ViewVenda(gerVenda, gerItemCardapio);
-				
-
-		
-		public static void main(String[] args) {
-			/*
-			Antigo pre-cadastro de itens
+		private boolean sistema_on = true;
+		private BancoDeDados bancoDeDados = new BancoDeDados();
+		private ControllerUsuario ctrUsuario = new ControllerUsuario(bancoDeDados);
+		private ControllerFornecedor ctrFornecedor = new ControllerFornecedor(bancoDeDados);
+		private ControllerProdutos ctrProduto = new ControllerProdutos(bancoDeDados, ctrFornecedor);
 			
-			gerProduto.cadastrar("Banana", 1.5, "21/04/2022");
-			gerProduto.cadastrar("Molho de Tomate", 3.0, "17/09/2023");
-			gerProduto.cadastrar("Pimenta Malagueta", 7.85, "18/06/2022");
-			gerProduto.cadastrar("Creme de Leite", 4.50, "29/11/2023");
-			*/
-			gerFornecedor.cadastrar("Carro do Ovo", "43442567854326", "Rua Santo Antonio");
-			gerFornecedor.cadastrar("Lanches Mania", "8922567854326", "Avenida Dutra");
-			gerFornecedor.cadastrar("Nestl�", "43442567424326", "Pra�a do Juazeiro");
+		public void run() {
+			int opcao, op_submenu; 
+			//String op_submenu;
+			boolean userAutenticado;
 			
-			
-			boolean sistema_on = true;
-			Scanner input = new Scanner(System.in);
-			while (sistema_on) {
-				
-					if (gerUsuario.getLista_usuarios().isEmpty()) {
-						view_Usuario.cadastro();
-					}
+			ctrUsuario.msgAbertura();
+			do {
+				userAutenticado = this.ctrUsuario.autenticarUser();
+			}while(!userAutenticado);
+			while(sistema_on) {
+				opcao = ctrUsuario.menuInicial();
+				switch(opcao) {
+				case 1: {
+					this.ctrUsuario.subMenu();
 					
-					boolean menu = true;
-					while (menu) {
-						System.out.print("\n[1] - USUARIOS \n[2] - PRODUTOS \n[3] - FORNECEDORES \n[4] - VENDAS "
-								+ "\n[5] - ITENS DO CARDAPIO \n[6] - SAIR DO PROGRAMA  \nOP��O: ");
-						String primeira_escolha = input.next().strip();
-						
-						switch(primeira_escolha) {
-							case "1": {
-								menu_switch(1);
-								break;
-								
-							}
-							case "2": {
-								menu_switch(2);
-								break;
-							}
-							
-							case "3": {
-								menu_switch(3);
-								break;
-							}
-							
-							case "4": {
-								menu_switch(4);
-								break;
-							}
-							
-							case "5": {
-								menu_switch(5);
-								break;
-							}
-							
-							case "6": {
-								System.out.println("Programa Encerrado . . .");
-								menu = false;
-								sistema_on = false;
-								break;
-							}
-							
-							default: {
-								System.out.println("Digite 1, 2, 3, 4, 5 ou 6");
-								break;
-							}
-							
-						}
-					}
-			}
-
-			
+				break;
+				}		
+				
+				case 2: {
+					this.ctrFornecedor.subMenu();
+					break;
+				}
+				
+				case 3: {
+					this.ctrProduto.subMenu();
+					break;
+				}
+				
+				case 4: {
+					break;
+				}
+				
+				case 5: {
+					break;
+				}
+				
+				case 6: {
+					System.out.println("Programa Encerrado . . .");
+					sistema_on = false;
+					break;
+				}
+				
+				default: {
+					System.out.println("Digite 1, 2, 3, 4, 5 ou 6");
+					break;
+				}
+			}	
 		}
+	}
+		
 
-
-
-		public static void menu_switch(int num) {
-			Scanner input = new Scanner(System.in);
+		public void submenus(int num) {
 			
-			boolean continuar_menu_switch = true;
+			boolean continuar = true;
 			
 			do {
-				System.out.print("\n[1] - CADASTRAR \n[2] - EXCLUIR \n[3] - LISTAR \n[4] - EDITAR \nOp��o: ");
-				String opcao = input.next().strip();
 				
 				switch (opcao) {
 					case "1": {
@@ -164,6 +122,9 @@ public class SistemaEstabelecimento {
 					}
 			}	
 		} while (continuar_menu_switch);
-		}
+	}
+			
+
 		
+
 }

@@ -3,13 +3,14 @@ package sistemaGeral.views;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import sistemaGeral.controllers.validacoes.ValidarItemCardapio;
-import sistemaGeral.models.CategoriasDeItens;
-import sistemaGeral.models.Fornecedor;
-import sistemaGeral.models.ItemCardapio;
-import sistemaGeral.models.Produto;
+
+import sistemaGeral.models.entidades.ItemCardapio;
+import sistemaGeral.models.entidades.Produto;
+
+import sistemaGeral.models.entidades.enums.CategoriasDeItens;
 import sistemaGeral.models.gerenciadores.GerenciamentoItemCardapio;
 import sistemaGeral.models.gerenciadores.GerenciamentoProduto;
+import sistemaGeral.models.validacoes.ValidaItemCardapio;
 
 public class ViewItemCardapio {
 			private String nome;
@@ -293,7 +294,7 @@ public class ViewItemCardapio {
 
 			
 			private boolean nomeCorreto(String novo_nome) {
-				if (ValidarItemCardapio.validarNome(novo_nome))
+				if (ValidaItemCardapio.validarNome(novo_nome))
 					return true;
 				else {
 					System.out.println("--> O nome não pode ser composto apenas por números ou estar vazio <--");
@@ -302,7 +303,7 @@ public class ViewItemCardapio {
 			}
 			
 			private boolean ingredientesCorretos(ArrayList<Produto> novos_ingredientes, ArrayList<Produto> produtos) {
-				if (ValidarItemCardapio.validarIngredientes(novos_ingredientes, produtos))
+				if (ValidaItemCardapio.validarIngredientes(novos_ingredientes, produtos))
 					return true;
 				else {
 					System.out.println("--> Um ou mais ingredientes não constam na lista de produtos <--");
@@ -311,7 +312,7 @@ public class ViewItemCardapio {
 			}
 			
 			private boolean  precoCorreto(Double novo_preco) {
-				if (ValidarItemCardapio.validarPreco(novo_preco))
+				if (ValidaItemCardapio.validarPreco(novo_preco))
 					return true;
 				else {
 					System.out.println("--> O preço deve ser maior que zero <--");
@@ -320,7 +321,7 @@ public class ViewItemCardapio {
 			}
 			
 			private boolean nomeJaUsado(String novo_nome) {
-				if (ValidarItemCardapio.nomeJaCadastrado(novo_nome, this.gerenciamento_itemCardapio.getLista_itensCardapio())) {
+				if (ValidaItemCardapio.nomeJaCadastrado(novo_nome, this.gerenciamento_itemCardapio.getLista_itensCardapio())) {
 					System.out.println("--> Já existe um item cadastrado com este nome <--");
 					return true;
 				}

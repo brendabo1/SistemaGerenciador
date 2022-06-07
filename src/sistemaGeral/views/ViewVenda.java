@@ -3,14 +3,20 @@ package sistemaGeral.views;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+<<<<<<< HEAD
+import sistemaGeral.controllers.ControllerVenda;
+=======
 import sistemaGeral.controllers.validacoes.ValidarVenda;
-import sistemaGeral.models.ItemCardapio;
-import sistemaGeral.models.Produto;
-import sistemaGeral.models.Venda;
+>>>>>>> develop_brenda
+import sistemaGeral.models.entidades.ItemCardapio;
+import sistemaGeral.models.entidades.Produto;
+import sistemaGeral.models.entidades.Venda;
 import sistemaGeral.models.gerenciadores.GerenciamentoItemCardapio;
 import sistemaGeral.models.gerenciadores.GerenciamentoVenda;
+import sistemaGeral.models.validacoes.ValidarVenda;
 
 public class ViewVenda {
+	private ControllerVenda controlador;
 		private ArrayList<ItemCardapio> compras;
 		private String formaDePagamento;
 		private GerenciamentoVenda gerenciamento_venda = new GerenciamentoVenda();
